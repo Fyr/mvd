@@ -1,0 +1,67 @@
+/*
+* 	Owl Carousel Owl Demo Theme 
+*	v1.3.3
+*/
+
+
+.owl-theme .owl-controls{
+	text-align: center;
+}
+
+
+/* Styling Pagination*/
+
+.owl-theme .owl-controls .owl-page {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;/*IE7 life-saver */
+}
+.owl-theme .owl-controls .owl-page span {
+	display: block;
+	width: 15px;
+	height: 15px;
+	margin: 0 3px;
+	background: #fff;
+	border: 1px solid #262323;
+}
+
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	background: #4d3330;
+	border: 1px solid #beb49f;
+}
+
+/* If PaginationNumbers is true */
+
+.owl-theme .owl-controls .owl-page span.owl-numbers {
+	height: auto;
+	width: auto;
+	color: #FFF;
+	padding: 2px 10px;
+	font-size: 12px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+
+/* preloading images */
+.owl-item.loading  {
+	background: url('../../img/preloader.png') no-repeat center center;
+	min-height: 300px;
+}
+
+.owl-item { }
+
+.owl-item .item { text-align: center; }
+.owl-item img  { display: block; max-width: 100%; height: auto; margin: 0 auto;}
+
+.owl-buttons .icon { font-size: 130px; color: #ddd; }
+.owl-buttons .icon:hover { color: #000;}
+
+.owl-buttons .owl-prev {  left: -98px; position: absolute; top: 50%; margin-top: -65px;}
+.owl-buttons .owl-next {  right: -98px; position: absolute; top: 50%; margin-top: -65px;}
+
+
+@media (max-width: 480px) {
+	
+}
