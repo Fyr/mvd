@@ -369,3 +369,28 @@ msgstr "Время работы"
 
 msgid "Slider"
 msgstr "Слайдер"
+
+msgid "Collections"
+msgstr "Коллекции"
+
+msgid "Products"
+msgstr "Музейные предметы"
+
+msgid "Subcategories"
+msgstr "Подкатегории"
+
+msgid "Create subcategory"
+msgstr "Создать подкатегорию"
+
+msgid "Create product"
+msgstr "Создать предмет"
+
+msgid "Edit subcategory"
+msgstr "Редактировать подкатегорию"
+
+msgid "Edit product"
+msgstr "Редактировать предмет"
+
+msgid "View product"
+msgstr "Просмотр предмета"
+

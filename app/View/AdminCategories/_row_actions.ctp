@@ -1,9 +1,6 @@
 <?
-	echo $this->Html->link('<i class="fa fa-folder"></i> '.__('Blocks'), array('controller' => 'AdminCategoryBlocks', 'action' => 'index', $id), array(
-		'class' => 'btn btn-outline dark btn-sm blue',
-		'escape' => false
-	));
-	echo $this->Html->link('<i class="fa fa-wrench"></i> '.__('Groups'), array('controller' => 'AdminParamGroups', 'action' => 'index', $id), array(
+	$title = $this->ObjectType->getTitle('index', 'Subcategory');
+	echo $this->Html->link('<i class="fa fa-folder"></i> '.$title, array('controller' => 'AdminSubcategories', 'action' => 'index', $id), array(
 		'class' => 'btn btn-outline dark btn-sm blue',
 		'escape' => false
 	));

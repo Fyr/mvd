@@ -1,9 +1,12 @@
 <?
     $id = $this->request->data($objectType.'.id');
     $title = $this->ObjectType->getTitle('index', $objectType);
+    $indexURL = array('controller' => 'AdminSubcategories', 'action' => 'index', $parent_id);
     $breadcrumbs = array(
         __('Collections') => 'javascript:;',
-        $title => array('action' => 'index'),
+        $this->ObjectType->getTitle('index', 'Category') => array('controller' => 'AdminCategories', 'action' => 'index'),
+        Hash::get($parentArticle, 'Category.title') => array('controller' => 'AdminCategories', 'action' => 'edit', Hash::get($parentArticle, 'Category.id')),
+        $this->ObjectType->getTitle('index', 'Subcategory') => $indexURL,
         __('Edit') => ''
     );
     echo $this->element('AdminUI/breadcrumbs', compact('breadcrumbs'));
@@ -33,7 +36,7 @@
     }
 
     echo $this->element('AdminUI/tabs', compact('tabs'));
-    echo $this->element('AdminUI/form_actions');
+    echo $this->element('AdminUI/form_actions', array('backURL' => $indexURL));
     echo $this->PHForm->end();
 ?>
         </div>

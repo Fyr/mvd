@@ -2,18 +2,18 @@
     $title = $this->ObjectType->getTitle('index', $objectType);
     $breadcrumbs = array(
         __('Collections') => 'javascript:;',
+        $this->ObjectType->getTitle('index', 'Category') => array('controller' => 'AdminCategories', 'action' => 'index'),
+        Hash::get($parentArticle, 'Category.title') => array('controller' => 'AdminCategories', 'action' => 'edit', Hash::get($parentArticle, 'Category.id')),
         $title => ''
     );
     echo $this->element('AdminUI/breadcrumbs', compact('breadcrumbs'));
     echo $this->element('AdminUI/title', array('title' => __('Collections')));
     echo $this->Flash->render();
-
-    $row_actions = '../AdminCategories/_row_actions';
 ?>
 <div class="row">
     <div class="col-md-12">
         <div class="portlet light bordered">
-            <?=$this->element('AdminUI/form_title', compact('title'))?>
+            <?=$this->element('AdminUI/form_title', array('title' => Hash::get($parentArticle, 'Category.title').': '.$title))?>
             <div class="portlet-body dataTables_wrapper">
                 <div class="table-toolbar">
                     <div class="row">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <?=$this->PHTableGrid->render($objectType, compact('row_actions'))?>
+                <?=$this->PHTableGrid->render($objectType)?>
             </div>
         </div>
     </div>

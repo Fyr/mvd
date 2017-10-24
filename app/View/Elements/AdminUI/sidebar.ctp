@@ -52,14 +52,11 @@
 		array('label' => __('Static content'), 'icon' => 'icon-layers', 'url' => '', 'submenu' => array(
 			array('label' => __('Pages'), 'url' => array('controller' => 'AdminPages', 'action' => 'index')),
 			array('label' => __('News'), 'url' => array('controller' => 'AdminNews', 'action' => 'index')),
-			// array('label' => __('FAQ'), 'url' => array('controller' => 'AdminFaq', 'action' => 'index')),
-			//array('label' => __('Blocks'), 'url' => array('controller' => 'AdminBlocks', 'action' => 'index')),
 		)),
-		/*
 		array('label' => __('Collections'), 'icon' => 'icon-docs', 'url' => '', 'submenu' => array(
 			array('label' => __('Categories'), 'url' => array('controller' => 'AdminCategories', 'action' => 'index')),
 			array('label' => __('Products'), 'url' => array('controller' => 'AdminProducts', 'action' => 'index')),
-		)),*/
+		)),
 		/*
 		array('label' => __('Users'), 'icon' => 'icon-user', 'url' => '', 'submenu' => array(
 			array('label' => __('User profiles'), 'url' => array('controller' => 'AdminUsers', 'action' => 'index')),
@@ -98,10 +95,14 @@
 				</a>
 				<ul class="sub-menu">
 <?
+			$controller = $this->request->controller;
+			if ($controller == 'AdminSubcategories') {
+				$controller = 'AdminCategories';
+			}
 			foreach($item['submenu'] as $_item) {
 				$menuID++;
-				if ($this->request->controller == $_item['url']['controller']) {
-					if ($this->request->controller == 'AdminSettings' && $this->request->action == $_item['url']['action']) {
+				if ($controller == $_item['url']['controller']) {
+					if ($controller == 'AdminSettings' && $this->request->action == $_item['url']['action']) {
 						$currMenu = $menuID;
 					} else {
 						$currMenu = $menuID;
