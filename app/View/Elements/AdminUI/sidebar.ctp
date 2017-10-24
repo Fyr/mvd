@@ -61,13 +61,6 @@
 			array('label' => __('Products'), 'url' => array('controller' => 'AdminProducts', 'action' => 'index')),
 		)),*/
 		/*
-		array('label' => __('Catalogs'), 'icon' => 'icon-playlist', 'url' => '', 'submenu' => array(
-			array('label' => __('Songs'), 'url' => array('controller' => 'AdminSongs', 'action' => 'index')),
-			array('label' => __('Song PDF-packs'), 'url' => array('controller' => 'AdminSongPacks', 'action' => 'index')),
-			array('label' => __('Subscription plans'), 'url' => array('controller' => 'AdminSubscrPlans', 'action' => 'index')),
-			array('label' => __('Personal order services'), 'url' => array('controller' => 'AdminServices', 'action' => 'index')),
-			array('label' => __('Orders'), 'url' => array('controller' => 'AdminOrders', 'action' => 'index')),
-		)),
 		array('label' => __('Users'), 'icon' => 'icon-user', 'url' => '', 'submenu' => array(
 			array('label' => __('User profiles'), 'url' => array('controller' => 'AdminUsers', 'action' => 'index')),
 			array('label' => __('Admin profile'), 'url' => array('controller' => 'AdminUsers', 'action' => 'edit', 1)),
@@ -76,14 +69,7 @@
 		array('label' => __('Settings'), 'icon' => 'icon-wrench', 'url' => '', 'submenu' => array(
 			// array('label' => __('System'), 'url' => array('controller' => 'AdminSettings', 'action' => 'index')),
 			array('label' => __('Contacts'), 'url' => array('controller' => 'AdminSettings', 'action' => 'contacts')),
-			/*
-			array('label' => __('Prices'), 'url' => array('controller' => 'AdminSettings', 'action' => 'prices')),
-			array('label' => __('Applications'), 'url' => array('controller' => 'AdminSettings', 'action' => 'apps')),
-			array('label' => __('Catalogs'), 'url' => array('controller' => 'AdminSettings', 'action' => 'catalogs')),
-			array('label' => __('Song packs'), 'url' => array('controller' => 'AdminSettings', 'action' => 'songpacks')),
-			array('label' => __('Song pack discounts'), 'url' => array('controller' => 'AdminPackDiscounts', 'action' => 'index')),
-			array('label' => __('Statuses'), 'url' => array('controller' => 'AdminSettings', 'action' => 'statuses')),
-			*/
+			array('label' => __('Slider'), 'url' => array('controller' => 'AdminSettings', 'action' => 'slider')),
 		)),
 	);
 

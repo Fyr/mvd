@@ -121,7 +121,7 @@ msgstr "Запомнить"
 msgid "Login"
 msgstr "Вход"
 
-msgid "Log out"
+msgid "Logout"
 msgstr "Выход"
 
 msgid "Utils"
@@ -366,3 +366,6 @@ msgstr "Адрес"
 
 msgid "Work time"
 msgstr "Время работы"
+
+msgid "Slider"
+msgstr "Слайдер"

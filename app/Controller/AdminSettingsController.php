@@ -23,18 +23,6 @@ class AdminSettingsController extends AdminController {
     public function contacts() {
     }
     
-    public function prices() {
-    }
-
-    public function apps() {
-    }
-
-    public function catalogs() {
-    }
-
-    public function songpacks() {
-    }
-
-    public function statuses() {
+    public function slider() {
     }
 }
