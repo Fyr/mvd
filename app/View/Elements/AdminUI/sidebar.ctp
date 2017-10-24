@@ -115,7 +115,12 @@
 			foreach($item['submenu'] as $_item) {
 				$menuID++;
 				if ($this->request->controller == $_item['url']['controller']) {
-					$currMenu = $menuID;
+					if ($this->request->controller == 'AdminSettings' && $this->request->action == $_item['url']['action']) {
+						$currMenu = $menuID;
+					} else {
+						$currMenu = $menuID;
+					}
+
 				}
 				$icon = (isset($_item['icon']) && $_item['icon']) ? '<i class="'.$_item['icon'].'"></i>' : '';
 				$label = '<span class="title">'.$_item['label'].'</span>';
@@ -143,20 +148,14 @@
 	<!-- END SIDEBAR -->
 </div>
 <?
-	if ($this->request->controller == 'AdminPageBlocks') {
-		$currMenu = 2;
-	} elseif (in_array($this->request->controller,  array('AdminCategoryBlocks', 'AdminParamGroups', 'AdminParams'))) {
-		$currMenu = 6;
-	} elseif (in_array($this->request->controller, array('AdminProductBlocks', 'AdminProductPacks'))) {
-		$currMenu = 7;
-	} elseif ($this->request->controller == 'AdminSettings') {
+/*
+	if ($this->request->controller == 'AdminSettings') {
 		$submenu = array('index' => 18, 'contacts' => 5);
 		$currMenu = $submenu[$this->request->action];
 	} elseif ($this->request->controller == 'AdminUsers') {
 		$currMenu = ($this->request->action == 'edit' && $this->request->pass[0] == 1) ? 16 : 15;
-	} elseif ($this->request->controller == 'AdminPackDiscounts') {
-		$currMenu = 24;
 	}
+*/
 	if ($currMenu) {
 ?>
 <script>
