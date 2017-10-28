@@ -4,24 +4,33 @@ App::uses('AdminController', 'Controller');
 App::uses('AdminContentController', 'Controller');
 App::uses('Product', 'Model');
 App::uses('Category', 'Model');
-App::uses('ParamGroup', 'Model');
-App::uses('PMFormField', 'Form.Model');
-App::uses('PMFormValue', 'Form.Model');
+App::uses('Subcategory', 'Model');
+App::uses('Media', 'View/Helper');
 class AdminProductsController extends AdminContentController {
     public $name = 'AdminProducts';
-    public $uses = array('Product', 'Category', 'ParamGroup', 'Form.PMFormField', 'Form.PMFormValue');
+    public $uses = array('Product', 'Category', 'Subcategory');
+    public $helpers = array('Media');
 
     public $paginate = array(
-        'fields' => array('parent_id', 'title_$lang', 'slug', 'published', 'featured', 'sorting'),
+        'fields' => array('created', 'cat_id', 'subcat_id', 'title', 'published', 'featured', 'sorting', 'id_num'),
+        'recursive' => 2,
         'order' => array('sorting' => 'desc'),
         'limit' => 20
     );
 
     public function beforeRender() {
         parent::beforeRender();
-        $this->set('aCategoryOptions', $this->Category->getOptions());
+        $this->set('aCategories', $this->Category->find('list', array(
+            'conditions' => array('parent_id' => '0'),
+            'order' => 'Category.title'
+        )));
+        $this->set('aSubcategories', $this->Subcategory->find('all', array(
+            'conditions' => array('Subcategory.parent_id <> ' => '0'),
+            'fields' => array('id', 'parent_id', 'title', 'Category.id', 'Category.title'),
+            'order' => 'Subcategory.title'
+        )));
     }
-
+/*
     public function index($parent_id = '') {
         if ($parent_id) {
             // Fix for redirecting on parent list
@@ -30,35 +39,8 @@ class AdminProductsController extends AdminContentController {
         parent::index();
     }
 
-    protected function afterSave($id) {
-        $this->PMFormValue->saveValues('ProductParam', $id, $this->request->data('PMFormValue'));
+    public function edit($id = 0, $cat_id = 0, $subcat_id = 0) {
+        parent::edit($id, 0);
     }
-
-    public function edit($id = 0, $parent_id = '') {
-        parent::edit($id, $parent_id);
-
-        $conditions = array('parent_id' => $this->parent_id, 'featured' => 0);
-        $order = 'sorting';
-        $aParamGroups = $this->ParamGroup->find('all', compact('conditions', 'order'));
-        $aParamGroups = Hash::combine($aParamGroups, '{n}.ParamGroup.id', '{n}');
-        $this->set('aFormGroups', $aParamGroups);
-
-        $conditions = array('object_type' => 'PMFormField', 'parent_id' => array_keys($aParamGroups));
-        $order = 'sorting';
-        $aParams = $this->PMFormField->find('all', compact('conditions', 'order'));
-        if ($aParams) {
-            $ids = Hash::extract($aParams, '{n}.PMFormField.id');
-            $aParams = Hash::combine($aParams, '{n}.PMFormField.id', '{n}', '{n}.PMFormField.parent_id');
-        }
-        $this->set('aForms', $aParams);
-
-        $aValues = array();
-        if ($this->request->is(array('put', 'post'))) {
-            $aValues = $this->request->data('PMFormValue');
-        } elseif ($id) {
-            $aValues = $this->PMFormValue->getValues('ProductParam', $id);
-        }
-        $this->set('aValues', $aValues);
-    }
-
+*/
 }

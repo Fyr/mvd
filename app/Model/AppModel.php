@@ -52,4 +52,10 @@ class AppModel extends Model {
     public function getLang() {
         return Configure::read('Config.language');
     }
+
+    public function getOptions() {
+        $fields = array('id', 'title');
+        $order = 'sorting';
+        return $this->find('list', compact('fields', 'order'));
+    }
 }

@@ -5,9 +5,14 @@ App::uses('Media', 'Media.Model');
 class Product extends AppModel {
 
     public $belongsTo = array(
-        'Category' => array(
+        'ProductCategory' => array(
             'className' => 'Category',
-            'foreignKey' => 'parent_id',
+            'foreignKey' => 'cat_id',
+            'dependent' => false
+        ),
+        'ProductSubcategory' => array(
+            'className' => 'Subcategory',
+            'foreignKey' => 'subcat_id',
             'dependent' => false
         )
     );

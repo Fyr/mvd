@@ -259,6 +259,9 @@ msgstr "Стартовая страница админа"
 msgid "Category"
 msgstr "Категория"
 
+msgid "Subcategory"
+msgstr "Подкатегория"
+
 msgid "Create category"
 msgstr "Создать категорию"
 
@@ -294,6 +297,9 @@ msgstr "Предпросмотр"
 
 msgid "Phone"
 msgstr "Тел."
+
+msgid "Photo"
+msgstr "Фото"
 
 msgid "Field is mandatory"
 msgstr "Поле обязательно для заполнения"
@@ -393,4 +399,12 @@ msgstr "Редактировать предмет"
 
 msgid "View product"
 msgstr "Просмотр предмета"
+
+msgid "Location"
+msgstr "Место хранения"
+
+msgid "ID Num"
+msgstr "Инв.номер"
+
+
 

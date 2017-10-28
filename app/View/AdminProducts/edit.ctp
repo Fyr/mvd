@@ -2,12 +2,12 @@
     $id = $this->request->data($objectType.'.id');
     $title = $this->ObjectType->getTitle('index', $objectType);
     $breadcrumbs = array(
-        __('Dashboard') => array('controller' => 'Admin', 'action' => 'index'),
+        __('Collections') => 'javascript:;',
         $title => array('action' => 'index'),
         __('Edit') => ''
     );
     echo $this->element('AdminUI/breadcrumbs', compact('breadcrumbs'));
-    echo $this->element('AdminUI/title', compact('title'));
+    echo $this->element('AdminUI/title', array('title' => __('Collections')));
     echo $this->Flash->render();
 ?>
 
@@ -20,36 +20,10 @@
     echo $this->PHForm->create($objectType);
 
     $tabs = array(
-        __('General') => $this->Html->div('form-body',
-            $this->element('AdminUI/checkboxes')
-            .$this->PHForm->input('title_'.$lang,
-                array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Title')))
-            )
-            .$this->PHForm->input('header_'.$lang,
-                array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Header')))
-            )
-            .$this->PHForm->input('slug')
-            .$this->PHForm->input('parent_id', array('options' => $aCategoryOptions, 'label' => array('class' => 'col-md-3 control-label', 'text' => __('Category'))))
-            .$this->PHForm->input('teaser_'.$lang,
-                array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Teaser')))
-            )
-            .$this->PHForm->input('sorting', array('class' => 'form-control input-small'))
-        ),
-        __('Text') => $this->element('Article.edit_body', array('field' => 'body_'.$lang)),
-        __('Features') => $this->PHForm->input('spec_features_'.$lang,
-                array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Spec.features list')))
-            )
-            .$this->PHForm->input('features_'.$lang,
-                array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Features list'))))
-
+        __('General') => $this->Html->div('form-body', $this->element('../AdminProducts/_edit_general')),
+        __('Text') => $this->element('Article.edit_body', array('field' => 'body'))
     );
 
-    foreach($aFormGroups as $_id => $group) {
-        $title = $group['ParamGroup']['title_'.$lang];
-        if ($form = Hash::get($aForms, $_id)) {
-            $tabs[$title] = $this->PHForm->renderForm($form, $aValues);
-        }
-    }
     if ($id) {
         $tabs[__('Media')] = $this->element('Media.edit', array('object_type' => $objectType, 'object_id' => $id));
     }

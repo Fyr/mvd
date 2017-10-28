@@ -1,24 +1,39 @@
 <?
     $title = $this->ObjectType->getTitle('index', $objectType);
     $breadcrumbs = array(
-        __('eCommerce') => 'javascript:;',
+        __('Collections') => 'javascript:;',
         $title => ''
     );
     echo $this->element('AdminUI/breadcrumbs', compact('breadcrumbs'));
-    echo $this->element('AdminUI/title', compact('title'));
+    echo $this->element('AdminUI/title', array('title' => __('Collections')));
     echo $this->Flash->render();
 
     $columns = $this->PHTableGrid->getDefaultColumns($objectType);
-    $columns['Product.title_'.$lang]['label'] = __('Title');
-    $columns['Product.parent_id']['format'] = 'string';
-    $columns['Product.parent_id']['label'] = __('Category');
+    unset($columns['Product.cat_id']);
+    unset($columns['Product.subcat_id']);
+    unset($columns['Product.id_num']);
+    array_unshift($columns, array('key' => 'Product.photo', 'label' => __('Photo'), 'format' => 'string'));
+
     $rowset = $this->PHTableGrid->getDefaultRowset($objectType);
+    $aSubcategories = Hash::combine($aSubcategories, '{n}.Subcategory.id', '{n}.Subcategory.title');
     foreach($rowset as &$row) {
-        $row['Product']['parent_id'] = $aCategoryOptions[$row['Product']['parent_id']];
+        $row['Product']['photo'] = $this->Html->image($this->Media->imageUrl($row, '100x'));
+        $row['Product']['title'] = sprintf("<small>%s &gt; %s</small><br />%s<br /><small>%s: #%s</small>",
+            $aCategories[$row['Product']['cat_id']],
+            $aSubcategories[$row['Product']['subcat_id']],
+            $row['Product']['title'],
+            __('ID Num'),
+            $row['Product']['id_num']
+        );
     }
 
-    $row_actions = '../AdminProducts/row_actions';
+    $row_actions = '../AdminProducts/_row_actions';
 ?>
+<style>
+    .table.dataTable > tbody > tr > td:first-child {
+        text-align: center;
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="portlet light bordered">
@@ -34,7 +49,6 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-
                         </div>
                     </div>
                 </div>
