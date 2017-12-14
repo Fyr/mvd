@@ -194,7 +194,7 @@ msgid "Cancel"
 msgstr "Отмена"
 
 msgid "Admin area"
-msgstr "Панель админа"
+msgstr "Панель администратора"
 
 msgid "Static content"
 msgstr "Контент"
