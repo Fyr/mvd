@@ -1,5 +1,5 @@
 <?
-	echo $this->element('AdminUI/checkboxes');
+	echo $this->element('AdminUI/checkboxes', array('labels' => array('published' => __('Published'), 'featured' => __('For home page'))));
 	echo $this->PHForm->input('cat_id', array(
 		'options' => $aCategories,
 		'value' => $this->request->data('Product.cat_id'),

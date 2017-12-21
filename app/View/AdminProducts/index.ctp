@@ -12,6 +12,7 @@
     unset($columns['Product.cat_id']);
     unset($columns['Product.subcat_id']);
     unset($columns['Product.id_num']);
+    $columns['Product.featured']['label'] = __('For home page');
     array_unshift($columns, array('key' => 'Product.photo', 'label' => __('Photo'), 'format' => 'string'));
 
     $rowset = $this->PHTableGrid->getDefaultRowset($objectType);

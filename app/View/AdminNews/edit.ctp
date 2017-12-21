@@ -24,7 +24,7 @@
     }
     $tabs = array(
         __('General') => $this->Html->div('form-body',
-            $this->element('AdminUI/checkboxes')
+            $this->element('AdminUI/checkboxes', array('labels' => array('published' => __('Published'), 'featured' => __('For home page'))))
             .$this->PHForm->input('title_'.$lang,
                 array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Title')))
             )

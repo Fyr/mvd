@@ -10,7 +10,7 @@ class MediaHelper extends AppHelper {
 		$this->MediaPath = new MediaPath();
 	}
 	
-	function imageUrl($mediaRow, $size) {
+	function imageUrl($mediaRow, $size = 'noresize') {
 		if (!(isset($mediaRow['Media']) && $mediaRow['Media'] && isset($mediaRow['Media']['id']) && $mediaRow['Media']['id']) ) {
 			return '';
 		}

@@ -406,5 +406,6 @@ msgstr "Место хранения"
 msgid "ID Num"
 msgstr "Инв.номер"
 
-
+msgid "For home page"
+msgstr "На главную"
 

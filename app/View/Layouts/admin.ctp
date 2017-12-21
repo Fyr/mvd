@@ -55,6 +55,7 @@
 ?>
 <style>
 	.pagination .prev.disabled, .pagination .next.disabled { display: none; }
+	table.dataTable thead .sorting { text-align: center; }
 	.table.dataTable p {margin: 0 0 0.13em 0;}
 	.rubl {font-family: 'PT Sans'}
 	.form-text { margin-top: 8px;}
