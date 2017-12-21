@@ -148,7 +148,7 @@ class Media extends AppModel {
      * @param mixed $order
      * @return array
      */
-    public function getList($findData = array(), $order = array('Media.main' => 'DESC', 'Media.id' => 'DESC')) {
+    public function getList($findData = array(), $order = array('Media.main' => 'DESC', 'Media.id' => 'ASC')) {
         $aRows = $this->find('all', array('conditions' => $findData, 'order' => $order));
         foreach($aRows as &$_row) {
             $row = $_row[$this->alias];

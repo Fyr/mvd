@@ -1,16 +1,23 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Page', 'Model');
+/*
 App::uses('PageBlock', 'Model');
 App::uses('News', 'Model');
 App::uses('Product', 'Model');
 App::uses('Category', 'Model');
+*/
 App::uses('Media', 'Media.Model');
+
 class PagesController extends AppController {
-	public $uses = array('Page', 'PageBlock', 'News', 'Product', 'Category', 'Media.Media');
-	public $helpers = array('Media.PHMedia');
+	public $uses = array('Page', 'Media.Media');
+	// public $helpers = array('Media.PHMedia');
 
 	public function home() {
+		$page = $this->Page->findBySlug('home');
+		$aSlider = $this->Media->getList(array('object_type' => 'Slider'));
+		$this->set(compact('page', 'aSlider'));
+		/*
 		$this->layout = 'home';
 		$page = $this->Page->findBySlug('home');
 		$blocks = $this->PageBlock->findAllByParentIdAndPublished($page['Page']['id'], 1, null, 'PageBlock.sorting');
@@ -22,6 +29,7 @@ class PagesController extends AppController {
 		$aCategories = $this->Category->findAllByPublished(1, null, 'Category.sorting');
 		$aProducts = $this->Product->findAllByPublished(1, null, 'Product.sorting');
 		$this->set(compact('aNews', 'aProducts', 'aCategories'));
+		*/
 	}
 
 	public function karaoke_systems() {
