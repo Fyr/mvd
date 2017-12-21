@@ -1,22 +1,35 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Page', 'Model');
-/*
-App::uses('PageBlock', 'Model');
 App::uses('News', 'Model');
 App::uses('Product', 'Model');
+/*
+App::uses('PageBlock', 'Model');
+
+
 App::uses('Category', 'Model');
 */
 App::uses('Media', 'Media.Model');
 
 class PagesController extends AppController {
-	public $uses = array('Page', 'Media.Media');
+	public $uses = array('Media.Media', 'Page', 'News', 'Product');
 	// public $helpers = array('Media.PHMedia');
 
 	public function home() {
 		$page = $this->Page->findBySlug('home');
 		$aSlider = $this->Media->getList(array('object_type' => 'Slider'));
-		$this->set(compact('page', 'aSlider'));
+
+		$conditions = array('published' => 1, 'featured' => 1);
+		$order = array('modified' => 'desc');
+		$aNews = $this->News->find('all', compact('conditions', 'order'));
+
+		$conditions = array('Product.published' => 1, 'Product.featured' => 1);
+		$order = array('Product.modified' => 'desc');
+		$aProducts = $this->Product->find('all', compact('conditions', 'order'));
+		fdebug($aProducts);
+
+		$this->set(compact('page', 'aSlider', 'aNews', 'aProducts'));
+
 		/*
 		$this->layout = 'home';
 		$page = $this->Page->findBySlug('home');

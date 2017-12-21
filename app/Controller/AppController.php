@@ -13,7 +13,7 @@ class AppController extends Controller {
 		),
 	);
 
-	protected $aCategories, $aProducts, $currUser, $cart;
+	protected $aCategories, $currUser, $cart;
 
 	public function __construct($request = null, $response = null) {
 		$this->_beforeInit();
@@ -103,9 +103,6 @@ class AppController extends Controller {
 
 		$this->aCategories = $this->Category->find('all', array('order' => 'sorting'));
 		$this->aCategories = Hash::combine($this->aCategories, '{n}.Category.id', '{n}');
-
-		$this->aProducts = $this->Product->find('all', array('order' => 'Product.sorting'));
-		$this->aProducts = Hash::combine($this->aProducts, '{n}.Product.id', '{n}', '{n}.Product.parent_id');
 	}
 
 	public function beforeRender() {
@@ -114,22 +111,8 @@ class AppController extends Controller {
 
 	protected function beforeRenderLayout() {
 		$this->set('aCategories', $this->aCategories);
-		$this->set('aProducts', $this->aProducts);
 		$this->set('lang', Configure::read('Config.language'));
 		$this->set('currUser', $this->currUser);
-		$this->set('cart', $this->cart);
-
-		$cartItems = 0;
-		if (isset($this->cart['songs'])) {
-			$cartItems+= count($this->cart['songs']);
-		}
-		if (isset($this->cart['packs'])) {
-			$cartItems+= count($this->cart['packs']);
-		}
-		if (isset($this->cart['custom'])) {
-			$cartItems+= count($this->cart['custom']);
-		}
-		$this->set('cartItems', $cartItems);
 	}
 
 	protected function getLang() {
@@ -144,11 +127,7 @@ class AppController extends Controller {
 		}
 
 		$this->loadModel('Product');
-		$this->loadModel('SubscrPlan');
 
 		$this->currUser = AuthComponent::user();
-		$this->currUser['product'] = ($this->currUser['product_id']) ? $this->Product->findById($this->currUser['product_id']) : array();
-		$this->currUser['subscription'] = ($this->currUser['product_id']) ? $this->SubscrPlan->findById($this->currUser['subscr_plan_id']) : array();
-		$this->cart = (isset($_COOKIE['cart']) && $_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : array();
 	}
 }

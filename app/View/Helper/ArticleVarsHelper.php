@@ -10,8 +10,13 @@ class ArticleVarsHelper extends AppHelper {
 		
 		$url = SiteRouter::url($article);
 		$lang = $this->getLang();
-		$title = $article[$objectType]['title_'.$lang];
-		$teaser = nl2br($article[$objectType]['teaser_'.$lang]);
+
+		$_title = ($objectType == 'Product') ? 'title' : 'title_'.$lang;
+		$title = $article[$objectType][$_title];
+
+		$_teaser = ($objectType == 'Product') ? 'teaser' : 'teaser_'.$lang;
+		$teaser = nl2br($article[$objectType][$_teaser]);
+
 		$src = (isset($article['Media']) && $article['Media'] && isset($article['Media']['id']) && $article['Media']['id']) 
 			? $this->Media->imageUrl($article, $size) : '';
 		$featured = $article[$objectType]['featured'];
