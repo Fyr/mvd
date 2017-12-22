@@ -64,14 +64,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9">
-						<!-- ul class="mainMenu">
-							<li class="active"><a href="/">Главная</a></li>
-							<li><a href="javascript: void(0)">О музее</a></li>
-							<li><a href="javascript: void(0)">События</a></li>
-							<li><a href="javascript: void(0)">Коллекции</a></li>
-							<li><a href="javascript: void(0)">История милиции</a></li>
-							<li><a href="javascript: void(0)">Посетителям</a></li>
-						</ul-->
 						<?=$this->element('main_menu')?>
 					</div>
 					<div class="col-md-3 mvd">
@@ -97,24 +89,10 @@
 					<a href="#">МУЗЕЙ МВД <span>Республики Беларусь</span></a>
 				</div>
 				<div class="col-md-2  col-md-offset-1 col-sm-2 col-xs-6 firstColomn">
-					<ul class="menu">
-						<li class="active"><a href="javascript: void(0)">Главная</a></li>
-						<li><a href="javascript: void(0)">О музее</a></li>
-						<li><a href="javascript: void(0)">События</a></li>
-						<li><a href="javascript: void(0)">Коллекции</a></li>
-						<li><a href="javascript: void(0)">История милиции</a></li>
-						<li><a href="javascript: void(0)">Посетителям</a></li>
-					</ul>
+					<?=$this->element('main_menu', array('class' => 'menu'))?>
 				</div>
 				<div class="col-md-2 col-sm-3 col-xs-6 secondColomn">
-					<ul class="menu">
-						<li class="active"><a href="javascript: void(0)">Главная</a></li>
-						<li><a href="javascript: void(0)">О музее</a></li>
-						<li><a href="javascript: void(0)">События</a></li>
-						<li><a href="javascript: void(0)">Коллекции</a></li>
-						<li><a href="javascript: void(0)">История милиции</a></li>
-						<li><a href="javascript: void(0)">Посетителям</a></li>
-					</ul>
+					<!-- ul class="menu"></ul-->
 				</div>
 				<div class="col-md-2 col-md-offset-3 col-sm-3 languages">
 					<!-- a href="#">en</a>

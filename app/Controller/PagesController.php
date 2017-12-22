@@ -1,17 +1,11 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Media', 'Media.Model');
 App::uses('Page', 'Model');
 App::uses('News', 'Model');
 App::uses('Product', 'Model');
-/*
-App::uses('PageBlock', 'Model');
-App::uses('Category', 'Model');
-*/
-App::uses('Media', 'Media.Model');
-
 class PagesController extends AppController {
 	public $uses = array('Media.Media', 'Page', 'News', 'Product');
-	// public $helpers = array('Media.PHMedia');
 
 	public function home() {
 		$page = $this->Page->findBySlug('home');
