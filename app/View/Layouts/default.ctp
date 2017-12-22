@@ -64,14 +64,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9">
-						<ul class="mainMenu">
-							<li class="active"><a href="javascript: void(0)">Главная</a></li>
+						<!-- ul class="mainMenu">
+							<li class="active"><a href="/">Главная</a></li>
 							<li><a href="javascript: void(0)">О музее</a></li>
 							<li><a href="javascript: void(0)">События</a></li>
 							<li><a href="javascript: void(0)">Коллекции</a></li>
 							<li><a href="javascript: void(0)">История милиции</a></li>
 							<li><a href="javascript: void(0)">Посетителям</a></li>
-						</ul>
+						</ul-->
+						<?=$this->element('main_menu')?>
 					</div>
 					<div class="col-md-3 mvd">
 						<div class="mobileBtn">

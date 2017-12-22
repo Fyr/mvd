@@ -2,7 +2,7 @@
 App::uses('Category', 'Model');
 App::uses('Product', 'Model');
 class AppController extends Controller {
-	public $components = array(/*'DebugKit.Toolbar',*/
+	public $components = array(
 		'Auth' => array(
 			'authorize'      => array('Controller'),
 			'loginAction'    => array('plugin' => '', 'controller' => 'pages', 'action' => 'home', '?' => array('login' => 1)),
@@ -13,7 +13,7 @@ class AppController extends Controller {
 		),
 	);
 
-	protected $aCategories, $currUser, $cart;
+	protected $aCategories, $currUser, $aNavBar, $currMenu, $aBottomLinks, $currLink;
 
 	public function __construct($request = null, $response = null) {
 		$this->_beforeInit();
@@ -22,7 +22,7 @@ class AppController extends Controller {
 	}
 
 	protected function _beforeInit() {
-		$this->helpers = array_merge(array('ArticleVars'), $this->helpers); // 'ArticleVars', 'Media.PHMedia', 'Core.PHTime', 'Media', 'ObjectType'
+		$this->helpers = array_merge(array('ArticleVars', 'Media'), $this->helpers); // 'ArticleVars', 'Media.PHMedia', 'Core.PHTime', 'Media', 'ObjectType'
 	}
 
 	protected function _afterInit() {
@@ -86,23 +86,38 @@ class AppController extends Controller {
 		throw new NotFoundException();
 	}
 
+	private function _getCurrMenu() {
+		foreach($this->aNavBar as $curr => $item) {
+			if ($this->request->controller == $item['url']['controller'] && $this->request->action == $item['url']['action']) {
+				return $curr;
+			}
+		}
+		return '';
+	}
+
 	public function beforeFilter() {
 		$this->beforeFilterLayout();
 	}
 
 	public function beforeFilterLayout() {
-		$this->loadModel('Product');
-		$this->loadModel('Category');
+		$this->aNavBar = array(
+			'Home' => array('title' => 'Главная', 'url' => array('controller' => 'pages', 'action' => 'home')),
+			'About' => array('title' => 'О музее', 'url' => array('controller' => 'pages', 'action' => 'about')),
+			'News' => array('title' => 'События', 'url' => array('controller' => 'articles', 'action' => 'index')),
+			'Products' => array('title' => 'Коллеции', 'url' => array('controller' => 'products', 'action' => 'index')),
+			'History' => array('title' => 'История милиции', 'url' => array('controller' => 'pages', 'action' => 'view', 'history')),
+			'Contacts' => array('title' => 'Посетителям', 'url' => array('controller' => 'pages', 'action' => 'view', 'contacts')),
+		);
+		$this->currMenu = $this->_getCurrMenu();
+		// $this->aBottomLinks = $this->aNavBar;
+		// $this->currLink = $this->_currMenu;
 
-		$this->Auth->allow(array('home', 'show', 'view', 'index', 'custom', 'full', 'compare', 'karaoke_systems', 'player', 'tablet', 'select', 'login'));
+		$this->Auth->allow(array('home', 'about', 'view', 'index', 'login'));
 		$this->currUser = array();
 		$this->cart = array();
 		if ($this->Auth->loggedIn()) {
 			$this->_refreshUser();
 		}
-
-		$this->aCategories = $this->Category->find('all', array('order' => 'sorting'));
-		$this->aCategories = Hash::combine($this->aCategories, '{n}.Category.id', '{n}');
 	}
 
 	public function beforeRender() {
@@ -110,9 +125,12 @@ class AppController extends Controller {
 	}
 
 	protected function beforeRenderLayout() {
-		$this->set('aCategories', $this->aCategories);
 		$this->set('lang', Configure::read('Config.language'));
 		$this->set('currUser', $this->currUser);
+		$this->set('aNavBar', $this->aNavBar);
+		$this->set('currMenu', $this->currMenu);
+		// $this->set('aBottomLinks', $this->aBottomLinks);
+		// $this->set('currLink', $this->currLink);
 	}
 
 	protected function getLang() {

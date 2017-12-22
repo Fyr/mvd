@@ -23,7 +23,9 @@ class ArticleVarsHelper extends AppHelper {
 	}
 
 	public function body($article) {
-		return $article[$this->getObjectType($article)]['body_'.$this->getLang()];
+		$objectType = $this->getObjectType($article);
+		$_body = ($objectType == 'Product') ? 'body' : 'body_'.$this->getLang();
+		return '<article>'.$article[$objectType][$_body].'</article>';
 	}
 
 	public function divideColumns($items, $cols) {
