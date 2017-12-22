@@ -1,16 +1,27 @@
-<div class="container">
-	<?=$this->element('SiteUI/title', array('title' => $this->ObjectType->getTitle('index', 'News')))?>
-	<div class="newsContainer">
-		<?=$this->element('news')?>
-	</div>
+<div class="container article">
+    <h1>События</h1>
+<?
+    $aArticleGroups = array_chunk($aArticles, 3);
+    foreach($aArticleGroups as $aArticles) {
+?>
+    <div class="row mainPageEvents" style="margin-bottom: 40px">
+<?
+        foreach ($aArticles as $article) {
+            $this->ArticleVars->init($article, $url, $title, $teaser, $src, '600x');
+?>
+            <div class="col-sm-4">
+                <div class="outer">
+                    <a href="<?=$url?>" class="picture" title="<?=$title?>" style="background-image: url('<?=$src?>')"></a>
+                    <div class="date"><?=$this->PHTime->niceShort($article['News']['modified'])?></div>
+                </div>
+                <a href="<?=$url?>" class="description"><?=$title?></a>
+            </div>
+<?
+        }
+?>
+    </div>
+<?
+    }
+    echo $this->element('paginate');
+?>
 </div>
-<script type="text/javascript">
-var page = 1;
-function moreNews() {
-	page++;
-	$.get('/news/index/' + page, null, function(response){
-		$('.newsContainer .btn').parent().remove();
-		$('.newsContainer').append(response);
-	});
-}
-</script>

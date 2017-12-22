@@ -25,12 +25,12 @@
     <div class="row mainPageEvents">
 <?
     foreach($aNews as $article) {
-        $this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
+        $this->ArticleVars->init($article, $url, $title, $teaser, $src, '600x');
 ?>
         <div class="col-sm-4">
             <div class="outer">
-                <a href="<?=$url?>" class="picture" title="<?=$title?>" style="background-image: url('<?=$this->Media->imageUrl($article)?>')"></a>
-                <div class="date">3 марта 2017</div>
+                <a href="<?=$url?>" class="picture" title="<?=$title?>" style="background-image: url('<?=$src?>')"></a>
+                <div class="date"><?=$this->PHTime->niceShort($article['News']['modified'])?></div>
             </div>
             <a href="<?=$url?>" class="description"><?=$title?></a>
         </div>

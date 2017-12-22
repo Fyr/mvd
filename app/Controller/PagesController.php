@@ -6,6 +6,7 @@ App::uses('News', 'Model');
 App::uses('Product', 'Model');
 class PagesController extends AppController {
 	public $uses = array('Media.Media', 'Page', 'News', 'Product');
+	public $helpers = array('Core.PHTime');
 
 	public function home() {
 		$page = $this->Page->findBySlug('home');
@@ -32,7 +33,7 @@ class PagesController extends AppController {
 	}
 
 	public function view($slug) {
-		$this->set('page', $this->Page->findBySlug($slug));
+		$this->set('article', $this->Page->findBySlug($slug));
 		$this->currMenu = ucfirst($slug);
 	}
 }

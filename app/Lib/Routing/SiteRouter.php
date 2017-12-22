@@ -19,7 +19,7 @@ class SiteRouter extends Router {
 			$url = array(
 				'controller' => 'news',
 				'action' => 'view',
-				$article['News']['slug']
+				$article['News']['id']
 			);
 		} elseif ($objectType == 'Category') {
 			$url = array(

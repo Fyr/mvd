@@ -103,7 +103,7 @@ class AppController extends Controller {
 		$this->aNavBar = array(
 			'Home' => array('title' => 'Главная', 'url' => array('controller' => 'pages', 'action' => 'home')),
 			'About' => array('title' => 'О музее', 'url' => array('controller' => 'pages', 'action' => 'about')),
-			'News' => array('title' => 'События', 'url' => array('controller' => 'articles', 'action' => 'index')),
+			'News' => array('title' => 'События', 'url' => array('controller' => 'news', 'action' => 'index')),
 			'Products' => array('title' => 'Коллеции', 'url' => array('controller' => 'products', 'action' => 'index')),
 			'History' => array('title' => 'История милиции', 'url' => array('controller' => 'pages', 'action' => 'view', 'history')),
 			'Contacts' => array('title' => 'Посетителям', 'url' => array('controller' => 'pages', 'action' => 'view', 'contacts')),
