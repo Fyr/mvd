@@ -1,0 +1,17 @@
+.stacktable { width: 100%; }
+.st-head-row { padding-top: 1em; }
+.st-head-row.st-head-row-main { font-size: 1.5em;  }
+.st-key { width: 47%; text-align: right; padding-right: 3%; }
+.st-val { width: 47%; padding-left: 3%; }
+
+
+
+/* RESPONSIVE EXAMPLE */
+
+.stacktable.large-only { display: table; }
+.stacktable.small-only { display: none; }
+
+@media (max-width: 560px) {
+  .stacktable.large-only { display: none; }
+  .stacktable.small-only { display: table; }
+}
