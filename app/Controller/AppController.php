@@ -87,7 +87,6 @@ class AppController extends Controller {
 	}
 
 	private function _getCurrMenu() {
-		fdebug($this->request);
 		foreach($this->aNavBar as $curr => $item) {
 			if ($this->request->controller == $item['url']['controller'] && $this->request->action == $item['url']['action']) {
 				return $curr;

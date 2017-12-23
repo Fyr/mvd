@@ -4,14 +4,21 @@
         <div class="col-md-9 col-sm-8">
 
 <?
-    $this->ArticleVars->init($article, $url, $title, $teaser, $src, '600x');
+    $this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
 ?>
             <h1><?=$title?></h1>
             <div class="row">
                 <div class="col-md-7 exhibit">
                     <img class="mainImg" src="<?=$src?>" alt="<?=$title?>" />
                     <div class="thumbs">
-                        <img class="thumb" src="<?=$src?>" alt="" />
+<?
+    foreach($aMedia as $media) {
+?>
+                        <img class="thumb" src="<?=$this->Media->imageUrl($media, 'norisize')?>" alt="" />
+<?
+    }
+?>
+
                     </div>
                     <div class="title">Описание</div>
                     <div class="description"><?=$this->ArticleVars->body($article)?></div>
