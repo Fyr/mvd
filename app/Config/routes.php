@@ -1,7 +1,7 @@
 <?php
 Router::parseExtensions('json', 'xml');
 
-Router::connect('/', array('controller' => 'Pages', 'action' => 'home'));
+Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
 
 Router::connect('/news', array(
 	'controller' => 'news',
@@ -19,7 +19,7 @@ Router::connect('/news/:slug',
 );
 */
 Router::connect('/news/page/:page', array(
-	'controller' => 'News',
+	'controller' => 'news',
 	'action' => 'index',
 ),
 	array('named' => array('page' => '[\d]*'))
