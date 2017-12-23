@@ -104,7 +104,7 @@ class AppController extends Controller {
 			'Home' => array('title' => 'Главная', 'url' => array('controller' => 'pages', 'action' => 'home')),
 			'About' => array('title' => 'О музее', 'url' => array('controller' => 'pages', 'action' => 'about')),
 			'News' => array('title' => 'События', 'url' => array('controller' => 'news', 'action' => 'index')),
-			'Products' => array('title' => 'Коллеции', 'url' => array('controller' => 'products', 'action' => 'index')),
+			'Products' => array('title' => 'Коллеции', 'url' => array('controller' => 'products', 'action' => 'categories')),
 			'History' => array('title' => 'История милиции', 'url' => array('controller' => 'pages', 'action' => 'view', 'history')),
 			'Contacts' => array('title' => 'Посетителям', 'url' => array('controller' => 'pages', 'action' => 'view', 'contacts')),
 		);
@@ -112,7 +112,7 @@ class AppController extends Controller {
 		// $this->aBottomLinks = $this->aNavBar;
 		// $this->currLink = $this->_currMenu;
 
-		$this->Auth->allow(array('home', 'about', 'view', 'index', 'login'));
+		$this->Auth->allow(array('home', 'about', 'view', 'index', 'login', 'categories'));
 		$this->currUser = array();
 		$this->cart = array();
 		if ($this->Auth->loggedIn()) {

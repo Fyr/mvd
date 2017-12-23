@@ -11,4 +11,9 @@ class Category extends AppModel {
         )
     );
 
+    public function beforeFind($query) {
+        $query['conditions']['Category.parent_id'] = '0';
+        return $query;
+    }
+
 }

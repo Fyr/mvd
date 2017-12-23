@@ -13,7 +13,8 @@ class SiteRouter extends Router {
 			$url = array(
 				'controller' => 'products',
 				'action' => 'view',
-				$article['Product']['slug']
+				$article['Product']['id']
+				// $article['Product']['slug']
 			);
 		} elseif ($objectType == 'News') {
 			$url = array(
@@ -23,16 +24,22 @@ class SiteRouter extends Router {
 			);
 		} elseif ($objectType == 'Category') {
 			$url = array(
-				'controller' => 'categories',
-				'action' => 'view',
-				$article['Category']['slug']
+				'controller' => 'products',
+				'action' => 'index',
+				'?' => array('Product.cat_id' => $article['Category']['id'])
+			);
+		} elseif ($objectType == 'Subcategory') {
+			$url = array(
+				'controller' => 'products',
+				'action' => 'index',
+				'?' => array('Product.cat_id' => $article['Subcategory']['parent_id'], 'Product.subcat_id' => $article['Subcategory']['id'])
 			);
 		} else {
 			$url = array(
 				'controller' => 'articles',
 				'action' => 'view',
 				'objectType' => $objectType,
-				'slug' => $article[$objectType]['slug']
+				'slug' => $article[$objectType]['id']
 			);
 		}
 		return parent::url($url);

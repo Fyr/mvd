@@ -21,4 +21,9 @@ class Subcategory extends AppModel {
         )
     );
 
+    public function beforeFind($query) {
+        $query['conditions']['Subcategory.parent_id > '] = '0';
+        return $query;
+    }
+
 }

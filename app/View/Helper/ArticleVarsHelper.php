@@ -4,17 +4,17 @@ App::uses('SiteRouter', 'Lib/Routing');
 class ArticleVarsHelper extends AppHelper {
 	public $helpers = array('Media');
 
-	public function init($article, &$url, &$title, &$teaser = '', &$src = '', $size = 'noresize', &$featured = false, &$id = '') {
+	public function init($article, &$url, &$title, &$teaser = '', &$src = '', $size = 'noresize', &$id = '') {
 		$objectType = $this->getObjectType($article);
 		$id = $article[$objectType]['id'];
 		
 		$url = SiteRouter::url($article);
 		$lang = $this->getLang();
 
-		$_title = ($objectType == 'Product') ? 'title' : 'title_'.$lang;
+		$_title = (in_array($objectType, array('Product', 'Category', 'Subcategory'))) ? 'title' : 'title_'.$lang;
 		$title = $article[$objectType][$_title];
 
-		$_teaser = ($objectType == 'Product') ? 'teaser' : 'teaser_'.$lang;
+		$_teaser = (in_array($objectType, array('Product', 'Category', 'Subcategory'))) ? 'teaser' : 'teaser_'.$lang;
 		$teaser = nl2br($article[$objectType][$_teaser]);
 
 		$src = (isset($article['Media']) && $article['Media'] && isset($article['Media']['id']) && $article['Media']['id']) 

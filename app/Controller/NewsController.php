@@ -6,7 +6,7 @@ class NewsController extends AppController {
 	public $uses = array('News');
 	public $helpers = array('Core.PHTime');
 
-	public function index($page = 1) {
+	public function index() {
 		$this->paginate = array(
 			'News' => array(
 				'conditions' => array('published' => 1),
