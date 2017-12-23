@@ -31,7 +31,7 @@ class ProductsController extends AppController {
 			$filter['subcat_id'] = $subcat_id;
 		}
 		if ($q = $this->request->query('q')) {
-			// $filter['title']
+			$filter['Product.title LIKE '] = "$q%"; // '"%'.$q.'"';
 		}
 		return $filter;
 	}
