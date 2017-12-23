@@ -1,8 +1,5 @@
 <div class="container categories">
-    <div class="outerSearch">
-        <input type="text" placeholder="поиск по сайту" />
-        <button class="icon-search"></button>
-    </div>
+    <?=$this->element('search')?>
     <h1>Выберите категорию</h1>
     <ul class="list">
 <?

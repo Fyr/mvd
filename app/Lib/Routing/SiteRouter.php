@@ -26,13 +26,13 @@ class SiteRouter extends Router {
 			$url = array(
 				'controller' => 'products',
 				'action' => 'index',
-				'?' => array('Product.cat_id' => $article['Category']['id'])
+				'?' => array('cat_id' => $article['Category']['id'])
 			);
 		} elseif ($objectType == 'Subcategory') {
 			$url = array(
 				'controller' => 'products',
 				'action' => 'index',
-				'?' => array('Product.cat_id' => $article['Subcategory']['parent_id'], 'Product.subcat_id' => $article['Subcategory']['id'])
+				'?' => array('cat_id' => $article['Subcategory']['parent_id'], 'subcat_id' => $article['Subcategory']['id'])
 			);
 		} else {
 			$url = array(

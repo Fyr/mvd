@@ -2,10 +2,7 @@
     <div class="row">
         <?=$this->element('categories')?>
         <div class="col-md-9 col-sm-8">
-            <div class="outerSearch">
-                <input type="text" placeholder="поиск по сайту" />
-                <button class="icon-search"></button>
-            </div>
+            <?=$this->element('search')?>
             <h1>Страница списка предметов категории</h1>
             <ul class="collectionList mainPageEvents exhibits">
 <?

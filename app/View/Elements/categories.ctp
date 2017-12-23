@@ -9,7 +9,7 @@
 	foreach($aCategories as $category) {
 		$this->ArticleVars->init($category, $url, $title, $teaser, $src, '600x', $cat_id);
 ?>
-			<li><span><a href="javascript:void(0)"><?=$title?></a></span>
+			<li><span><a id="cat_<?=$cat_id?>" href="javascript:void(0)"><?=$title?></a></span>
 				<ul>
 <?
 		foreach($aSubcategories[$cat_id] as $subcategory) {
@@ -28,3 +28,17 @@
 		</ul>
 	</div>
 </div>
+<?
+	if (isset($curr_cat_id)) {
+?>
+<script>
+$(function () {
+	setTimeout(function(){
+		console.log($('.subMenu a#cat_<?=$curr_cat_id?>').get(0));
+		$('.subMenu a#cat_<?=$curr_cat_id?>').click();
+	}, 0);
+});
+</script>
+<?
+	}
+?>
