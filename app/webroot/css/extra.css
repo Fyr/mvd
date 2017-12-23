@@ -1,0 +1,6 @@
+.collections .subMenu ul li.active .effective > a {
+  text-decoration: none;
+}
+.collections .subMenu ul li.active .effective > a:hover, .collections .subMenu ul li.active .effective.active > a {
+  text-decoration: underline;
+}

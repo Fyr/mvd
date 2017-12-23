@@ -22,12 +22,22 @@ class ProductsController extends AppController {
 	public function categories() {
 	}
 
-	public function index() {
+	private function _getFilter() {
 		$filter = array();
 		if ($cat_id = $this->request->query('cat_id')) {
 			$filter['cat_id'] = $cat_id;
-			$this->set('curr_cat_id', $cat_id);
 		}
+		if ($subcat_id = $this->request->query('subcat_id')) {
+			$filter['subcat_id'] = $subcat_id;
+		}
+		if ($q = $this->request->query('q')) {
+			// $filter['title']
+		}
+		return $filter;
+	}
+
+	public function index() {
+		$filter = $this->_getFilter();
 		$this->paginate = array(
 			'Product' => array(
 				'conditions' => array_merge(array('Product.published' => 1), $filter),
@@ -37,7 +47,7 @@ class ProductsController extends AppController {
 		);
 		$this->set('filter', $filter);
 		$this->set('aArticles', $this->paginate('Product'));
-
+		$this->set('lDirectSearch', $this->request->query('q') && true);
 	}
 
 	public function view($id) {
