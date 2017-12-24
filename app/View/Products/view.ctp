@@ -1,11 +1,15 @@
+<?
+    $title = 'Коллекции';
+    $filter = array('cat_id' => $article['Product']['cat_id'], 'subcat_id' => $article['Product']['subcat_id']);
+?>
 <div class="container collections">
     <div class="row">
-        <?=$this->element('categories')?>
+        <?=$this->element('categories', compact('title', 'filter', 'aCategories', 'aSubcategories'))?>
         <div class="col-md-9 col-sm-8">
-
 <?
     $this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
 ?>
+            <?=$this->element('search')?>
             <h1><?=$title?></h1>
             <div class="row">
                 <div class="col-md-7 exhibit">

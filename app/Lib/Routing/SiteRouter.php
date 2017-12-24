@@ -34,6 +34,12 @@ class SiteRouter extends Router {
 				'action' => 'index',
 				'?' => array('cat_id' => $article['Subcategory']['parent_id'], 'subcat_id' => $article['Subcategory']['id'])
 			);
+		} elseif ($objectType == 'Page') {
+			$url = array(
+				'controller' => 'pages',
+				'action' => 'about',
+				$article['Page']['slug']
+			);
 		} else {
 			$url = array(
 				'controller' => 'articles',

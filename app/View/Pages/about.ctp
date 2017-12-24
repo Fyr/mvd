@@ -1,23 +1,18 @@
-<div class="container article">
 <?
-    foreach($aPages as $page => $article) {
-        $this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
-        if ($page == 'museum') {
+    $title = 'О музее';
+    $filter = array('cat_id' => $aPages[$slug]['Page']['id']);
+    $aCategories = array_values($aPages);
+    $aSubcategories = array();
 ?>
-        <h1><?=$title?></h1>
+<div class="container collections">
+    <div class="row">
+        <?=$this->element('categories', compact('title', 'filter', 'aCategories', 'aSubcategories'))?>
+        <div class="col-md-9 col-sm-8">
 <?
-        } else {
+    $this->ArticleVars->init($aPages[$slug], $url, $title, $teaser, $src, 'noresize');
 ?>
-    <div class="head">
-        <div class="outerIcon">
-            <span class="icon-star"></span>
+            <h1><?=$title?></h1>
+            <?=$this->ArticleVars->body($aPages[$slug]);?>
         </div>
-        <h2><?=$title?></h2>
     </div>
-<?
-        }
-        echo $this->ArticleVars->body($article);
-    }
-?>
-
 </div>

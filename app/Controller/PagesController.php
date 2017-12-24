@@ -5,8 +5,18 @@ App::uses('Page', 'Model');
 App::uses('News', 'Model');
 App::uses('Product', 'Model');
 class PagesController extends AppController {
-	public $uses = array('Media.Media', 'Page', 'News', 'Product');
+	public $uses = array('Media.Media', 'Page', 'News', 'Product', 'Category', 'Subcategory');
 	public $helpers = array('Core.PHTime');
+
+	public function beforeRender() {
+		$order = 'Category.sorting';
+		$aCategories = $this->Category->find('all', compact('order'));
+		$order = 'Subcategory.sorting';
+		$aSubcategories = $this->Subcategory->find('all', compact('order'));
+		$this->set(compact('aCategories', 'aSubcategories'));
+
+		parent::beforeRender();
+	}
 
 	public function home() {
 		$page = $this->Page->findBySlug('home');
@@ -23,13 +33,12 @@ class PagesController extends AppController {
 		$this->set(compact('page', 'aSlider', 'aNews', 'aProducts'));
 	}
 
-	public function about() {
+	public function about($slug = 'museum') {
 		$aPages = array();
 		foreach(array('museum', 'customers', 'exposition') as $page) {
 			$aPages[$page] = $this->Page->findBySlug($page);
 		}
-
-		$this->set(compact('aPages'));
+		$this->set(compact('aPages', 'slug'));
 	}
 
 	public function view($slug) {

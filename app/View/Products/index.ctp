@@ -1,7 +1,7 @@
 <?
-    $title = '';
+    $pageTitle = '';
     if ($lDirectSearch) {
-        $title = 'Результаты поиска';
+        $pageTitle = 'Результаты поиска';
     } else {
         $_title = array();
         if (isset($filter['cat_id'])) {
@@ -12,15 +12,16 @@
             $_subcategories = Hash::combine($aSubcategories, '{n}.Subcategory.id', '{n}.Subcategory');
             $_title[] = Hash::get($_subcategories[$filter['subcat_id']], 'title');
         }
-        $title = implode(': ', $_title);
+        $pageTitle = implode(': ', $_title);
     }
+    $title = 'Коллекции';
 ?>
 <div class="container collections">
     <div class="row">
-        <?=$this->element('categories')?>
+        <?=$this->element('categories', compact('title', 'filter', 'aCategories', 'aSubcategories'))?>
         <div class="col-md-9 col-sm-8">
             <?=$this->element('search')?>
-            <h1><?=$title?></h1>
+            <h1><?=$pageTitle?></h1>
             <ul class="collectionList mainPageEvents exhibits">
 <?
     foreach ($aArticles as $article) {
