@@ -66,6 +66,15 @@ document.addEventListener('DOMContentLoaded', function(){
 	$('.topMenu').sticky({topSpacing:0});
 	
 	$('.footer .secondColomn').append($('.footer .firstColomn').html());
+
+	// auto margins for images
+	$('article > p > img').each(function(){
+		if ($(this).css('float') == 'left') {
+			$(this).css('margin', '10px 10px 10px 0');
+		} else if ($(this).css('float') == 'right') {
+			$(this).css('margin', '10px 0 10px 10px');
+		}
+	});
 });
 
 
