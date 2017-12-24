@@ -46,8 +46,8 @@
 					<a href="#">МУЗЕЙ МВД <span>Республики Беларусь</span></a>
 				</div>
 				<div class="col-md-3 col-sm-5 address">
-					Минск, ул. Городской Вал, 7
-					<div>+375 17 218-55-38</div>
+					<?=Configure::read('Settings.address_'.$lang)?>
+					<div><?=Configure::read('Settings.phone_'.$lang)?></div>
 				</div>
 				<div class="col-md-2 col-sm-4 col-lg-offset-5 col-md-offset-4 languages">
 					<!--a href="#">en</a>
@@ -55,7 +55,7 @@
 					<a href="#">by</a-->
 					<div class="mvd">
 						<div class="png2x png2x-mvd"></div>
-						<div class="text">Министерство внутренних дел Республики Беларусь</div>
+						<div class="text"><?=Configure::read('Settings.title_'.$lang)?></div>
 					</div>
 				</div>
 			</div>
@@ -102,13 +102,13 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 address">
-					Минск, ул. Городской Вал, 7
-					<div>+375 17 218-55-38</div>
+					<?=Configure::read('Settings.address_'.$lang)?>
+					<div><?=Configure::read('Settings.phone_'.$lang)?></div>
 				</div>
 			</div>
 			<div class="row bottom">
 				<div class="col-lg-3 col-md-3 copyright">
-					©2017 Музей Министерства внутренних дел Республики Беларусь
+					©2017 <?=Configure::read('Settings.title_'.$lang)?>
 				</div>
 				<div class="col-lg-2 col-md-3 col-lg-offset-2 col-md-offset-1 links">
 					<a href="#">mvd.gov.by</a>
