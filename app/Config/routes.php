@@ -18,12 +18,13 @@ Router::connect('/news/:slug',
 	array('pass' => array('slug'))
 );
 */
+/* Pagination route does not work :(
 Router::connect('/news/page/:page', array(
 	'controller' => 'news',
 	'action' => 'index',
 ),
 	array('named' => array('page' => '[\d]*'))
 );
-
+*/
 	CakePlugin::routes();
 	require CAKE . 'Config' . DS . 'routes.php';

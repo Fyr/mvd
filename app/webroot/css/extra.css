@@ -4,3 +4,7 @@
 .collections .subMenu ul li.active .effective > a:hover, .collections .subMenu ul li.active .effective.active > a {
   text-decoration: underline;
 }
+.pagination span.current {
+  margin: 0 5px;
+  font-weight: bold;
+}
