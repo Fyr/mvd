@@ -41,6 +41,14 @@ class PagesController extends AppController {
 		$this->set(compact('aPages', 'slug'));
 	}
 
+	public function history($slug = 'history-pdf') {
+		$aPages = array();
+		foreach(array('history-pdf', 'history') as $page) {
+			$aPages[$page] = $this->Page->findBySlug($page);
+		}
+		$this->set(compact('aPages', 'slug'));
+	}
+
 	public function view($slug) {
 		$this->set('article', $this->Page->findBySlug($slug));
 		$this->currMenu = ucfirst($slug);

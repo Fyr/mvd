@@ -105,7 +105,7 @@ class AppController extends Controller {
 			'About' => array('title' => 'О музее', 'url' => array('controller' => 'pages', 'action' => 'about', 'museum')),
 			'News' => array('title' => 'События', 'url' => array('controller' => 'news', 'action' => 'index')),
 			'Products' => array('title' => 'Коллеции', 'url' => array('controller' => 'products', 'action' => 'categories')),
-			'History' => array('title' => 'История милиции', 'url' => array('controller' => 'pages', 'action' => 'view', 'history')),
+			'History' => array('title' => 'История милиции', 'url' => array('controller' => 'pages', 'action' => 'history', 'history-pdf')),
 			'Contacts' => array('title' => 'Посетителям', 'url' => array('controller' => 'pages', 'action' => 'view', 'contacts')),
 		);
 		$this->currMenu = $this->_getCurrMenu();

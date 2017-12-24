@@ -35,9 +35,15 @@ class SiteRouter extends Router {
 				'?' => array('cat_id' => $article['Subcategory']['parent_id'], 'subcat_id' => $article['Subcategory']['id'])
 			);
 		} elseif ($objectType == 'Page') {
+			$action = 'view';
+			if (in_array($article['Page']['slug'], array('museum', 'customers', 'exposition'))) {
+				$action = 'about';
+			} elseif (in_array($article['Page']['slug'], array('history-pdf', 'history'))) {
+				$action = 'history';
+			}
 			$url = array(
 				'controller' => 'pages',
-				'action' => 'about',
+				'action' => $action,
 				$article['Page']['slug']
 			);
 		} else {
