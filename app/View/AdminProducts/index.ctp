@@ -43,11 +43,24 @@
                 <div class="table-toolbar">
                     <div class="row">
                         <div class="col-md-6">
+                            <form class="form-inline" role="form" method="get">
+                                <div class="form-group">
+                                    <label class="sr-only">Название</label>
+                                    <input type="text" class="form-control input-xlarge" placeholder="Введите название предмета..." name="q" value="<?=$this->request->query('q')?>">
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn blue">
+                                        <i class="fa fa-search"></i> Найти
+                                    </button>
+                                </div>
+                            </form>
+                            <hr/>
                             <div class="btn-group">
                                 <a class="btn green" href="<?=$this->Html->url(array('action' => 'edit', 0))?>">
                                     <i class="fa fa-plus"></i> <?=$this->ObjectType->getTitle('create', $objectType)?>
                                 </a>
                             </div>
+
                         </div>
                         <div class="col-md-6">
                         </div>

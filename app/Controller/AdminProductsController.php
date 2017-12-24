@@ -12,6 +12,7 @@ class AdminProductsController extends AdminContentController {
     public $helpers = array('Media');
 
     public $paginate = array(
+        'conditions' => array(),
         'fields' => array('created', 'cat_id', 'subcat_id', 'title', 'published', 'featured', 'sorting', 'id_num'),
         'recursive' => 2,
         'order' => array('sorting' => 'desc'),
@@ -30,17 +31,11 @@ class AdminProductsController extends AdminContentController {
             'order' => 'Subcategory.title'
         )));
     }
-/*
-    public function index($parent_id = '') {
-        if ($parent_id) {
-            // Fix for redirecting on parent list
-            return $this->redirect(array('action' => 'index'));
-        }
-        parent::index();
-    }
 
-    public function edit($id = 0, $cat_id = 0, $subcat_id = 0) {
-        parent::edit($id, 0);
+    public function index($parent_id = '') {
+        if ($q = $this->request->query('q')) {
+            $this->paginate['conditions']['Product.title LIKE '] = "$q%";
+        }
+        parent::index($parent_id);
     }
-*/
 }
