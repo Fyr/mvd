@@ -3,16 +3,15 @@
     if ($lDirectSearch) {
         $pageTitle = 'Результаты поиска';
     } else {
-        $_title = array();
+        $pageTitle = 'Коллекции';
         if (isset($filter['cat_id'])) {
             $_categories = Hash::combine($aCategories, '{n}.Category.id', '{n}.Category');
-            $_title[] = Hash::get($_categories[$filter['cat_id']], 'title');
+            $pageTitle = Hash::get($_categories[$filter['cat_id']], 'title');
         }
         if (isset($filter['subcat_id'])) {
             $_subcategories = Hash::combine($aSubcategories, '{n}.Subcategory.id', '{n}.Subcategory');
-            $_title[] = Hash::get($_subcategories[$filter['subcat_id']], 'title');
+            $pageTitle = Hash::get($_subcategories[$filter['subcat_id']], 'title');
         }
-        $pageTitle = implode(': ', $_title);
     }
     $title = 'Коллекции';
 ?>

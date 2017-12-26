@@ -31,20 +31,16 @@
                     <table class="features">
                         <tbody>
                         <tr>
-                            <td width="40%">Категория</td>
+                            <td width="40%">коллекция</td>
                             <td width="60%"><?=$article['ProductCategory']['title']?></td>
                         </tr>
                         <tr>
-                            <td width="40%">Подкатегория</td>
+                            <td width="40%">вид предмета</td>
                             <td width="60%"><?=$article['ProductSubcategory']['title']?></td>
                         </tr>
                         <tr>
-                            <td>Инв.номер</td>
+                            <td>инвентарный номер</td>
                             <td><?=$article['Product']['id_num']?></td>
-                        </tr>
-                        <tr>
-                            <td>Место хранения</td>
-                            <td><?// $article['Product']['location']?></td>
                         </tr>
                         </tbody>
                     </table>
