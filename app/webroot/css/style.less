@@ -219,12 +219,13 @@ a {
 	.date { background: #0685e3; display: inline-block; font-size: @font-size-base - 2; color: #fff; position: absolute;  bottom: 0; left: 0; padding: 1px 0 3px 0; width: 120px; text-align: center;  }
 	.description { color: @color-footer; text-decoration: none; font-weight: normal; /*max-height: 90px;*/ margin-top: 20px; display: inline-block; }
 	&.exhibits {
+		.item { text-align: center; padding-bottom: 30px;}
 		.picture {  text-align: center;
 			img {  display: block; height: 210px; margin: 0 auto; max-width: 100%; .box-shadow(0px 0px 16px 0px rgba(50, 50, 50, 0.3)); }
 		}
 		.description { max-height: none; text-align: center; }
 	}
-	> div[class|="col"]:hover {
+	.item:hover {
 		.picture { .transform(1.1); }
 		.description {  color: #0685e3; }
 	}

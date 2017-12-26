@@ -28,11 +28,13 @@
         $this->ArticleVars->init($article, $url, $title, $teaser, $src, '600x');
 ?>
         <div class="col-sm-4">
-            <div class="outer">
-                <a href="<?=$url?>" class="picture" title="<?=$title?>" style="background-image: url('<?=$src?>')"></a>
-                <div class="date"><?=date('d.m.Y', strtotime($article['News']['modified']))?></div>
-            </div>
-            <a href="<?=$url?>" class="description"><?=$title?></a>
+			<div class="item">
+				<div class="outer">
+					<a href="<?=$url?>" class="picture" title="<?=$title?>" style="background-image: url('<?=$src?>')"></a>
+					<div class="date"><?=date('d.m.Y', strtotime($article['News']['modified']))?></div>
+				</div>
+				<a href="<?=$url?>" class="description"><?=$title?></a>
+			</div>
         </div>
 <?
     }
@@ -51,10 +53,12 @@
 ?>
 
         <div class="col-sm-4">
-            <a href="<?=$url?>" class="picture" title="<?=$title?>">
-                <img src="<?=$this->Media->imageUrl($article)?>" alt="<?=$title?>" />
-            </a>
-            <a href="<?=$url?>" class="description"><?=$title?></a>
+			<div class="item">
+				<a href="<?=$url?>" class="picture" title="<?=$title?>">
+					<img src="<?=$this->Media->imageUrl($article)?>" alt="<?=$title?>" />
+				</a>
+				<a href="<?=$url?>" class="description"><?=$title?></a>
+			</div>
         </div>
 
 <?

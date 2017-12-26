@@ -26,10 +26,10 @@ class PagesController extends AppController {
 		$order = array('modified' => 'desc');
 		$aNews = $this->News->find('all', compact('conditions', 'order'));
 
+		$limit = 3;
 		$conditions = array('Product.published' => 1, 'Product.featured' => 1);
-		$order = array('Product.modified' => 'desc');
-		$aProducts = $this->Product->find('all', compact('conditions', 'order'));
-
+		$order = 'RAND()';
+		$aProducts = $this->Product->find('all', compact('conditions', 'order', 'limit'));
 		$this->set(compact('page', 'aSlider', 'aNews', 'aProducts'));
 	}
 
