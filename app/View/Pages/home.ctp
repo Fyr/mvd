@@ -5,7 +5,7 @@
 <?
     foreach($aSlider as $media) {
 ?>
-                <div class="item" style="background-image: url('<?=$this->Media->imageUrl($media, 'noresize')?>')"></div>
+                <div class="item" style="background-image: url('<?=$this->Media->imageUrl($media, '600x')?>')"></div>
 <?
     }
 ?>
@@ -20,7 +20,7 @@
         <div class="outerIcon">
             <span class="icon-star"></span>
         </div>
-        <h2>События и мероприятия</h2>
+        <h2>События</h2>
     </div>
     <div class="row mainPageEvents">
 <?
@@ -30,7 +30,7 @@
         <div class="col-sm-4">
             <div class="outer">
                 <a href="<?=$url?>" class="picture" title="<?=$title?>" style="background-image: url('<?=$src?>')"></a>
-                <div class="date"><?=$this->PHTime->niceShort($article['News']['modified'])?></div>
+                <div class="date"><?=date('d.m.Y', strtotime($article['News']['modified']))?></div>
             </div>
             <a href="<?=$url?>" class="description"><?=$title?></a>
         </div>
