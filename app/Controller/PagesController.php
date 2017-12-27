@@ -35,7 +35,7 @@ class PagesController extends AppController {
 
 	public function about($slug = 'museum') {
 		$aPages = array();
-		foreach(array('museum', 'customers', 'exposition') as $page) {
+		foreach(array('museum', 'exposition', 'customers') as $page) {
 			$aPages[$page] = $this->Page->findBySlug($page);
 		}
 		$this->set(compact('aPages', 'slug'));

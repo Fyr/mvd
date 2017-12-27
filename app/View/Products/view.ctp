@@ -31,15 +31,19 @@
                     <table class="features">
                         <tbody>
                         <tr>
-                            <td width="40%">коллекция</td>
+                            <td width="40%">Коллекция</td>
                             <td width="60%"><?=$article['ProductCategory']['title']?></td>
                         </tr>
                         <tr>
-                            <td width="40%">вид предмета</td>
+                            <td width="40%">Вид предмета</td>
                             <td width="60%"><?=$article['ProductSubcategory']['title']?></td>
                         </tr>
                         <tr>
-                            <td>инвентарный номер</td>
+                            <td width="40%">Предметное имя</td>
+                            <td width="60%"><?=$article['Product']['teaser']?></td>
+                        </tr>
+                        <tr>
+                            <td>Инвентарный номер</td>
                             <td><?=$article['Product']['id_num']?></td>
                         </tr>
                         </tbody>

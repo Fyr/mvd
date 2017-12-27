@@ -37,9 +37,9 @@
 	// echo $this->PHForm->input('subcat_id', array('options' => $aSubcategoryOptions, 'label' => array('class' => 'col-md-3 control-label', 'text' => __('Subcategory'))));
 	echo $this->PHForm->input('title');
 	echo $this->PHForm->input('slug');
-	echo $this->PHForm->input('teaser', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'предметное имя')));
+	echo $this->PHForm->input('teaser', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Предметное имя')));
 	echo $this->PHForm->input('location', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Location'))));
-	echo $this->PHForm->input('id_num', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'инвентарный номер')));
+	echo $this->PHForm->input('id_num', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Инвентарный номер')));
 	echo $this->PHForm->input('sorting', array('class' => 'form-control input-small'));
 
 	$subcat_id = $this->request->data('Product.subcat_id');
