@@ -112,7 +112,7 @@ class AppController extends Controller {
 		// $this->aBottomLinks = $this->aNavBar;
 		// $this->currLink = $this->_currMenu;
 
-		$this->Auth->allow(array('home', 'about', 'view', 'index', 'login', 'categories'));
+		$this->Auth->allow(array('home', 'view', 'index', 'login', 'categories', 'about', 'history'));
 		$this->currUser = array();
 		$this->cart = array();
 		if ($this->Auth->loggedIn()) {
