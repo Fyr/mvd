@@ -7,7 +7,7 @@
         <?=$this->element('categories', compact('title', 'filter', 'aCategories', 'aSubcategories'))?>
         <div class="col-md-9 col-sm-8">
 <?
-    $this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
+    $this->ArticleVars->init($article, $url, $title, $teaser, $src, '800x');
 ?>
             <?=$this->element('search')?>
             <h1><?=$title?></h1>
@@ -18,7 +18,7 @@
 <?
     foreach($aMedia as $media) {
 ?>
-                        <img class="thumb" src="<?=$this->Media->imageUrl($media, 'norisize')?>" alt="" />
+                        <img class="thumb" src="<?=$this->Media->imageUrl($media, '400x')?>" alt="" />
 <?
     }
 ?>

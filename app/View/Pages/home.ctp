@@ -25,7 +25,7 @@
     <div class="row mainPageEvents">
 <?
     foreach($aNews as $article) {
-        $this->ArticleVars->init($article, $url, $title, $teaser, $src, '600x');
+        $this->ArticleVars->init($article, $url, $title, $teaser, $src, '400x');
 ?>
         <div class="col-sm-4">
 			<div class="item">
@@ -49,7 +49,7 @@
     <div class="row mainPageEvents exhibits">
 <?
     foreach($aProducts as $article) {
-        $this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
+        $this->ArticleVars->init($article, $url, $title, $teaser, $src, '400x');
 ?>
 
         <div class="col-sm-4">
