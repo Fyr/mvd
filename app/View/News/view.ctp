@@ -1,6 +1,6 @@
 <div class="container article">
 <?
-	$this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
+	$this->ArticleVars->init($article, $url, $title, $teaser, $src, '800x');
 ?>
 	<b><?=date('d.m.Y', strtotime($article['News']['modified']))?></b>
 	<h1><?=$title?></h1>
