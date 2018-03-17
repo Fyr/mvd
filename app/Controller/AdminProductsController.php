@@ -8,7 +8,7 @@ App::uses('Subcategory', 'Model');
 App::uses('Media', 'View/Helper');
 class AdminProductsController extends AdminContentController {
     public $name = 'AdminProducts';
-    public $uses = array('Product', 'Category', 'Subcategory');
+    public $uses = array('Product', 'Category', 'Subcategory', 'Settings');
     public $helpers = array('Text', 'Media');
 
     public $paginate = array(
@@ -33,17 +33,34 @@ class AdminProductsController extends AdminContentController {
     }
 
     public function index($parent_id = '') {
-        $filter = $this->request->query;
-        /*
-        if ($q = $this->request->query('q')) {
-            $this->paginate['conditions']['Product.title LIKE '] = "$q%";
+        $filter = array();
+        $settings = $this->Settings->getData();
+        if ($this->request->query) {
+            $filter = $this->request->query;
+        } elseif ($settings['Settings']['filter']) {
+            $filter = unserialize($settings['Settings']['filter']);
         }
-        */
+
         if ($filter) {
+            $this->Settings->save(array('id' => 1, 'filter' => serialize($filter)));
             foreach($filter as $key => $value) {
                 $value = trim($value);
                 if ($value) {
                     $this->paginate['conditions']["Product.{$key} LIKE "] = "%{$value}%";
+                }
+            }
+        }
+
+        if (Hash::get($this->request->params, 'named.sort')) {
+            $this->Settings->save(array('id' => 1, 'sorting' => serialize(array(
+                'sort' => Hash::get($this->request->params, 'named.sort'),
+                'direction' => Hash::get($this->request->params, 'named.direction')
+            ))));
+        } else {
+            if ($settings['Settings']['sorting']) {
+                $sorting = unserialize($settings['Settings']['sorting']);
+                foreach($sorting as $key => $value) {
+                    $this->request->params['named'][$key] = $value;
                 }
             }
         }

@@ -55,13 +55,13 @@
                                     Найти предмет
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-xlarge" placeholder="по названию предмета..." name="title" value="<?=$this->request->query('title')?>">
+                                    <input type="text" class="form-control input-xlarge" placeholder="по названию предмета..." name="title" value="<?=Hash::get($filter, 'title')?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-medium" placeholder="по месту хранения..." name="location" value="<?=$this->request->query('location')?>">
+                                    <input type="text" class="form-control input-medium" placeholder="по месту хранения..." name="location" value="<?=Hash::get($filter, 'location')?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-medium" placeholder="по номеру..." name="id_num" value="<?=$this->request->query('id_num')?>">
+                                    <input type="text" class="form-control input-medium" placeholder="по номеру..." name="id_num" value="<?=Hash::get($filter, 'id_num')?>">
                                 </div>
                                 <div class="btn-group">
                                     <button class="btn btn-info">
