@@ -4,11 +4,11 @@
 		'options' => $aCategories,
 		'value' => $this->request->data('Product.cat_id'),
 		'onchange' => 'category_onChange(this)',
-		'label' => array('class' => 'col-md-3 control-label', 'text' => 'коллекция')
+		'label' => array('class' => 'col-md-3 control-label', 'text' => 'Коллекция')
 	));
 ?>
 	<div class="form-group">
-		<label class="col-md-3 control-label" for="ProductSubCatId">вид предмета</label>
+		<label class="col-md-3 control-label" for="ProductSubCatId">Вид предмета</label>
 		<div class="col-md-9">
 			<select id="ProductSubCatId" class="form-control" name="data[Product][subcat_id]" autocomplete="off">
 				<optgroup id="cat-<?=Hash::get($aSubcategories[0], 'Category.id')?>" label="<?=Hash::get($aSubcategories[0], 'Category.title')?>">
@@ -36,10 +36,17 @@
 
 	// echo $this->PHForm->input('subcat_id', array('options' => $aSubcategoryOptions, 'label' => array('class' => 'col-md-3 control-label', 'text' => __('Subcategory'))));
 	echo $this->PHForm->input('title');
-	echo $this->PHForm->input('slug');
+	// echo $this->PHForm->input('slug');
 	echo $this->PHForm->input('teaser', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Предметное имя')));
-	echo $this->PHForm->input('location', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Location'))));
-	echo $this->PHForm->input('id_num', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Инвентарный номер')));
+	echo $this->PHForm->input('author', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Автор/Коллектив авторов')));
+	echo $this->PHForm->input('creation_date', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Период создания')));
+	echo $this->PHForm->input('creation_place', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Место создания')));
+	echo $this->PHForm->input('creation_technology', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Материал, техника')));
+	echo $this->PHForm->input('size', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Размер')));
+	echo $this->PHForm->input('location', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Место хранения')));
+	echo $this->PHForm->input('id_num', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Номер по КП (НВ)')));
+	echo $this->PHForm->input('acceptance_doc', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Акт приема-передачи')));
+	echo $this->PHForm->input('protocol', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Протокол ФЗК')));
 	echo $this->PHForm->input('sorting', array('class' => 'form-control input-small'));
 
 	$subcat_id = $this->request->data('Product.subcat_id');

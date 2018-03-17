@@ -43,8 +43,28 @@
                             <td width="60%"><?=$article['Product']['teaser']?></td>
                         </tr>
                         <tr>
-                            <td>Инвентарный номер</td>
-                            <td><?=$article['Product']['id_num']?></td>
+                            <td width="40%">Автор/Коллектив авторов</td>
+                            <td width="60%"><?=$article['Product']['author']?></td>
+                        </tr>
+                        <tr>
+                            <td width="40%">Период создания</td>
+                            <td width="60%"><?=$article['Product']['creation_date']?></td>
+                        </tr>
+                        <tr>
+                            <td width="40%">Место создания</td>
+                            <td width="60%"><?=$article['Product']['creation_place']?></td>
+                        </tr>
+                        <tr>
+                            <td width="40%">Материал, техника</td>
+                            <td width="60%"><?=$article['Product']['creation_technology']?></td>
+                        </tr>
+                        <tr>
+                            <td width="40%">Размер</td>
+                            <td width="60%"><?=$article['Product']['size']?></td>
+                        </tr>
+                        <tr>
+                            <td width="40%">Номер по КП (НВ)</td>
+                            <td width="60%"><?=$article['Product']['id_num']?></td>
                         </tr>
                         </tbody>
                     </table>
