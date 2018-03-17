@@ -42,7 +42,7 @@ class ProductsController extends AppController {
 			'Product' => array(
 				'conditions' => array_merge(array('Product.published' => 1), $filter),
 				'order' => array('modified' => 'desc'),
-				'limit' => 9
+				'limit' => 8
 			)
 		);
 		$this->set('filter', $filter);
@@ -52,7 +52,7 @@ class ProductsController extends AppController {
 
 	public function view($id) {
 		$article = $this->Product->findById($id);
-		$aMedia = $this->Media->getList(array('object_type' => 'Product', 'object_id' => $id));
+		$aMedia = $this->Media->getList(array('object_type' => 'Product', 'object_id' => $id), array('Media.id' => 'ASC'));
 		$this->set(compact('article', 'filter', 'aMedia'));
 	}
 

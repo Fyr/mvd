@@ -29,7 +29,7 @@ Configure::write('domain', array(
 	'title' => 'MuseiMVD.dev'
 ));
 Configure::write('media', array(
-	'path' => $_SERVER['DOCUMENT_ROOT'].'/files/'
+	'path' => WWW_ROOT.'files'.DS
 ));
 
 function fdebug($data, $logFile = 'tmp.log', $lAppend = true) {

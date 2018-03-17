@@ -38,7 +38,7 @@ class AjaxController extends PAjaxController {
 	}
 	
 	public function getList($object_type, $object_id) {
-	    $this->setResponse($this->Media->getList(compact('object_type', 'object_id'), array('Media.id' => 'DESC')));
+	    $this->setResponse($this->Media->getList(compact('object_type', 'object_id'), array('Media.id' => 'ASC')));
 	}
 	
 	public function delete($object_type = '', $object_id = '', $id = '') {
