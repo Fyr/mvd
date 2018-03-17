@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	});
 	*/
-	
+	/*
 	$('.exhibit .thumb').on('click', function(e) {
 		$('.mainImg').attr('src',$(this).attr('src'));
 	});
-	
+	*/
 	$('.topMenu').sticky({topSpacing:0});
 	
 	$('.footer .secondColomn').append($('.footer .firstColomn').html());

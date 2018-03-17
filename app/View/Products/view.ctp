@@ -1,25 +1,29 @@
 <?
+$this->Html->css('jquery.fancybox', array('inline' => false));
+$this->Html->script(array('vendor/jquery.fancybox.pack'), array('inline' => false));
+
     $title = 'Коллекции';
     $filter = array('cat_id' => $article['Product']['cat_id'], 'subcat_id' => $article['Product']['subcat_id']);
+    $this->ArticleVars->init($article, $url, $title, $teaser, $src, '800x');
 ?>
 <div class="container collections">
     <div class="row">
         <?=$this->element('categories', compact('title', 'filter', 'aCategories', 'aSubcategories'))?>
         <div class="col-md-9 col-sm-8">
-<?
-    $this->ArticleVars->init($article, $url, $title, $teaser, $src, '800x');
-?>
             <?=$this->element('search')?>
             <h1><?=$title?></h1>
             <div class="row">
                 <div class="col-md-7 exhibit">
-                    <img class="mainImg" src="<?=$src?>" alt="<?=$title?>" />
+                    <a class="fancybox" href="<?=$src?>" rel="gallery"><img class="mainImg" src="<?=$src?>" alt="<?=$title?>" /></a>
                     <div class="thumbs">
 <?
     foreach($aMedia as $media) {
+        if (!$media['Media']['main']) {
+            $src = $this->Media->imageUrl($media, '800x');
 ?>
-                        <img class="thumb" src="<?=$this->Media->imageUrl($media, '400x')?>" alt="" />
+                        <a class="fancybox" href="<?=$src?>" rel="gallery"><img class="thumb" src="<?=$this->Media->imageUrl($media, '400x')?>" alt="" /></a>
 <?
+        }
     }
 ?>
 
@@ -73,3 +77,12 @@
         </div>
     </div>
 </div>
+<script>
+$(function(){
+    if ($('.fancybox').length) {
+        $('.fancybox').fancybox({
+            padding: 5
+        });
+    }
+});
+</script>

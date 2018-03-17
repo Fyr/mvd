@@ -7,7 +7,7 @@
     <div class="row mainPageEvents" style="margin-bottom: 40px">
 <?
         foreach ($aArticles as $article) {
-            $this->ArticleVars->init($article, $url, $title, $teaser, $src, '600x');
+            $this->ArticleVars->init($article, $url, $title, $teaser, $src, '800x');
 ?>
             <div class="col-sm-4">
                 <div class="outer">
