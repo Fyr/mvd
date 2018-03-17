@@ -9,11 +9,11 @@ App::uses('Media', 'View/Helper');
 class AdminProductsController extends AdminContentController {
     public $name = 'AdminProducts';
     public $uses = array('Product', 'Category', 'Subcategory');
-    public $helpers = array('Media');
+    public $helpers = array('Text', 'Media');
 
     public $paginate = array(
         'conditions' => array(),
-        'fields' => array('created', 'cat_id', 'subcat_id', 'title', 'published', 'featured', 'sorting', 'id_num'),
+        'fields' => array('created', 'cat_id', 'subcat_id', 'title', 'location', 'id_num', 'sorting'),
         'recursive' => 2,
         'order' => array('sorting' => 'desc'),
         'limit' => 20
@@ -33,9 +33,21 @@ class AdminProductsController extends AdminContentController {
     }
 
     public function index($parent_id = '') {
+        $filter = $this->request->query;
+        /*
         if ($q = $this->request->query('q')) {
             $this->paginate['conditions']['Product.title LIKE '] = "$q%";
         }
+        */
+        if ($filter) {
+            foreach($filter as $key => $value) {
+                $value = trim($value);
+                if ($value) {
+                    $this->paginate['conditions']["Product.{$key} LIKE "] = "%{$value}%";
+                }
+            }
+        }
+        $this->set(compact('filter'));
         parent::index($parent_id);
     }
 }

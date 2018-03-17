@@ -162,6 +162,7 @@
 <?
 	echo $this->Html->script(array('admin'));
 	echo $this->fetch('script');
+	// echo $this->element('sql_dump');
 ?>
 
 </body>
