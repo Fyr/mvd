@@ -64,6 +64,10 @@ class AdminProductsController extends AdminContentController {
                 }
             }
         }
+        if ($limit = Hash::get($this->request->params, 'named.limit')) {
+            $this->paginate['limit'] = $limit;
+        }
+        $filter['limit'] = $this->paginate['limit'];
         $this->set(compact('filter'));
         parent::index($parent_id);
     }
