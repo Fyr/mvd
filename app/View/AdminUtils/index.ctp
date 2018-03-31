@@ -1,6 +1,7 @@
-<?=$this->element('admin_title', array('title' => __('Utils')))?>
-<div class="span8 offset2">
-<?=$this->element('admin_content')?>
+<?=$this->element('AdminUI/title', array('title' => __('Utils')))?>
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet light bordered">
 <?
 	$backURL = $this->Html->url(array('plugin' => '', 'controller' => 'AdminUtils', 'action' => 'index'));
 	$aURL = array(
@@ -11,5 +12,6 @@
 		echo $this->Html->link($title, $url, array('class' => 'btn btn-primary')).'&nbsp;';
 	}
 ?>
-<?=$this->element('admin_content_end')?>
+		</div>
+	</div>
 </div>
