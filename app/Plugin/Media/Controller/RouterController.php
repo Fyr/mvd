@@ -45,7 +45,7 @@ class RouterController extends AppController {
 			$image->{$method}($aSize['w'], $aSize['h']);
 		}
 		
-		if ($type == 'product' || $type = 'news') {
+		if ($type == 'product' || $type == 'news') {
 
 			$logo = new Image();
 			$logo->load('./img/wlogo.gif');
@@ -66,24 +66,7 @@ class RouterController extends AppController {
 					$image->getSizeX() - $logo->getSizeX(), $image->getSizeY() - $logo->getSizeY(),
 					0, 0, $logo->getSizeX(), $logo->getSizeY(),
 					40
-				); // opacity
-				/*
-				$nX = floor($image->getSizeX() / $logo->getSizeX());
-				$nY = floor($image->getSizeY() / $logo->getSizeY());
-
-				$startX = floor(($image->getSizeX() - $nX * $logo->getSizeX()) / 2);
-				$startY = floor(($image->getSizeY() - $nY * $logo->getSizeY()) / 2);
-
-				for ($i = 0; $i < $nX; $i++) {
-					for ($j = 0; $j < $nY; $j++) {
-						imagecopymerge($image->getImage(), $logo->getImage(),
-							$startX + $i * $logo->getSizeX(), $startY + $j * $logo->getSizeY(),
-							0, 0, $logo->getSizeX(), $logo->getSizeY(),
-							40
-						); // opacity
-					}
-				}
-				*/
+				);
 			} else {
 				$oldSizeX = $image->getSizeX();
 
@@ -99,7 +82,6 @@ class RouterController extends AppController {
 			}
 		}
 
-		
 		if ($aFName['ext'] == 'jpg') {
 			$image->outputJpg($fname);
 			$image->outputJpg();

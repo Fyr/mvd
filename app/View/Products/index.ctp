@@ -24,7 +24,7 @@
             <ul class="collectionList mainPageEvents exhibits">
 <?
     foreach ($aArticles as $article) {
-        $this->ArticleVars->init($article, $url, $title, $teaser, $src, '400x200');
+        $this->ArticleVars->init($article, $url, $title, $teaser, $src, '500x250');
 ?>
                 <li>
                     <a href="<?=$url?>" class="picture"><img src="<?=$src?>" alt="<?=$title?>" /></a>
