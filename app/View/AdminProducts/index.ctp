@@ -17,8 +17,10 @@
 
     $rowset = $this->PHTableGrid->getDefaultRowset($objectType);
     $aSubcategories = Hash::combine($aSubcategories, '{n}.Subcategory.id', '{n}.Subcategory.title');
+
     foreach($rowset as &$row) {
-        $row['Product']['photo'] = $this->Html->image($this->Media->imageUrl($row, '100x'));
+        $src = $this->Media->imageUrl($row, '100x');
+        $row['Product']['photo'] = ($src) ? $this->Html->image($src) : '';
         /*
         if ($title = Hash::get($filter, 'title')) {
             $row['Product']['title'] = $this->Text->highlight($row['Product']['title'], $title, array('format' => '<span class="label label-info">\1</span>'));
