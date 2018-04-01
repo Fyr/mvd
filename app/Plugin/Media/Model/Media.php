@@ -78,9 +78,9 @@ class Media extends AppModel {
     /**
      * Uploades media file into auto-created folder
      *
-     * @param array $data - array. Must contain elements: 'media_type', 'object_type', 'object_id', 'tmp_name', 'file', 'ext'
+     * @param array $data - array. Must contain elements: 'media_type', 'object_type', 'object_id'
      *                      tmp_name - temp file to rename to media folders
-     *                      real_name - if image is relocated or copied
+     *                   or real_name - if image is relocated or copied
      *                      file.ext - final name of file
      */
     public function uploadMedia($data) {
@@ -128,7 +128,7 @@ class Media extends AppModel {
 			$_data['orig_w'] = $image->getSizeX();
 			$_data['orig_h'] = $image->getSizeY();
 			
-			if ($crop) {
+			if (isset($crop) && $crop) {
 				//prepare thumb for future operations
 				list($x, $y, $sizeX, $sizeY) = explode(',', $crop);
 				$image->crop($x, $y, $sizeX, $sizeY);
