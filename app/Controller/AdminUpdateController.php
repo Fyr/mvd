@@ -14,6 +14,25 @@ class AdminUpdateController extends AdminController {
 		parent::beforeFilter();
 	}
 
+	public function renameFiles() {
+		App::uses('Path', 'Core.Vendor');
+		App::uses('Translit', 'Article.Vendor');
+
+		$aFiles = Path::dirContent(PHOTO_PATH);
+		$count = 0;
+		foreach($aFiles['files'] as $file) {
+			if (file_exists($aFiles['path'].$file)) {
+				$new_fname = str_replace('-jpg', '.jpg', Translit::convert(mb_convert_encoding($file, 'utf8', 'cp1251'), true));
+				if (rename($aFiles['path'].$file, $aFiles['path'].$new_fname)) {
+					$count++;
+				} else {
+					echo "Error renaming `{$file}` to `{$new_fname}`<br/>";
+				}
+			}
+		}
+		echo "Renamed {$count} file(s)";
+	}
+
 	public function parser() {
 		$this->autoRender = true;
 		$this->loadModel('Task');

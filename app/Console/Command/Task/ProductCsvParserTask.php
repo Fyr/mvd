@@ -5,8 +5,8 @@ App::uses('Product', 'Model');
 App::uses('Media', 'Media.Model');
 App::uses('CsvReader', 'Vendor');
 App::uses('Image', 'Media.Vendor');
-define('PHOTO_PATH', WWW_ROOT.'photo'.DS);
-define('3D_PHOTO_PATH', WWW_ROOT.'photo'.DS);
+App::uses('Path', 'Core.Vendor');
+
 class ProductCsvParserTask extends AppShell {
     public $uses = array('Product', 'Media.Media', 'Category', 'Subcategory');
 
@@ -114,44 +114,71 @@ class ProductCsvParserTask extends AppShell {
         return null;
     }
 
-    private function _getMediaName($id_num) {
-        $fname = mb_convert_encoding($id_num, 'cp1251', 'utf8').'.jpg';
-        if (file_exists(PHOTO_PATH.$fname)) {
-            return $fname;
+    private function _getFilesByNum($aFiles, $num) {
+        $files = array();
+        $mask = 'kp-'.$num;
+        $len = strlen($mask);
+        foreach($aFiles['files'] as $file) {
+            if ($file === $mask.'.jpg' || substr($file, 0, $len + 1) === $mask.'-') {
+                $files[] = PHOTO_PATH.$file;
+            }
         }
-        // possible KP 00NN.jpg
-        list($KP, $num) = explode(' ', $id_num);
+        return $files;
+    }
+
+    /**
+     * Return all media files for product specified by $row
+     * @param $aFiles - array of all file names (to search by file mask)
+     * @param $row - row of imported product
+     * @return array - array of existing files for product
+     */
+    private function _getMediaNames($aFiles, $row) {
+        /* As file names differs, we have to get pure KP number, then seek file by mask
+         *
+         * Examples of file names:
+         * ÊÏ 0001: kp-1.jpg
+         * ÊÏ 0236: kp-236.jpg
+         * ÊÏ 0256 àá: kp-256.jpg
+         * ÊÏ 1033 àá: kp-1033-a.jpg, kp-1033-b.jpg
+         * ÊÏ 1105: kp-1105.jpg, kp-1105-a.jpg
+         * ÊÏ 1107/1-2: kp-1107.jpg, kp-1107-1.jpg, kp-1107-2.jpg
+         * ÊÏ 1975 àá: kp-1975-a.jpg, kp-1975-b.jpg
+         */
+        // $id_num = mb_convert_encoding($row['id_num'], 'cp1251', 'utf8');
+        // get pure number
+        list($kp, $num) = explode(' ', $row['id_num']);
+        list($num) = explode('/', $num);
         $num = intval($num);
-        $_fname = mb_convert_encoding($KP.' '.$num, 'cp1251', 'utf8').'.jpg';
-        if (file_exists(PHOTO_PATH.$_fname)) {
-            return $_fname;
-        }
-        $fname = mb_convert_encoding($fname, 'utf8', 'cp1251');
-        $_fname = mb_convert_encoding($_fname, 'utf8', 'cp1251');
-        fdebug("Error! No photo for item `{$id_num}`: `{$fname}`, `{$_fname}`\r\n", 'parser.log');
-        return '';
-    }
 
-    private function _checkMediaSize($fname) {
-        $img = new Image();
-        if (!$img->load(PHOTO_PATH.$fname)) {
-            $fname = mb_convert_encoding($fname, 'utf8', 'cp1251');
-            fdebug("Error! Could not load media as image: `{$fname}`\r\n", 'parser.log');
-            return false;
-        }
-        if (max($img->getSizeX() / $img->getSizeY(), $img->getSizeY() / $img->getSizeX()) > 3) {
-            $fname = mb_convert_encoding($fname, 'utf8', 'cp1251');
-            fdebug("Error! Incorrect image size: `{$fname}`\r\n", 'parser.log');
-            return false;
-        }
-        return true;
-    }
+        $fnames = array();
+        $fname = PHOTO_PATH.'kp-'.$num.'.jpg';
+        try {
+            if ($row['img'] == 1) { // only 1 image
+                $fnames = $this->_getFilesByNum($aFiles, $num);
+                if (!$fnames) {
+                    throw new Exception("No photo for item `%s`: `%s`");
+                }
+            } elseif ($row['img'] == 3) { // 3D images in folder
 
-    private function _get3DMediaFolder($id_num) {
-        $fdir = mb_convert_encoding($id_num, 'cp1251', 'utf8').DS;
-        if (file_exists($fdir)) {
+            }
 
+            // check media size
+            foreach($fnames as $fname) {
+                $img = new Image();
+                if (!$img->load($fname)) {
+                    throw new Exception('Could not load media as image for item `%s`: `%s`');
+                }
+                $w = $img->getSizeX();
+                $h = $img->getSizeY();
+                if (max($w / $h, $h / $w) > 3) {
+                    throw new Exception("Incorrect image size for item `%s`: `%s` ({$w} x {$h})");
+                }
+            }
+        } catch (Exception $e) {
+            fdebug(__($e->getMessage(), $row['id_num'], basename($fname))."\r\n", 'parser.log');
+            return array();
         }
+        return $fnames;
     }
 
     private function _updateProducts($aRows) {
@@ -168,7 +195,7 @@ class ProductCsvParserTask extends AppShell {
         $aSubcategories = $this->Subcategory->find('all', array('order' => array('Subcategory.sorting' => 'ASC')));
         $aSubcategories = Hash::combine($aSubcategories, '{n}.Subcategory.sorting', '{n}.Subcategory', '{n}.Subcategory.parent_id');
 
-        $photoPath = WWW_ROOT.'photo'.DS;
+        $aFiles = Path::dirContent(PHOTO_PATH);
         $aID = array();
         try {
             $this->Product->trxBegin();
@@ -207,24 +234,20 @@ class ProductCsvParserTask extends AppShell {
                 }
                 $this->_xdata['products']++;
 
-                if ($row['img'] == 1) {
-                    if ($fname = $this->_getMediaName($row['id_num'])) {
-                        if ($this->_checkMediaSize($fname)) {
-                            $media = array(
-                                'media_type' => 'image',
-                                'object_type' => 'Product',
-                                'object_id' => $this->Product->id,
-                                'orig_fname' => $fname . '.jpg',
-                                'real_name' => PHOTO_PATH . $fname,
-                                'file' => 'image',
-                                'ext' => '.jpg'
-                            );
-                            $this->Media->uploadMedia($media);
-                            $this->_xdata['images']++;
-                        }
+                if ($fnames = $this->_getMediaNames($aFiles, $row)) {
+                    foreach($fnames as $fname) {
+                        $media = array(
+                            'media_type' => 'image',
+                            'object_type' => 'Product',
+                            'object_id' => $this->Product->id,
+                            'orig_fname' => basename($fname),
+                            'real_name' => $fname,
+                            'file' => ($row['img'] == 3) ? '3D_image' : 'image',
+                            'ext' => '.jpg'
+                        );
+                        $this->Media->uploadMedia($media);
+                        $this->_xdata['images']++;
                     }
-                } elseif ($row['img'] == 3) {
-
                 }
 
                 $this->Task->setProgress($subtask_id, $line + 1);
