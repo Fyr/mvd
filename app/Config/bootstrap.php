@@ -1,5 +1,13 @@
 <?php
 Cache::config('default', array('engine' => 'File'));
+Cache::config('tasks', array(
+	'engine' => 'File',
+	'duration' => '+999 days',
+	'probability' => 100,
+	'prefix' => 'tasks_',
+	'serialize' => true,
+	'mask' => 0664,
+));
 
 CakePlugin::loadAll();
 //CakePlugin::load('DebugKit');
