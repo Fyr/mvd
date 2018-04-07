@@ -18,7 +18,7 @@ class ProductCsvParserTask extends AppShell {
         $this->Task->setStatus($this->id, Task::RUN);
 
         $this->_clearMedia(); // subtask 1
-        $this->params['csv_file'] = WWW_ROOT.'csv_data2.csv';
+        // $this->params['csv_file'] = WWW_ROOT.'csv_data2.csv';
         $aData = $this->_readCsv($this->params['csv_file']); // subtask 2
 
         try {
@@ -32,7 +32,7 @@ class ProductCsvParserTask extends AppShell {
         }
 
         @unlink($this->params['csv_file']);
-        $this->Task->setData($this->id, 'xdata', $aID);
+        $this->Task->setData($this->id, 'xdata', $this->_xdata);
         $this->Task->setProgress($this->id, 3);
         $this->Task->setStatus($this->id, Task::DONE);
     }
@@ -69,29 +69,11 @@ class ProductCsvParserTask extends AppShell {
         $this->Task->saveStatus($this->id);
     }
 
-    private function _convertToCSV($fname) {
-        if (!file_exists($fname)) {
-            throw new Exception('File does not exist');
-        }
-
-        $aRows = file($fname);
-        $newFname = ROOT.DS.APP_DIR.DS.'tmp'.DS.'_'.basename($fname);
-        for($i = 0; $i < 41; $i++) {
-            array_shift($aRows);
-        }
-        $headers = 'title;author;creation_date;body;id_num;location;img;link_doc;cat_81;cat_87;cat_82;cat_91;cat_88;cat_93;cat_90;cat_92;cat_89;cat_96;cat_95;cat_94';
-        file_put_contents($newFname, $headers."\n".implode("", $aRows));
-
-        return $newFname;
-    }
-
     private function _readCsv($file) {
         $subtask_id = $this->Task->add(0, 'ProductCsvParser_readCsv', null, $this->id);
         $this->Task->setData($this->id, 'subtask_id', $subtask_id);
         $this->Task->saveStatus($this->id);
         $progress = $this->Task->getProgressInfo($this->id);
-
-        $this->params['csv_file'] = $this->_convertToCSV($this->params['csv_file']);
 
         $aData = CsvReader::parse($this->params['csv_file'], array(
             'Task' => $this->Task,
@@ -151,31 +133,37 @@ class ProductCsvParserTask extends AppShell {
         $num = intval($num);
 
         $fnames = array();
-        $fname = PHOTO_PATH.'kp-'.$num.'.jpg';
         try {
             if ($row['img'] == 1) { // only 1 image
                 $fnames = $this->_getFilesByNum($aFiles, $num);
                 if (!$fnames) {
-                    throw new Exception("No photo for item `%s`: `%s`");
+                    $fname = 'kp-'.$num.'.jpg';
+                    throw new Exception("No photo for item `%s`: `{$fname}`");
                 }
             } elseif ($row['img'] == 3) { // 3D images in folder
-
+                $folder = 'kp'.$num;
+                $aPath = Path::dirContent(PHOTO_PATH_3D.$folder);
+                if (!isset($aPath['files'])) {
+                    throw new Exception("No 3D-photo for item `%s`: `{$folder}`");
+                }
+                $fnames = $aPath['files'];
             }
 
             // check media size
             foreach($fnames as $fname) {
                 $img = new Image();
+                $_fname = basename($fname);
                 if (!$img->load($fname)) {
-                    throw new Exception('Could not load media as image for item `%s`: `%s`');
+                    throw new Exception("Could not load media as image for item `%s`: `{$_fname}`");
                 }
                 $w = $img->getSizeX();
                 $h = $img->getSizeY();
                 if (max($w / $h, $h / $w) > 3) {
-                    throw new Exception("Incorrect image size for item `%s`: `%s` ({$w} x {$h})");
+                    throw new Exception("Incorrect image size for item `%s`: `{$_fname}` ({$w} x {$h})");
                 }
             }
         } catch (Exception $e) {
-            fdebug(__($e->getMessage(), $row['id_num'], basename($fname))."\r\n", 'parser.log');
+            fdebug(__($e->getMessage(), $row['id_num'])."\r\n", 'parser.log');
             return array();
         }
         return $fnames;
@@ -246,7 +234,14 @@ class ProductCsvParserTask extends AppShell {
                             'ext' => '.jpg'
                         );
                         $this->Media->uploadMedia($media);
-                        $this->_xdata['images']++;
+                        if ($row['img'] == 3) {
+                            $this->_xdata['3D']++;
+                        } else {
+                            $this->_xdata['images']++;
+                        }
+                    }
+                    if ($row['img'] == 2) {
+                        fdebug(__('Video not found for item `%s`', $row['id_num'])."\r\n", 'parser.log');
                     }
                 }
 

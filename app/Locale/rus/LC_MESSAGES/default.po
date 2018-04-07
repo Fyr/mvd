@@ -409,3 +409,11 @@ msgstr "Инв.номер"
 msgid "For home page"
 msgstr "На главную"
 
+msgid "Incorrect CSV-format for `%s`"
+msgstr "Некорректный CSV-формат для `%s`"
+
+msgid "Background tasks"
+msgstr "Фоновые задачи"
+
+msgid "Product CSV Parser"
+msgstr "Загрузка предметов из CSV"
