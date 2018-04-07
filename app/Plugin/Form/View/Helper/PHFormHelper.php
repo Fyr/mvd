@@ -42,6 +42,11 @@ class PHFormHelper extends FormHelper {
 			$options['format'] = array('before', 'label', 'between', 'input', 'after', 'error');
 		} elseif ($options['type'] == 'text' || $options['type'] == 'textarea') {
 			$options = array_merge(array('class' => 'input-xxlarge'), $options);
+		} elseif ($options['type'] == 'file') {
+			$options['class'] = '';
+			if (isset($options['help-block'])) {
+				$options['after'] = '<p class="help-block small">'.$options['help-block'].'</p></div>';
+			}
 		}
 		return parent::input($fieldName, $options);
 	}
