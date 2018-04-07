@@ -11,7 +11,7 @@
 	<div id="progressSubtask">
 		<span class="info">&nbsp;</span>
 		<div class="progress progress-striped">
-			<div class="progress-bar progress-bar-info" role="progressbar"></div>
+			<div class="progress-bar progress-bar-success" role="progressbar"></div>
 		</div>
 	</div>
 <?
@@ -20,13 +20,13 @@
 	<div id="progressTotal">
 		<span class="info">&nbsp;</span>
 		<div class="progress progress-striped">
-			<div class="progress-bar progress-bar-success" role="progressbar"></div>
+			<div class="progress-bar progress-bar-info" role="progressbar"></div>
 		</div>
 	</div>
 
 	<div style="height: 30px;">
 		<button id="taskAbort" class="btn btn-danger">Прервать</button>
-		<button id="taskDone" class="btn btn-success" style="display: none;" onclick="window.location.reload()">OK</button>
+		<button id="taskDone" class="btn btn-info" style="display: none;" onclick="window.location.reload()">OK</button>
 		<button id="taskAborted" class="btn" style="display: none;" onclick="window.location.reload()">Отмена</button>
 	</div>
 </div>
@@ -56,7 +56,7 @@ function renderStatus(task) {
 	setTitle(task.status == '<?=Task::ABORT?>' ? ABORT : getTaskName(task.task_name) + ifHangs);
 
 	if (task.subtask) {
-		setTitle(task.subtask.task_name + ifHangs);
+		setTitle(getTaskName(task.subtask.task_name) + ifHangs);
 		if (task.subtask.progress) {
 			setProgress(task.subtask, '#progressSubtask');
 			if (task.subtask.progress.time_finish > task.progress.time_finish) {
@@ -103,6 +103,7 @@ function getTaskName(taskName) {
 <?
 	}
 ?>
+	console.log(taskName, aTaskNames);
 	return (aTaskNames && aTaskNames[taskName]) ? aTaskNames[taskName] : taskName;
 }
 
