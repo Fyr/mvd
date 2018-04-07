@@ -22,11 +22,8 @@ class ProductCsvParserTask extends AppShell {
         $aData = $this->_readCsv($this->params['csv_file']); // subtask 2
 
         try {
-            $this->Product->getDataSource()->begin();
             $aID = $this->_updateProducts($aData['data']); // subtask 3
-            $this->Product->getDataSource()->commit();
         } catch (Exception $e) {
-            $this->Product->getDataSource()->rollback();
             @unlink($this->params['csv_file']);
             throw new Exception($e->getMessage());
         }
@@ -53,6 +50,7 @@ class ProductCsvParserTask extends AppShell {
             $status = $this->Task->getStatus($this->id);
             if ($status == Task::ABORT) {
                 $this->Task->setStatus($subtask_id, Task::ABORTED);
+                $this->Task->setStatus($this->id, Task::ABORTED);
                 throw new Exception(__('Processing was aborted by user'));
             }
 
@@ -191,6 +189,7 @@ class ProductCsvParserTask extends AppShell {
                 $status = $this->Task->getStatus($this->id);
                 if ($status == Task::ABORT) {
                     $this->Task->setStatus($subtask_id, Task::ABORTED);
+                    $this->Task->setStatus($this->id, Task::ABORTED);
                     throw new Exception(__('Processing was aborted by user'));
                 }
 

@@ -78,6 +78,11 @@ class AdminParserController extends AdminController {
 				$this->Flash->error($task['xdata']);
 				$this->redirect(array('action' => 'index'));
 				return;
+			} elseif ($task['status'] === 'ABORTED') {
+				$this->Task->close($task['id']);
+				$this->Flash->success(__('Загрузка прервана пользователем'));
+				$this->redirect(array('action' => 'index'));
+				return;
 			} elseif ($task['status'] === 'DONE') {
 				$this->Task->close($task['id']);
 				$this->Flash->success(__('Загрузка успешно завершена. Загружено %d предметов, %d фото, %d 3D фото, %d видео',

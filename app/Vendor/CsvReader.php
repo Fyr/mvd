@@ -86,6 +86,11 @@ class CsvReader {
 				}
 			}
 			if ($ch === $eol) {
+				/*
+				$endPos = 0;
+				$csv = mb_substr($csv, $endPos);
+				$strlen = mb_strlen($csv);
+				*/
 				if ($Task) {
 					$Task->setProgress($subtask_id, $line);
 
