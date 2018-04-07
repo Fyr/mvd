@@ -103,7 +103,6 @@ function getTaskName(taskName) {
 <?
 	}
 ?>
-	console.log(taskName, aTaskNames);
 	return (aTaskNames && aTaskNames[taskName]) ? aTaskNames[taskName] : taskName;
 }
 
