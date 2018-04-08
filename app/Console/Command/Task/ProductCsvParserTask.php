@@ -157,9 +157,9 @@ class ProductCsvParserTask extends AppShell {
             // check media size
             foreach($fnames as $fname) {
                 $img = new Image();
-                $_fname = basename($fname);
+                $_fname = ($row['img'] == 3) ? $folder.DS.basename($fname) : basename($fname);
                 if (!$img->load($fname)) {
-                    throw new Exception(__("Could not load media as image for item `%s`: `%s`", $row['id_num'], $fname));
+                    throw new Exception(__("Could not load media as image for item `%s`: `%s`", $row['id_num'], $_fname));
                 }
                 $w = $img->getSizeX();
                 $h = $img->getSizeY();
