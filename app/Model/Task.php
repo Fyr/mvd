@@ -75,7 +75,6 @@ class Task extends AppModel {
 	}
 
 	public function runBkg($task_id) {
-		fdebug('../Console/cake.bat BkgService execTask ' . $task_id . "\r\n", 'run.log');
 		if (TEST_ENV) {
 			fdebug('../Console/cake.bat BkgService execTask '.$task_id."\r\n", 'run.bat', false);
 		} else {

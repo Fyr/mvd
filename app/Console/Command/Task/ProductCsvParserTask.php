@@ -11,13 +11,13 @@ class ProductCsvParserTask extends AppShell {
     public $uses = array('Product', 'Media.Media', 'Category', 'Subcategory');
 
     private $_xdata = array(
-        'products' => array('no_image' => 0, 'image' => 0, 'image_3d' => 0, 'video' => 0, 'total' => 0),
+        'products' => array('no_image' => 0, 'image' => 0, 'image_3d' => 0, 'video' => 0, 'total' => 0, 'error' => 0),
         'images' => 0, 'images_3d' => 0,
-        'video' => 0
+        'video' => 0, 'errors' => 0
     );
 
     public function execute() {
-        @unlink('parser.log');
+        @unlink(Configure::read('ProductCSVParser.log'));
         $this->Task->setProgress($this->id, 0, ($this->params['clear_data']) ? 3 : 2); // 3 subtasks
         $this->Task->setStatus($this->id, Task::RUN);
 
@@ -104,7 +104,7 @@ class ProductCsvParserTask extends AppShell {
         $len = strlen($mask);
         foreach($aFiles['files'] as $file) {
             if ($file === $mask.'.jpg' || substr($file, 0, $len + 1) === $mask.'-') {
-                $files[] = PHOTO_PATH.$file;
+                $files[] = Configure::read('ProductCSVParser.photo_path').$file;
             }
         }
         return $files;
@@ -140,15 +140,18 @@ class ProductCsvParserTask extends AppShell {
                 $fnames = $this->_getFilesByNum($aFiles, $num);
                 if (!$fnames) {
                     $fname = 'kp-'.$num.'.jpg';
-                    throw new Exception("No photo for item `%s`: `{$fname}`");
+                    throw new Exception(__("No photo for item `%s`: `%s`", $row['id_num'], $fname));
                 }
             } elseif ($row['img'] == 3) { // 3D images in folder
                 $folder = 'kp'.$num;
-                $aPath = Path::dirContent(PHOTO_PATH_3D.$folder);
+                $aPath = Path::dirContent(Configure::read('ProductCSVParser.photo_path_3d').$folder);
                 if (!isset($aPath['files'])) {
-                    throw new Exception("No 3D-photo for item `%s`: `{$folder}`");
+                    throw new Exception(__("No 3D-photo for item `%s`: `%s`", $row['id_num'], $folder));
                 }
-                $fnames = $aPath['files'];
+                $fnames = array();
+                foreach($aPath['files'] as $fname) {
+                    $fnames[] = $aPath['path'].$fname;
+                }
             }
 
             // check media size
@@ -156,16 +159,17 @@ class ProductCsvParserTask extends AppShell {
                 $img = new Image();
                 $_fname = basename($fname);
                 if (!$img->load($fname)) {
-                    throw new Exception("Could not load media as image for item `%s`: `{$_fname}`");
+                    throw new Exception(__("Could not load media as image for item `%s`: `%s`", $row['id_num'], $fname));
                 }
                 $w = $img->getSizeX();
                 $h = $img->getSizeY();
                 if (max($w / $h, $h / $w) > 3) {
-                    throw new Exception("Incorrect image size for item `%s`: `{$_fname}` ({$w} x {$h})");
+                    throw new Exception(__("Incorrect image size for item `%s`: `%s` (%d x %d)", $row['id_num'], $_fname, $w, $h));
                 }
             }
         } catch (Exception $e) {
-            fdebug(__($e->getMessage(), $row['id_num'])."\r\n", 'parser.log');
+            $this->_xdata['products']['error']++;
+            fdebug($e->getMessage()."\r\n", Configure::read('ProductCSVParser.log'));
             return array();
         }
         return $fnames;
@@ -185,7 +189,7 @@ class ProductCsvParserTask extends AppShell {
         $aSubcategories = $this->Subcategory->find('all', array('order' => array('Subcategory.sorting' => 'ASC')));
         $aSubcategories = Hash::combine($aSubcategories, '{n}.Subcategory.sorting', '{n}.Subcategory', '{n}.Subcategory.parent_id');
 
-        $aFiles = Path::dirContent(PHOTO_PATH);
+        $aFiles = Path::dirContent(Configure::read('ProductCSVParser.photo_path'));
         $aID = array();
         try {
             $this->Product->trxBegin();
@@ -199,12 +203,12 @@ class ProductCsvParserTask extends AppShell {
 
                 $cat_id = $this->_getCategoryId($aCategories, $row);
                 if (!$cat_id) {
-                    throw new Exception('Category not found (Line %)');
+                    throw new Exception('Category not found (Line %d)');
                 }
 
                 $subcat_i = $row['cat_'.$cat_id];
                 if (!(isset($aSubcategories[$cat_id]) && isset($aSubcategories[$cat_id][$subcat_i]))) {
-                    throw new Exception('Subcategory not found (Line %)');
+                    throw new Exception('Subcategory not found (Line %d)');
                 }
                 $subcat = $aSubcategories[$cat_id][$subcat_i];
                 $row['title'] = trim($row['title']);
@@ -221,7 +225,7 @@ class ProductCsvParserTask extends AppShell {
                 );
                 $this->Product->clear();
                 if (!$this->Product->save($data)) {
-                    throw new Exception("Error! Cannot save item `{$row['id_num']}` (Line %s)");
+                    throw new Exception(__("Cannot save item `%s` (Line %d)", $line + 3, $row['id_num']));
                 }
 
                 if ($row['img'] == 1 || $row['img'] == 3) {
@@ -251,7 +255,8 @@ class ProductCsvParserTask extends AppShell {
                         }
                     }
                 } elseif ($row['img'] == 2) {
-                    fdebug(__('Video not found for item `%s`', $row['id_num'])."\r\n", 'parser.log');
+                    $this->_xdata['products']['error']++;
+                    fdebug(__('Video not found for item `%s`', $row['id_num'])."\r\n", Configure::read('ProductCSVParser.log'));
                 } else {
                     $this->_xdata['products']['no_image']++;
                 }

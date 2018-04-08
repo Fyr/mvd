@@ -22,15 +22,32 @@
         <div class="portlet light bordered">
             <?=$this->element('AdminUI/form_title', compact('title'))?>
             <div class="portlet-body dataTables_wrapper">
-                <b>Загрузка успешно завершена!</b><br/>
-                Загружено: <?=$task['xdata']['products']['total']?> предметов, из них: <br/>
-                <ul>
-                    <li><?=$task['xdata']['products']['no_image']?> без фото</li>
-                    <li><?=$task['xdata']['products']['image']?> с фото (всего <?=$task['xdata']['images']?> изображений)</li>
-                    <li><?=$task['xdata']['products']['image_3d']?> c 3D фото (всего <?=$task['xdata']['images_3d']?> изображений для 3D)</li>
-                    <li><?=$task['xdata']['products']['video']?> с видео (всего <?=$task['xdata']['video']?> видео-файлов)</li>
-                </ul><br/>
-                Отчет по загрузке: <a href="parser_log.txt">скачать</a>
+                <div class="form">
+                    <b>Загрузка успешно завершена!</b><br/>
+                    <br/>
+                    Загружено: <?=$task['xdata']['products']['total']?> предметов, из них: <br/>
+                    <ul>
+                        <li><?=$task['xdata']['products']['no_image']?> без фото</li>
+                        <li><?=$task['xdata']['products']['image']?> с фото (всего <?=$task['xdata']['images']?> изображений)</li>
+                        <li><?=$task['xdata']['products']['image_3d']?> c 3D фото (всего <?=$task['xdata']['images_3d']?> изображений для 3D)</li>
+                        <li><?=$task['xdata']['products']['video']?> с видео (всего <?=$task['xdata']['video']?> видео-файлов)</li>
+<?
+            if ($task['xdata']['products']['error']) {
+?>
+                        <li><span class="alert-danger"><b><?=$task['xdata']['products']['error']?></b> с ошибкой</span></li>
+<?
+            }
+?>
+                    </ul><br/>
+
+                    Отчет по загрузке: <a href="parser_log.txt" target="_blank">скачать</a><br/>
+                    <br/>
+                    <div class="form-actions">
+                        <a class="btn default" href="<?=$this->Html->url(array('action' => 'index'))?>">
+                            <i class="fa fa-angle-left"></i>&nbsp;&nbsp;<?=__('Back')?>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -18,7 +18,7 @@ class AdminParserController extends AdminController {
 		App::uses('Path', 'Core.Vendor');
 		App::uses('Translit', 'Article.Vendor');
 
-		$aFiles = Path::dirContent(PHOTO_PATH);
+		$aFiles = Path::dirContent(Configure::read('ProductCSVParser.photo_path'));
 		$count = 0;
 		foreach($aFiles['files'] as $file) {
 			if (file_exists($aFiles['path'].$file)) {
@@ -38,7 +38,7 @@ class AdminParserController extends AdminController {
 		App::uses('Path', 'Core.Vendor');
 		App::uses('Translit', 'Article.Vendor');
 
-		$aFiles = Path::dirContent(PHOTO_PATH_3D);
+		$aFiles = Path::dirContent(Configure::read('ProductCSVParser.photo_path_3d'));
 		$count = 0;
 		foreach($aFiles['folders'] as $folder) {
 			if (file_exists($aFiles['path'].$folder)) {

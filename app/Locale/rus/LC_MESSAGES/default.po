@@ -420,3 +420,27 @@ msgstr "Загрузка предметов из CSV"
 
 msgid "You must choose CSV file for parsing"
 msgstr "Вы должны выбрать CSV файл для загрузки"
+
+msgid "No photo for item `%s`: `%s`"
+msgstr "Не найдено фото для `%s`: `%s`"
+
+msgid "No 3D-photo for item `%s`: `%s`"
+msgstr "Не найдено 3D фото для `%s`: `%s`"
+
+msgid "Could not load media as image for item `%s`: `%s`"
+msgstr "Не могу загрузить файл как изображение для `%s`: `%s`"
+
+msgid "Incorrect image size for item `%s`: `%s` (%d x %d)"
+msgstr "Некорректные пропорции изображения для `%s`: `%s` (%d x %d)"
+
+msgid "Category not found (Line %d)"
+msgstr "Не могу найти категорию (стр. %d)"
+
+msgid "Subcategory not found (Line %d)"
+msgstr "Не могу найти подкатегорию (стр. %d)"
+
+msgid "Cannot save item `%s` (Line %d)"
+msgstr "Не могу сохранить предмет с номером `%s` (стр. %d)"
+
+msgid "Video not found for item `%s`"
+msgstr "Не найдено видео для предмета с номером `%s`"

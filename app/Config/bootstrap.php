@@ -29,7 +29,7 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 Configure::write('Exception.renderer', 'AppExceptionRenderer');
-// Configure::write('Config.language', 'rus');
+Configure::write('Config.language', 'rus');
 
 /* -= Custom settings =- */
 Configure::write('domain', array(
@@ -41,8 +41,11 @@ Configure::write('media', array(
 ));
 
 define('TEST_ENV', strpos($_SERVER['SERVER_NAME'], '.dev') > 0);
-define('PHOTO_PATH', WWW_ROOT.'photo'.DS);
-define('PHOTO_PATH_3D', WWW_ROOT.'photo'.DS.'3D'.DS);
+Configure::write('ProductCSVParser', array(
+	'photo_path' => WWW_ROOT.'photo'.DS,
+	'photo_path_3d' => WWW_ROOT.'photo'.DS.'3D'.DS,
+	'log' => WWW_ROOT.'parser_log.txt'
+));
 
 function fdebug($data, $logFile = 'tmp.log', $lAppend = true) {
 	file_put_contents($logFile, mb_convert_encoding(print_r($data, true), 'cp1251', 'utf8'), ($lAppend) ? FILE_APPEND : null);
