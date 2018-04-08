@@ -418,6 +418,9 @@ msgstr "Фоновые задачи"
 msgid "Product CSV Parser"
 msgstr "Загрузка предметов из CSV"
 
+msgid "Product Parser"
+msgstr "Загрузка предметов"
+
 msgid "You must choose CSV file for parsing"
 msgstr "Вы должны выбрать CSV файл для загрузки"
 
