@@ -10,18 +10,22 @@ App::uses('Path', 'Core.Vendor');
 class ProductCsvParserTask extends AppShell {
     public $uses = array('Product', 'Media.Media', 'Category', 'Subcategory');
 
-    private $_xdata = array('products' => 0, 'images' => 0, '3d' => 0, 'video' => 0);
+    private $_xdata = array(
+        'products' => array('no_image' => 0, 'image' => 0, 'image_3d' => 0, 'video' => 0, 'total' => 0),
+        'images' => 0, 'images_3d' => 0,
+        'video' => 0
+    );
 
     public function execute() {
         @unlink('parser.log');
-        $this->Task->setProgress($this->id, 0, 3); // 3 subtasks
+        $this->Task->setProgress($this->id, 0, ($this->params['clear_data']) ? 3 : 2); // 3 subtasks
         $this->Task->setStatus($this->id, Task::RUN);
 
-        $this->_clearMedia(); // subtask 1
-        // $this->params['csv_file'] = WWW_ROOT.'csv_data2.csv';
-        $aData = $this->_readCsv($this->params['csv_file']); // subtask 2
-
         try {
+            if ($this->params['clear_data']) {
+                $this->_clearMedia(); // subtask 1
+            }
+            $aData = $this->_readCsv($this->params['csv_file']); // subtask 2
             $aID = $this->_updateProducts($aData['data']); // subtask 3
         } catch (Exception $e) {
             @unlink($this->params['csv_file']);
@@ -35,6 +39,7 @@ class ProductCsvParserTask extends AppShell {
     }
 
     private function _clearMedia() {
+        fdebug('_clearMedia');
         $total = $this->Media->find('count', array('conditions' => array('object_type' => 'Product')));
 
         $subtask_id = $this->Task->add(0, 'ProductCsvParser_clearMedia', null, $this->id);
@@ -219,30 +224,39 @@ class ProductCsvParserTask extends AppShell {
                 if (!$this->Product->save($data)) {
                     throw new Exception("Error! Cannot save item `{$row['id_num']}` (Line %s)");
                 }
-                $this->_xdata['products']++;
 
-                if ($fnames = $this->_getMediaNames($aFiles, $row)) {
-                    foreach($fnames as $fname) {
-                        $media = array(
-                            'media_type' => 'image',
-                            'object_type' => 'Product',
-                            'object_id' => $this->Product->id,
-                            'orig_fname' => basename($fname),
-                            'real_name' => $fname,
-                            'file' => ($row['img'] == 3) ? '3D_image' : 'image',
-                            'ext' => '.jpg'
-                        );
-                        $this->Media->uploadMedia($media);
+                if ($row['img'] == 1 || $row['img'] == 3) {
+                    if ($fnames = $this->_getMediaNames($aFiles, $row)) {
+                        foreach ($fnames as $fname) {
+                            $media = array(
+                                'media_type' => 'image',
+                                'object_type' => 'Product',
+                                'object_id' => $this->Product->id,
+                                'orig_fname' => basename($fname),
+                                'real_name' => $fname,
+                                'file' => ($row['img'] == 3) ? '3D_image' : 'image',
+                                'ext' => '.jpg'
+                            );
+                            $this->Media->uploadMedia($media);
+                            if ($row['img'] == 3) {
+                                $this->_xdata['images_3d']++;
+                            } else {
+                                $this->_xdata['images']++;
+                            }
+                        }
+
                         if ($row['img'] == 3) {
-                            $this->_xdata['3D']++;
+                            $this->_xdata['products']['image_3d']++;
                         } else {
-                            $this->_xdata['images']++;
+                            $this->_xdata['products']['image']++;
                         }
                     }
-                    if ($row['img'] == 2) {
-                        fdebug(__('Video not found for item `%s`', $row['id_num'])."\r\n", 'parser.log');
-                    }
+                } elseif ($row['img'] == 2) {
+                    fdebug(__('Video not found for item `%s`', $row['id_num'])."\r\n", 'parser.log');
+                } else {
+                    $this->_xdata['products']['no_image']++;
                 }
+                $this->_xdata['products']['total']++;
 
                 $this->Task->setProgress($subtask_id, $line + 1);
                 $_progress = $this->Task->getProgressInfo($subtask_id);

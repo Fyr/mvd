@@ -63,6 +63,7 @@
 	.navbar-nav .icon-logout {top: -1px;}
 	.page-header.navbar .page-logo > a { margin-top: 10px; font-size: 16px; color: #bbc1c8; }
 	.page-header.navbar .page-logo > a:hover { color: #e5e7ea; text-decoration: none; }
+	.form-group .checker { margin-top: 8px !important}
 </style>
 	<script src="http://<?=Configure::read('domain.url')?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 </head>

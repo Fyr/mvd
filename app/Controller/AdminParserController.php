@@ -85,11 +85,16 @@ class AdminParserController extends AdminController {
 				return;
 			} elseif ($task['status'] === 'DONE') {
 				$this->Task->close($task['id']);
-				$this->Flash->success(__('Загрузка успешно завершена. Загружено %d предметов, %d фото, %d 3D фото, %d видео',
-					$task['xdata']['products'],
-					$task['xdata']['images'],
-					$task['xdata']['3d'],
-					$task['xdata']['video']
+				$this->Flash->success(__('Загрузка успешно завершена. Загружено: %d предметов, из них: <br/>
+						- %d без фото <br/>
+						- %d с фото (всего %d изображений)<br/>
+						- %d c 3D фото (всего %d изображений)<br/>
+						- %d с видео (всего %d видео)',
+					$task['xdata']['products']['total'],
+					$task['xdata']['products']['no_image'],
+					$task['xdata']['products']['image'], $task['xdata']['images'],
+					$task['xdata']['products']['image_3d'], $task['xdata']['images_3d'],
+					$task['xdata']['products']['video'], $task['xdata']['video']
 				));
 				$this->redirect(array('action' => 'index'));
 				return;
@@ -103,6 +108,12 @@ class AdminParserController extends AdminController {
 			$file = Hash::get($this->request->data, 'parserForm.csv_file');
 
 			// check submitted file
+			if (!$file || !$file['tmp_name']) {
+				$this->Flash->error(__('You must choose CSV file for parsing'));
+				$this->redirect(array('action' => 'index'));
+				return;
+			}
+
 			$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 			if (!($ext == 'csv' && $file['type'] == 'application/vnd.ms-excel')) {
 				$this->Flash->error(__('Incorrect CSV-format for `%s`', $file['name']));
@@ -110,7 +121,11 @@ class AdminParserController extends AdminController {
 				return;
 			}
 
-			$params = array('csv_file' => $this->_convertToCSV($file['tmp_name']));
+			$params = array(
+				'clear_data' => $this->request->data('parserForm.clear_data'),
+				'csv_file' => $this->_convertToCSV($file['tmp_name'])
+			);
+
 			$user_id = AuthComponent::user('id');
 			$id = $this->Task->add($user_id, 'ProductCsvParser', $params);
 			$this->Task->runBkg($id);
