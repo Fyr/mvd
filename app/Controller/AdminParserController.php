@@ -85,19 +85,6 @@ class AdminParserController extends AdminController {
 				return;
 			} elseif ($task['status'] === 'DONE') {
 				$this->Task->close($task['id']);
-				$this->Flash->success(__('Загрузка успешно завершена. Загружено: %d предметов, из них: <br/>
-						- %d без фото <br/>
-						- %d с фото (всего %d изображений)<br/>
-						- %d c 3D фото (всего %d изображений)<br/>
-						- %d с видео (всего %d видео)',
-					$task['xdata']['products']['total'],
-					$task['xdata']['products']['no_image'],
-					$task['xdata']['products']['image'], $task['xdata']['images'],
-					$task['xdata']['products']['image_3d'], $task['xdata']['images_3d'],
-					$task['xdata']['products']['video'], $task['xdata']['video']
-				));
-				$this->redirect(array('action' => 'index'));
-				return;
 			}
 
 			if (!isset($task['subtask'])) {

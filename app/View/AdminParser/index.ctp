@@ -15,19 +15,43 @@
             'ProductCsvParser_readCsv' => 'Чтение CSV файла...',
             'ProductCsvParser_updateProducts' => 'Сохранение предметов...'
         );
+        if ($task['status'] === 'DONE') { // show stats
 ?>
 <div class="row">
     <div class="col-md-12">
         <div class="portlet light bordered">
             <?=$this->element('AdminUI/form_title', compact('title'))?>
             <div class="portlet-body dataTables_wrapper">
-                <?=$this->element('progress', compact('task', 'aTaskNames'))?>
+                <b>Загрузка успешно завершена!</b><br/>
+                Загружено: <?=$task['xdata']['products']['total']?> предметов, из них: <br/>
+                <ul>
+                    <li><?=$task['xdata']['products']['no_image']?> без фото</li>
+                    <li><?=$task['xdata']['products']['image']?> с фото (всего <?=$task['xdata']['images']?> изображений)</li>
+                    <li><?=$task['xdata']['products']['image_3d']?> c 3D фото (всего <?=$task['xdata']['images_3d']?> изображений для 3D)</li>
+                    <li><?=$task['xdata']['products']['video']?> с видео (всего <?=$task['xdata']['video']?> видео-файлов)</li>
+                </ul><br/>
+                Отчет по загрузке: <a href="parser_log.txt">скачать</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?
+        } else { // show progress
+?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <?= $this->element('AdminUI/form_title', compact('title')) ?>
+            <div class="portlet-body dataTables_wrapper">
+                <?= $this->element('progress', compact('task', 'aTaskNames')) ?>
             </div>
         </div>
     </div>
 </div>
 <?
-    } else {
+        }
+    } else { // show input form
 ?>
 <div class="row">
     <div class="col-md-12">

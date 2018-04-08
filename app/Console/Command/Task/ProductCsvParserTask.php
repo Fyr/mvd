@@ -39,7 +39,6 @@ class ProductCsvParserTask extends AppShell {
     }
 
     private function _clearMedia() {
-        fdebug('_clearMedia');
         $total = $this->Media->find('count', array('conditions' => array('object_type' => 'Product')));
 
         $subtask_id = $this->Task->add(0, 'ProductCsvParser_clearMedia', null, $this->id);
