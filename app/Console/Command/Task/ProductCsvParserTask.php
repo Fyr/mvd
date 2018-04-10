@@ -22,12 +22,15 @@ class ProductCsvParserTask extends AppShell {
         $this->Task->setStatus($this->id, Task::RUN);
 
         try {
+            $this->Product->trxBegin();
             if ($this->params['clear_data']) {
                 $this->_clearMedia(); // subtask 1
             }
             $aData = $this->_readCsv($this->params['csv_file']); // subtask 2
             $aID = $this->_updateProducts($aData['data']); // subtask 3
+            $this->Product->trxCommit();
         } catch (Exception $e) {
+            $this->Product->trxRollback();
             @unlink($this->params['csv_file']);
             throw new Exception($e->getMessage());
         }
@@ -192,7 +195,6 @@ class ProductCsvParserTask extends AppShell {
         $aFiles = Path::dirContent(Configure::read('ProductCSVParser.photo_path'));
         $aID = array();
         try {
-            $this->Product->trxBegin();
             foreach($aRows as $line => $row) {
                 $status = $this->Task->getStatus($this->id);
                 if ($status == Task::ABORT) {
@@ -266,9 +268,7 @@ class ProductCsvParserTask extends AppShell {
                 $_progress = $this->Task->getProgressInfo($subtask_id);
                 $this->Task->setProgress($this->id, $progress['progress'] + $_progress['percent'] * 0.01);
             }
-            $this->Product->trxCommit();
         } catch (Exception $e) {
-            $this->Product->trxRollback();
             throw new Exception(__($e->getMessage(), $line + 3));
         }
 
