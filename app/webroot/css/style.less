@@ -370,6 +370,60 @@ a {
 }
 */
 
+.outerControl { 
+}
+
+.prevButton {
+	position: absolute;
+	left: 15px;
+	bottom: 50%;
+	margin-bottom: -15px;
+	color: #d6d6d6;
+	background: rgba(49,49,49,.2);
+	border-radius: 50%;
+	width: 47px;
+	height: 47px;
+	text-align: center;
+	padding-right: 3px;
+	padding-top: 4px;
+	font-size: 25px;
+	cursor: pointer;
+
+	&:before {content: ''; height: 100%; display: inline-block; vertical-align: middle;}
+
+	i {display: inline-block; vertical-align: middle;}
+
+	&:hover {
+		color: #fff;
+	}
+}
+
+.nextButton {
+	position: absolute;
+	right: 15px;
+	bottom: 50%;
+	margin-bottom: -15px;
+	color: #d6d6d6;
+	background: rgba(49,49,49,.2);
+	border-radius: 50%;
+	width: 47px;
+	height: 47px;
+	text-align: center;
+	padding-left: 5px;
+	padding-top: 4px;
+	font-size: 25px;
+	cursor: pointer;
+
+	&:before {content: ''; height: 100%; display: inline-block; vertical-align: middle;}
+
+	i {display: inline-block; vertical-align: middle;}
+
+	&:hover {
+		color: #fff;
+	}
+
+}
+
 
 @media (max-width: 1199px) {
 	.header {
