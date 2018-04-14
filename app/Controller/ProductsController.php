@@ -52,7 +52,7 @@ class ProductsController extends AppController {
 
 	public function view($id) {
 		$article = $this->Product->findById($id);
-		$aMedia = $this->Media->getList(array('object_type' => 'Product', 'object_id' => $id), array('Media.id' => 'ASC'));
+		$aMedia = $this->Media->getList(array('object_type' => 'Product', 'object_id' => $id, 'main' => 0));
 		$this->set(compact('article', 'filter', 'aMedia'));
 	}
 
