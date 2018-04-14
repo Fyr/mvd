@@ -45,7 +45,7 @@ class RouterController extends AppController {
 			$image->{$method}($aSize['w'], $aSize['h']);
 		}
 		
-		if ($type == 'product' || $type == 'news') {
+		if (($type == 'product' || $type == 'news') && $image->getSizeX() > 400) {
 
 			$logo = new Image();
 			$logo->load('./img/wlogo.gif');
@@ -54,10 +54,11 @@ class RouterController extends AppController {
 				$image->resize(1200, null);
 			}
 
+			/*
 			if ($image->getSizeX() <= 400 || $image->getSizeY() <= 250) {
 				$logo->resize(150, null);
 			}
-
+*/
 			imagealphablending($image->getImage(), false);
 			imagesavealpha($image->getImage(), true);
 
