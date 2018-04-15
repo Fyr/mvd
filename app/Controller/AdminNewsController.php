@@ -8,7 +8,7 @@ class AdminNewsController extends AdminContentController {
 
     public $paginate = array(
         'conditions' => array(),
-        'fields' => array('modified', 'title_$lang', 'slug', 'published', 'featured'),
+        'fields' => array('modified', 'title', 'slug', 'published', 'featured'),
         'limit' => 10
     );
 }

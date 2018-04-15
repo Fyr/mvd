@@ -9,13 +9,9 @@ class ArticleVarsHelper extends AppHelper {
 		$id = $article[$objectType]['id'];
 		
 		$url = SiteRouter::url($article);
-		$lang = $this->getLang();
+		$title = $article[$objectType]['title'];
 
-		$_title = (in_array($objectType, array('Product', 'Category', 'Subcategory'))) ? 'title' : 'title_'.$lang;
-		$title = $article[$objectType][$_title];
-
-		$_teaser = (in_array($objectType, array('Product', 'Category', 'Subcategory'))) ? 'teaser' : 'teaser_'.$lang;
-		$teaser = nl2br($article[$objectType][$_teaser]);
+		$teaser = nl2br($article[$objectType]['teaser']);
 
 		$src = (isset($article['Media']) && $article['Media'] && isset($article['Media']['id']) && $article['Media']['id']) 
 			? $this->Media->imageUrl($article, $size) : '';
@@ -24,8 +20,7 @@ class ArticleVarsHelper extends AppHelper {
 
 	public function body($article) {
 		$objectType = $this->getObjectType($article);
-		$_body = ($objectType == 'Product') ? 'body' : 'body_'.$this->getLang();
-		return '<article>'.$article[$objectType][$_body].'</article>';
+		return '<article>'.$article[$objectType]['body'].'</article>';
 	}
 
 	public function divideColumns($items, $cols) {

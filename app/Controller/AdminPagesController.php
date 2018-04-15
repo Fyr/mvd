@@ -7,7 +7,7 @@ class AdminPagesController extends AdminContentController {
     public $uses = array('Page');
 
     public $paginate = array(
-        'fields' => array('title_$lang', 'slug'),
+        'fields' => array('title', 'slug'),
         'order' => array('published' => 'desc'),
         'limit' => 20
     );

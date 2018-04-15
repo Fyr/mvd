@@ -25,9 +25,7 @@
     $tabs = array(
         __('General') => $this->Html->div('form-body',
             $this->element('AdminUI/checkboxes', array('labels' => array('published' => __('Published'), 'featured' => __('For home page'))))
-            .$this->PHForm->input('title_'.$lang,
-                array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Title')))
-            )
+            .$this->PHForm->input('title', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Title'))))
             .$this->PHForm->input('slug')
             .$this->PHForm->date('modified', array('label' => array('text' => __('Date'), 'class' => 'col-md-3 control-label')))
             /*.$this->PHForm->input('teaser_'.$lang,
@@ -35,7 +33,7 @@
             )*/
             //.$this->PHForm->input('sorting', array('class' => 'form-control input-small'))
         ),
-        __('Text') => $this->element('Article.edit_body', array('field' => 'body_'.$lang)),
+        __('Text') => $this->element('Article.edit_body', array('field' => 'body')),
     );
 
     if ($id) {

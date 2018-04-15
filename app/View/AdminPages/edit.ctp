@@ -21,12 +21,10 @@
 
     $tabs = array(
         __('General') => $this->Html->div('form-body',
-            $this->PHForm->input('title_'.$lang,
-                array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Title')))
-            )
+            $this->PHForm->input('title', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Title'))))
             .$this->PHForm->input('slug')
         ),
-        __('Text') => $this->element('Article.edit_body', array('field' => 'body_'.$lang)),
+        __('Text') => $this->element('Article.edit_body', array('field' => 'body')),
     );
 
     if ($id) {

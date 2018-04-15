@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-md-5 col-md-offset-1 col-sm-6">
-            <h2><?=$page['Page']['title_'.$lang]?></h2>
+            <h2><?=$page['Page']['title']?></h2>
             <?=$this->ArticleVars->body($page)?>
         </div>
     </div>
