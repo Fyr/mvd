@@ -32,7 +32,7 @@
 		'vendor/jquery.sticky',
 		'vendor/stacktable',
 		'custom',
-		// 'lang',
+		'lang',
 		// '/Core/js/json_handler'
 	));
 	echo $this->fetch('script');
@@ -46,16 +46,21 @@
 					<a href="#">МУЗЕЙ МВД <span>Республики Беларусь</span></a>
 				</div>
 				<div class="col-md-3 col-sm-5 address">
-					<?=Configure::read('Settings.address_'.$lang)?>
-					<div><?=Configure::read('Settings.phone_'.$lang)?></div>
+					<?=Configure::read('Settings.address')?>
+					<div><?=Configure::read('Settings.phone')?></div>
 				</div>
 				<div class="col-md-2 col-sm-4 col-lg-offset-5 col-md-offset-4 languages">
-					<!--a href="#">en</a>
-					<a href="#" class="active">ru</a>
-					<a href="#">by</a-->
+<?
+	foreach($aLangs as $_lang => $title) {
+		$class = ($lang == $_lang) ? 'active' : '';
+?>
+					<a href="javascript:;" class="<?=$class?>" onclick="setLang('<?=$_lang?>')"><?=$title?></a>
+<?
+	}
+?>
 					<div class="mvd">
 						<div class="png2x png2x-mvd"></div>
-						<div class="text"><?=Configure::read('Settings.title_'.$lang)?></div>
+						<div class="text"><?=Configure::read('Settings.title')?></div>
 					</div>
 				</div>
 			</div>
@@ -102,13 +107,13 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 address">
-					<?=Configure::read('Settings.address_'.$lang)?>
-					<div><?=Configure::read('Settings.phone_'.$lang)?></div>
+					<?=Configure::read('Settings.address')?>
+					<div><?=Configure::read('Settings.phone')?></div>
 				</div>
 			</div>
 			<div class="row bottom">
 				<div class="col-lg-3 col-md-3 copyright">
-					©2017 <?=Configure::read('Settings.title_'.$lang)?>
+					©2017 <?=Configure::read('Settings.title')?>
 				</div>
 				<div class="col-lg-2 col-md-3 col-lg-offset-2 col-md-offset-1 links">
 					<a href="#">mvd.gov.by</a>

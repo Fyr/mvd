@@ -39,9 +39,23 @@
 						</li>
 					</ul>
 				</li-->
-				<li class="dropdown" style="padding-top: 14px;">
+				<li class="dropdown" style="padding-top: 14px; margin: 0 20px; ">
 					<span><?=__('Welcome, %s!', '<b>Admin</b>')?></span>
 				</li>
+<?
+	// TODO: customize styles for language links
+	foreach($aLangs as $_lang => $title) {
+		$class = ($lang == $_lang) ? 'active' : '';
+?>
+				<li class="link" style="">
+					<a class="lang <?=$class?>" href="javascript:;" onclick="setLang('<?=$_lang?>')">
+						<b><?=$title?></b>
+					</a>
+				</li>
+<?
+	}
+?>
+
 				<li class="dropdown">
 					<a class="dropdown-toggle" href="<?=$this->Html->url(array('controller' => 'AdminAuth', 'action' => 'logout'))?>" title="<?=__('Logout')?>">
 						<i class="icon-logout"></i>&nbsp;&nbsp;&nbsp;&nbsp;

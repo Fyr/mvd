@@ -9,7 +9,7 @@ class AppModel extends Model {
     }
 
     protected function _beforeInit() {
-        // Add here behaviours, models etc that will be also loaded while extending child class
+        $this->useDbConfig = $this->getLang();
     }
 
     protected function _afterInit() {

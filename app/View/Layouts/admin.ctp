@@ -64,7 +64,12 @@
 	.page-header.navbar .page-logo > a { margin-top: 10px; font-size: 16px; color: #bbc1c8; }
 	.page-header.navbar .page-logo > a:hover { color: #e5e7ea; text-decoration: none; }
 	.form-group .checker { margin-top: 8px !important}
-	.form-group .checkbox-list .checker { margin-top: -2px !important}
+	.form-group .checkbox-list .checker { margin-top: -2px !important; }
+	.navbar-nav > li.link > a, .navbar-nav > li.link > a:visited { background: #747F8C; padding: 14px 5px 12px 5px; color: #bbc1c8; }
+	.navbar-nav > li.link > a:hover, .navbar-nav > li.link > a.active { color: #e5e7ea; }
+	.navbar-nav > li.link > a.lang.active { font-weight: bold; }
+	/* .page-header.navbar .top-menu .navbar-nav > li.dropdown > a.dropdown-toggle { padding-top: 14px; color: #bbc1c8; }
+	.page-header.navbar .top-menu .navbar-nav > li.dropdown > a.dropdown-toggle:hover { padding-top: 14px; color: #e5e7ea; } */
 </style>
 	<script src="http://<?=Configure::read('domain.url')?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 </head>
@@ -162,7 +167,7 @@
 <script src="http://<?=Configure::read('domain.url')?>/js/vendor/jquery.cookie.js" type="text/javascript"></script>
 <script src="http://<?=Configure::read('domain.url')?>/js/lang.js" type="text/javascript"></script>
 <?
-	echo $this->Html->script(array('admin'));
+	echo $this->Html->script(array('admin', 'lang'));
 	echo $this->fetch('script');
 	// echo $this->element('sql_dump');
 ?>

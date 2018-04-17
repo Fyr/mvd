@@ -203,7 +203,7 @@ msgid "Pages"
 msgstr "Страницы"
 
 msgid "News"
-msgstr "Новости"
+msgstr "События"
 
 msgid "Categories"
 msgstr "Категории"
@@ -447,3 +447,15 @@ msgstr "Не могу сохранить предмет с номером `%s` (
 
 msgid "Video not found for item `%s`"
 msgstr "Не найдено видео для предмета с номером `%s`"
+
+msgid "Home"
+msgstr "Главная"
+
+msgid "About us"
+msgstr "О музее"
+
+msgid "Our history"
+msgstr "История милиции"
+
+msgid "Customers"
+msgstr "Посетителям"
