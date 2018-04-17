@@ -20,12 +20,13 @@ class RouterController extends AppController {
 		$aFName = $this->PHMedia->getFileInfo($filename);
 		$fname = $this->PHMedia->getFileName($type, $id, $size, $filename);
 
+		$fname = ($size == 'noresize') ? str_replace($filename, 'noresize.'.$aFName['ext'], $fname) : $fname;
 		if (file_exists($fname) && filesize($fname)) {
 			header('Content-type: image/'.$aFName['ext']);
 			echo file_get_contents($fname);
 			exit;
 		}
-		
+
 		App::uses('Image', 'Media.Vendor');
 		$image = new Image();
 		
@@ -38,48 +39,44 @@ class RouterController extends AppController {
 				$origImg = $thumb;
 			}
 		}
-		
+
 		$image->load($origImg);
 		if ($aSize) {
 			$method = $this->PHMedia->getResizeMethod($size);
 			$image->{$method}($aSize['w'], $aSize['h']);
 		}
-		
+
+		// накладываем водяной знак только для картинок с шириной > 400px и только для продуктов и событий
 		if (($type == 'product' || $type == 'news') && $image->getSizeX() > 400) {
 
-			$logo = new Image();
-			$logo->load('./img/wlogo.gif');
-
-			if ($image->getSizeX() > 1200 || $image->getSizeY() > 900) {
+			if ($image->getSizeX() > $image->getSizeY() && $image->getSizeX() > 1200) {
 				$image->resize(1200, null);
+			} else {
+				// TODO: resize also portrait image to fit screen
 			}
 
-			/*
-			if ($image->getSizeX() <= 400 || $image->getSizeY() <= 250) {
-				$logo->resize(150, null);
+			$logo = new Image();
+			$logo->load('./img/wlogo2.gif');
+			$logoY = $image->getSizeY() / 20; // при высоте картинки в 400px лого должно быть 20px
+
+			// лого должно быть не менее 20px и не более 40px по высоте
+			if ($logoY > 40) {
+				$logoY = 40;
+			} elseif ($logoY < 20) {
+				$logoY = 20;
 			}
-*/
+			$logoX = floor($logoY * $logo->getSizeX() / $logo->getSizeY());
+			$logo->resize($logoX, null);
+
 			imagealphablending($image->getImage(), false);
 			imagesavealpha($image->getImage(), true);
-
-			if ($logo->getSizeX() < $image->getSizeX() && $logo->getSizeY() < $image->getSizeY()) {
+			for($x = 0; $x < $image->getSizeX(); $x+= $logo->getSizeX()) {
 				imagecopymerge($image->getImage(), $logo->getImage(),
-					$image->getSizeX() - $logo->getSizeX(), $image->getSizeY() - $logo->getSizeY(),
-					0, 0, $logo->getSizeX(), $logo->getSizeY(),
+					$x, $image->getSizeY() - $logo->getSizeY() * 2,
+					0, 0,
+					min($logo->getSizeX(), $image->getSizeX() - $x), $logo->getSizeY(),
 					40
 				);
-			} else {
-				$oldSizeX = $image->getSizeX();
-
-				// т.к. есть баг с ресайзом лого (при ресайзе исчезает прозрачность и появляется фон),
-				// то ресайзим саму картинку, а потом возвращаем ее в исх. размер
-				$image->resize($logo->getSizeX(), null); // по идее все картинки по ширине больше чем по высоте
-
-				$x = round(($image->getSizeX()) / 2, 0) - round($logo->getSizeX() / 2, 0);
-				$y = round(($image->getSizeY()) / 2, 0) - round($logo->getSizeY() / 2, 0);
-				imagecopymerge($image->getImage(), $logo->getImage(), $x, $y, 0, 0, $logo->getSizeX(), $logo->getSizeY(), 40);
-
-				$image->resize($oldSizeX, null);
 			}
 		}
 
