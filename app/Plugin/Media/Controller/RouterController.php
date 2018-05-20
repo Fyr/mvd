@@ -47,7 +47,7 @@ class RouterController extends AppController {
 		}
 
 		// накладываем водяной знак только для картинок с шириной > 400px и только для продуктов и событий
-		if (($type == 'product' || $type == 'news') && $image->getSizeX() > 400) {
+		if (($type == 'product' && $image->getSizeX() > 200) || ($type == 'news' && $image->getSizeX() > 400)) {
 
 			if ($image->getSizeX() > $image->getSizeY() && $image->getSizeX() > 1200) {
 				$image->resize(1200, null);
