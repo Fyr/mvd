@@ -1,9 +1,9 @@
 <?
     $pageTitle = '';
     if ($lDirectSearch) {
-        $pageTitle = 'Результаты поиска';
+        $pageTitle = __('Search results');
     } else {
-        $pageTitle = 'Коллекции';
+        $pageTitle = __('Collections');
         if (isset($filter['cat_id'])) {
             $_categories = Hash::combine($aCategories, '{n}.Category.id', '{n}.Category');
             $pageTitle = Hash::get($_categories[$filter['cat_id']], 'title');
@@ -13,7 +13,7 @@
             $pageTitle = Hash::get($_subcategories[$filter['subcat_id']], 'title');
         }
     }
-    $title = 'Коллекции';
+    $title = __('Collections');
 ?>
 <div class="container collections">
     <div class="row">

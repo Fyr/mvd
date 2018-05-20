@@ -1,6 +1,6 @@
 <div class="container categories">
     <?=$this->element('search')?>
-    <h1>Выберите категорию</h1>
+    <h1><?=__('Choose category')?></h1>
     <ul class="list">
 <?
     foreach ($aCategories as $article) {

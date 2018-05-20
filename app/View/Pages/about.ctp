@@ -1,5 +1,5 @@
 <?
-    $title = 'О музее';
+    $title = __('About us');
     $filter = array('cat_id' => $aPages[$slug]['Page']['id']);
     $aCategories = array_values($aPages);
     $aSubcategories = array();
@@ -12,7 +12,7 @@
     $this->ArticleVars->init($aPages[$slug], $url, $title, $teaser, $src, 'noresize');
 ?>
             <h1><?=$title?></h1>
-            <?=$this->ArticleVars->body($aPages[$slug]);?>
+            <?=$this->ArticleVars->body($aPages[$slug])?>
         </div>
     </div>
 </div>

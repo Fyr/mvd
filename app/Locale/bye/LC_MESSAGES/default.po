@@ -379,9 +379,6 @@ msgstr "Слайдер"
 msgid "Collections"
 msgstr "Коллекции"
 
-msgid "Collection"
-msgstr "Коллекция"
-
 msgid "Products"
 msgstr "Музейные предметы"
 
@@ -452,57 +449,13 @@ msgid "Video not found for item `%s`"
 msgstr "Не найдено видео для предмета с номером `%s`"
 
 msgid "Home"
-msgstr "Главная"
+msgstr "Галоуная"
 
 msgid "About us"
-msgstr "О музее"
+msgstr "Аб музее"
 
 msgid "Our history"
-msgstr "История милиции"
+msgstr "Гiсторыя мiлiцыi"
 
 msgid "Customers"
 msgstr "Посетителям"
-
-msgid "MUSEUM<span>of Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>"
-msgstr "МУЗЕЙ МВД <span>Республики Беларусь</span>"
-
-msgid "Ministry of Internal Affairs of the Republic of Belarus"
-msgstr "Министерство внутренних дел Республики Беларусь"
-
-msgid "search on site"
-msgstr "поиск по сайту"
-
-msgid "Interesting exhibits"
-msgstr "Интересные экспонаты"
-
-msgid "Choose category"
-msgstr "Выберите категорию"
-
-msgid "Search results"
-msgstr "Результаты поиска"
-
-msgid "Subject type"
-msgstr "Вид предмета"
-
-msgid "Subject name"
-msgstr "Предметное имя"
-
-msgid "Author/Team of authors"
-msgstr "Автор/Коллектив авторов"
-
-msgid "Creation period"
-msgstr "Период создания"
-
-msgid "Creation place"
-msgstr "Место создания"
-
-msgid "Creation technology"
-msgstr "Материал, техника"
-
-msgid "Size"
-msgstr "Размер"
-
-msgid "Identification number"
-msgstr "Номер по КП (НВ)"
-
-

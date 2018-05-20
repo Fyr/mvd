@@ -42,8 +42,8 @@
 	<div class="header">
 		<div class="container top">
 			<div class="row">
-				<div class="col-lg-2 col-sm-3 logo">
-					<a href="#">МУЗЕЙ МВД <span>Республики Беларусь</span></a>
+				<div class="col-lg-3 col-sm-3 logo">
+					<a href="/"><?=__('MUSEUM<span>of Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>')?></a>
 				</div>
 				<div class="col-md-3 col-sm-5 address">
 					<?=Configure::read('Settings.address')?>
@@ -79,7 +79,7 @@
 							<div></div>
 						</div>
 						<div class="png2x png2x-mvd"></div>
-						<div class="text">Министерство внутренних дел Республики Беларусь</div>
+						<div class="text"><?=__('Ministry of Internal Affairs of the Republic of Belarus')?></div>
 					</div>
 				</div>
 			</div>
@@ -90,19 +90,24 @@
 		<div class="container">
 			<div class="png2x png2x-footer"></div>
 			<div class="row top">
-				<div class="col-md-2 col-sm-3 logo">
-					<a href="#">МУЗЕЙ МВД <span>Республики Беларусь</span></a>
+				<div class="col-md-3 col-sm-3 logo">
+					<a href="/"><?=__('MUSEUM<span>of Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>')?></a>
 				</div>
-				<div class="col-md-2  col-md-offset-1 col-sm-2 col-xs-6 firstColomn">
+				<div class="col-md-2 col-sm-2 col-xs-6 firstColomn">
 					<?=$this->element('main_menu', array('class' => 'menu'))?>
 				</div>
 				<div class="col-md-2 col-sm-3 col-xs-6 secondColomn">
 					<!-- ul class="menu"></ul-->
 				</div>
 				<div class="col-md-2 col-md-offset-3 col-sm-3 languages">
-					<!-- a href="#">en</a>
-					<a href="#" class="active">ru</a>
-					<a href="#">by</a-->
+<?
+	foreach($aLangs as $_lang => $title) {
+		$class = ($lang == $_lang) ? 'active' : '';
+?>
+					<a href="javascript:;" class="<?=$class?>" onclick="setLang('<?=$_lang?>')"><?=$title?></a>
+<?
+	}
+?>
 				</div>
 			</div>
 			<div class="row">
@@ -116,7 +121,7 @@
 					©2017 <?=Configure::read('Settings.title')?>
 				</div>
 				<div class="col-lg-2 col-md-3 col-lg-offset-2 col-md-offset-1 links">
-					<a href="#">mvd.gov.by</a>
+					<a href="http://mvd.gov.by" target="_blank">mvd.gov.by</a>
 				</div>
 			</div>
 		</div>

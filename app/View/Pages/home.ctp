@@ -20,7 +20,7 @@
         <div class="outerIcon">
             <span class="icon-star"></span>
         </div>
-        <h2>События</h2>
+        <h2><?=('News')?></h2>
     </div>
     <div class="row mainPageEvents">
 <?
@@ -44,7 +44,7 @@
         <div class="outerIcon">
             <span class="icon-star"></span>
         </div>
-        <h2>Интересные экспонаты</h2>
+        <h2><?=__('Interesting exhibits')?></h2>
     </div>
     <div class="row mainPageEvents exhibits">
 <?
