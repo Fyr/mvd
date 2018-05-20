@@ -40,7 +40,7 @@ Configure::write('media', array(
 	'path' => WWW_ROOT.'files'.DS
 ));
 
-define('TEST_ENV', strpos($_SERVER['SERVER_NAME'], '.dev') > 0);
+define('TEST_ENV', strpos($_SERVER['SERVER_NAME'], '.loc') > 0);
 Configure::write('ProductCSVParser', array(
 	'photo_path' => WWW_ROOT.'photo'.DS,
 	'photo_path_3d' => WWW_ROOT.'photo'.DS.'3D'.DS,
