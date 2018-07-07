@@ -52,8 +52,12 @@ class ProductsController extends AppController {
 
 	public function view($id) {
 		$article = $this->Product->findById($id);
-		$aMedia = $this->Media->getList(array('object_type' => 'Product', 'object_id' => $id, 'main' => 0));
-		$this->set(compact('article', 'filter', 'aMedia'));
+		$order = null;
+		if (Hash::get($article, 'Media.file') === '3D_image') {
+			$order = array('Media.main' => 'DESC', 'Media.orig_fname' => 'ASC');
+		}
+		$aMedia = $this->Media->getList(array('object_type' => 'Product', 'object_id' => $id, 'main' => 0), $order);
+		$this->set(compact('article', 'aMedia'));
 	}
 
 

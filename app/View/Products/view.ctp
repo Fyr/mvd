@@ -21,7 +21,7 @@
     if ($aMedia3D) {
         $i = 1;
 ?>
-                    <div style="position: relative;">
+                    <div style="position: relative; min-height: 400px;">
                         <div id="rotate3D_left" class="prevButton"><i class="icon-arrow-left"></i></div>
                         <div id="rotate3D_right" class="nextButton"><i class="icon-arrow-right"></i></div>
 
@@ -135,11 +135,11 @@ $(function(){
     if ($('#rotate3D_left').length && $('#rotate3D_right').length) {
 
         $('#rotate3D_left').hover(
-            function(){ timer = setInterval(function(){ rotate3D(-1); }, 100); },
+            function(){ timer = setInterval(function(){ rotate3D(-1); }, 200); },
             function(){ clearInterval(timer); }
         );
         $('#rotate3D_right').hover(
-            function(){ timer = setInterval(function(){ rotate3D(1); }, 100); },
+            function(){ timer = setInterval(function(){ rotate3D(1); }, 200); },
             function(){ clearInterval(timer); }
         );
     }
