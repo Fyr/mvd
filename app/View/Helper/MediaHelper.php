@@ -15,6 +15,6 @@ class MediaHelper extends AppHelper {
 			return '';
 		}
 		$media = $mediaRow['Media'];
-		return $this->MediaPath->getImageUrl($media['object_type'], $media['id'], $size, $media['file'].$media['ext']);
+		return $this->MediaPath->getImageUrl($media['object_type'], $media['id'], $size, $media['file'].$media['ext'].'.png');
 	}
 }
