@@ -75,10 +75,11 @@ class Task extends AppModel {
 	}
 
 	public function runBkg($task_id) {
+		$lang = Configure::read('Config.language');
 		if (TEST_ENV) {
-			fdebug('../Console/cake.bat BkgService execTask '.$task_id."\r\n", 'run.bat', false);
+			fdebug("../Console/cake.bat BkgService execTask {$task_id} {$lang}\r\n", 'run.bat', false);
 		} else {
-			system("../Console/cake BkgService execTask {$task_id} < /dev/null > task.log &");
+			system("../Console/cake BkgService execTask {$task_id} {$lang}< /dev/null > task.log &");
 		}
 	}
 

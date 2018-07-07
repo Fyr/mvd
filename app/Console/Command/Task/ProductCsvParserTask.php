@@ -215,15 +215,19 @@ class ProductCsvParserTask extends AppShell {
                 $subcat = $aSubcategories[$cat_id][$subcat_i];
                 $row['title'] = trim($row['title']);
 
+                if (mb_strlen($row['title']) > 40) {
+                    fdebug(__('Too long name for `%s`: `%s`', $row['id_num'], $row['title'])."\r\n", Configure::read('ProductCSVParser.log'));
+                }
+
                 $data = array(
-                    'title' => (mb_strlen($row['title']) > 40) ? mb_substr($row['title'], 0, 40).'...' : $row['title'],
+                    'title' => $row['title'], // (mb_strlen($row['title']) > 40) ? mb_substr($row['title'], 0, 40).'...' :
                     'teaser' => $row['title'],
                     'body' => trim($row['body']),
                     'id_num' => trim($row['id_num']),
                     'location' => trim($row['location']),
                     'cat_id' => $cat_id,
                     'subcat_id' => $subcat['id'],
-                    'published' => true
+                    'published' => $this->params['publish_all']
                 );
                 $this->Product->clear();
                 if (!$this->Product->save($data)) {

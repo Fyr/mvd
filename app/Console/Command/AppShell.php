@@ -26,8 +26,6 @@ App::uses('Shell', 'Console');
  * @package       app.Console.Command
  */
 class AppShell extends Shell {
-    public $uses = array('Task');
-
     public $id = 0, $user_id = 0, $params = array(); // нужно для BkgServiceShell
 
 	public function execute() {
@@ -38,19 +36,25 @@ class AppShell extends Shell {
 		// перекрываемый метод выполняемый после выполнения фон.задачи
 	}
 
-	public function checkFieldRights($aKeys, $aFormFieldsKeys, $fieldRights) {
-		$aMainFields = array('detail_num', 'code', 'brand_id', 'cat_id', 'subcat_id', 'title', 'title_rus');
-		foreach($aKeys as $fk_id) {
-			$f_id = str_replace('fk_', '', $fk_id);
-
-			if (strpos($fk_id, 'fk_') !== false && !in_array(intval($f_id), $aFormFieldsKeys)) {
-				throw new Exception(__('Incorrect field ID %s', $fk_id));
-			}
-
-			if (!in_array($fk_id, $aMainFields) && !($fieldRights && in_array($f_id, $fieldRights))) {
-				throw new Exception(__('You have no access rights to load field %s', $fk_id));
-			}
+	public function loadModel($modelClass = null, $id = null) {
+		if ($modelClass === null) {
+			$modelClass = $this->modelClass;
 		}
+
+		$this->uses = ($this->uses) ? (array)$this->uses : array();
+		if (!in_array($modelClass, $this->uses, true)) {
+			$this->uses[] = $modelClass;
+		}
+
+		list($plugin, $modelClass) = pluginSplit($modelClass, true);
+
+		$this->{$modelClass} = ClassRegistry::init(array(
+			'class' => $plugin . $modelClass, 'alias' => $modelClass, 'id' => $id
+		));
+		if (!$this->{$modelClass}) {
+			throw new MissingModelException($modelClass);
+		}
+		return $this->{$modelClass};
 	}
 
     public function sqlLog() {

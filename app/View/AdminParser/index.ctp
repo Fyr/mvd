@@ -79,8 +79,11 @@
             'method' => 'POST',
             'enctype' => 'multipart/form-data'
         ));
-        echo $this->PHForm->input('clear_data', array('type' => 'checkbox', 'checked' => 1, 'autocomplete' => 'off',
+        echo $this->PHForm->input('clear_data', array('type' => 'checkbox', 'checked' => 0, 'autocomplete' => 'off',
             'label' => array('text' => 'Очищать данные перед загрузкой', 'class' => 'col-md-3 control-label'),
+        ));
+        echo $this->PHForm->input('publish_all', array('type' => 'checkbox', 'checked' => 0, 'autocomplete' => 'off',
+            'label' => array('text' => 'Публиковать предметы', 'class' => 'col-md-3 control-label'),
         ));
         echo $this->PHForm->input('csv_file', array(
             'type' => 'file',

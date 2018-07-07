@@ -2,9 +2,16 @@
 App::uses('AppShell', 'Console/Command');
 class BkgServiceShell extends AppShell {
 
+    protected $Task;
+
     public function execTask() {
         ignore_user_abort(true);
         set_time_limit(0);
+
+        // init db config depending upon $lang
+        $lang = $this->args[1];
+        Configure::write('Config.language', $lang);
+        $this->Task = $this->loadModel('Task');
 
         $id = $this->args[0];
         $taskData = $this->Task->findById($id);
@@ -13,6 +20,7 @@ class BkgServiceShell extends AppShell {
         $task->id = $id;
         $task->user_id = $taskData['Task']['user_id'];
         $task->params = unserialize($taskData['Task']['params']);
+        $task->Task = $this->Task; // I removed using Task in AppShell
         try {
             $task->execute();
         } catch (Exception $e) {

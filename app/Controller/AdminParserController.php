@@ -80,7 +80,7 @@ class AdminParserController extends AdminController {
 				return;
 			} elseif ($task['status'] === 'ABORTED') {
 				$this->Task->close($task['id']);
-				$this->Flash->success(__('Загрузка прервана пользователем'));
+				$this->Flash->success(__('Processing was aborted by user'));
 				$this->redirect(array('action' => 'index'));
 				return;
 			} elseif ($task['status'] === 'DONE') {
@@ -110,7 +110,8 @@ class AdminParserController extends AdminController {
 
 			$params = array(
 				'clear_data' => $this->request->data('parserForm.clear_data'),
-				'csv_file' => $this->_convertToCSV($file['tmp_name'])
+				'publish_all' => $this->request->data('parserForm.publish_all'),
+				'csv_file' => $this->_convertToCSV($file['tmp_name']),
 			);
 
 			$user_id = AuthComponent::user('id');

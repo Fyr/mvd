@@ -505,4 +505,8 @@ msgstr "Размер"
 msgid "Identification number"
 msgstr "Номер по КП (НВ)"
 
+msgid "Too long name for `%s`: `%s`"
+msgstr "Слишком длинное имя для `%s`: `%s`"
 
+msgid "Processing was aborted by user"
+msgstr "Загрузка прервана пользователем"
