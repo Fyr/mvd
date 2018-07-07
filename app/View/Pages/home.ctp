@@ -20,7 +20,7 @@
         <div class="outerIcon">
             <span class="icon-star"></span>
         </div>
-        <h2><?=('News')?></h2>
+        <h2><?=__('News')?></h2>
     </div>
     <div class="row mainPageEvents">
 <?
