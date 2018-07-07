@@ -481,7 +481,7 @@ msgstr "Выберите категорию"
 msgid "Search results"
 msgstr "Результаты поиска"
 
-msgid "Subject type"
+msgid "Item type"
 msgstr "Вид предмета"
 
 msgid "Subject name"
@@ -528,3 +528,12 @@ msgstr "Показывать по"
 
 msgid "records"
 msgstr "записей"
+
+msgid "Authors"
+msgstr "Автор/Коллектив авторов"
+
+msgid "Acceptance Act"
+msgstr "Акт приема-передачи"
+
+msgid "Protocol"
+msgstr "Протокол ФЗК"

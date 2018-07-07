@@ -66,11 +66,11 @@
                             <td width="60%"><?=$article['ProductCategory']['title']?></td>
                         </tr>
                         <tr>
-                            <td width="40%"><?=__('Subject type')?></td>
+                            <td width="40%"><?=__('Item type')?></td>
                             <td width="60%"><?=$article['ProductSubcategory']['title']?></td>
                         </tr>
                         <tr>
-                            <td width="40%"><?=__('Subject name')?></td>
+                            <td width="40%"><?=__('Item name')?></td>
                             <td width="60%"><?=$article['Product']['teaser']?></td>
                         </tr>
                         <tr>
