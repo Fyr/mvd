@@ -202,7 +202,7 @@ msgstr "Контент"
 msgid "Pages"
 msgstr "Страницы"
 
-msgid "News"
+msgid "Events"
 msgstr "События"
 
 msgid "Categories"
@@ -382,7 +382,7 @@ msgstr "Коллекции"
 msgid "Collection"
 msgstr "Коллекция"
 
-msgid "Products"
+msgid "Museum items"
 msgstr "Музейные предметы"
 
 msgid "Subcategories"
@@ -391,13 +391,13 @@ msgstr "Подкатегории"
 msgid "Create subcategory"
 msgstr "Создать подкатегорию"
 
-msgid "Create product"
+msgid "Create museum item"
 msgstr "Создать предмет"
 
 msgid "Edit subcategory"
 msgstr "Редактировать подкатегорию"
 
-msgid "Edit product"
+msgid "Edit museum item"
 msgstr "Редактировать предмет"
 
 msgid "View product"
@@ -451,16 +451,16 @@ msgstr "Не могу сохранить предмет с номером `%s` (
 msgid "Video not found for item `%s`"
 msgstr "Не найдено видео для предмета с номером `%s`"
 
-msgid "Home"
+msgid "Main Page"
 msgstr "Главная"
 
-msgid "About us"
+msgid "About the Museum"
 msgstr "О музее"
 
-msgid "Our history"
+msgid "History of militia"
 msgstr "История милиции"
 
-msgid "Customers"
+msgid "Visitors"
 msgstr "Посетителям"
 
 msgid "MUSEUM<span>of Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>"
@@ -475,7 +475,7 @@ msgstr "поиск по сайту"
 msgid "Interesting exhibits"
 msgstr "Интересные экспонаты"
 
-msgid "Choose category"
+msgid "Choose the category"
 msgstr "Выберите категорию"
 
 msgid "Search results"
@@ -510,3 +510,21 @@ msgstr "Слишком длинное имя для `%s`: `%s`"
 
 msgid "Processing was aborted by user"
 msgstr "Загрузка прервана пользователем"
+
+msgid "Search item"
+msgstr "Найти предмет"
+
+msgid "Find"
+msgstr "Найти"
+
+msgid "by item name..."
+msgstr "по названию предмета..."
+
+msgid "by number..."
+msgstr "по номеру..."
+
+msgid "Show by"
+msgstr "Показывать по"
+
+msgid "records"
+msgstr "записей"

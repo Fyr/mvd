@@ -8,10 +8,10 @@ class ObjectTypeHelper extends AppHelper {
             'index' => array(
                 'Article' => __('Articles'),
                 'Page' => __('Static pages'),
-                'News' => __('News'),
+                'News' => __('Events'),
                 'Category' => __('Categories'),
                 'Subcategory' => __('Subcategories'),
-                'Product' => __('Products'),
+                'Product' => __('Museum items'),
                 'User' => __('User profiles'),
             ),
             'create' => array(
@@ -20,7 +20,7 @@ class ObjectTypeHelper extends AppHelper {
                 'News' => __('Create news article'),
                 'Category' => __('Create category'),
                 'Subcategory' => __('Create subcategory'),
-                'Product' => __('Create product'),
+                'Product' => __('Create museum item'),
                 'User' => __('Create user'),
             ),
             'edit' => array(
@@ -29,7 +29,7 @@ class ObjectTypeHelper extends AppHelper {
                 'News' => __('Edit news article'),
                 'Category' => __('Edit category'),
                 'Subcategory' => __('Edit subcategory'),
-                'Product' => __('Edit product'),
+                'Product' => __('Edit museum item'),
                 'User' => __('Edit user'),
             ),
             'view' => array(

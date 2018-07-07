@@ -55,20 +55,20 @@
                         <div class="col-md-12">
                             <form class="form-inline" action="" role="form" method="get">
                                 <div class="form-group">
-                                    Найти предмет
+                                    <?=__('Search item')?>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-xlarge" placeholder="по названию предмета..." name="title" value="<?=Hash::get($filter, 'title')?>">
+                                    <input type="text" class="form-control input-xlarge" placeholder="<?=__('by item name...')?>" name="title" value="<?=Hash::get($filter, 'title')?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-medium" placeholder="по месту хранения..." name="location" value="<?=Hash::get($filter, 'location')?>">
+                                    <input type="text" class="form-control input-medium" placeholder="<?=__('by item location...')?>" name="location" value="<?=Hash::get($filter, 'location')?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-medium" placeholder="по номеру..." name="id_num" value="<?=Hash::get($filter, 'id_num')?>">
+                                    <input type="text" class="form-control input-medium" placeholder="<?=__('by number...')?>" name="id_num" value="<?=Hash::get($filter, 'id_num')?>">
                                 </div>
                                 <div class="btn-group">
                                     <button class="btn btn-info">
-                                        <i class="fa fa-search"></i> Найти
+                                        <i class="fa fa-search"></i> <?=__('Find')?>
                                     </button>
                                 </div>
                             </form>
@@ -84,7 +84,7 @@
                             </div>
                             <form action="" class="form-inline pull-right" role="form" method="get">
                                 <div class="form-group">
-                                    Показывать по
+                                    <?=__('Show by')?>
                                 </div>
                                 <div class="form-group">
 <?
@@ -94,7 +94,7 @@
 ?>
                                 </div>
                                 <div class="form-group">
-                                    записей
+                                    <?=__('records')?>
                                 </div>
                             </form>
                         </div>

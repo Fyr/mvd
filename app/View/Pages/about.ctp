@@ -1,5 +1,5 @@
 <?
-    $title = __('About us');
+    $title = __('About the Museum');
     $filter = array('cat_id' => $aPages[$slug]['Page']['id']);
     $aCategories = array_values($aPages);
     $aSubcategories = array();

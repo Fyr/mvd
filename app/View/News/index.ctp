@@ -1,5 +1,5 @@
 <div class="container article">
-    <h1><?=__('News')?></h1>
+    <h1><?=__('Events')?></h1>
 <?
     $aArticleGroups = array_chunk($aArticles, 3);
     foreach($aArticleGroups as $aArticles) {
