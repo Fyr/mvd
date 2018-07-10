@@ -451,9 +451,6 @@ msgstr "Не могу сохранить предмет с номером `%s` (
 msgid "Video not found for item `%s`"
 msgstr "Не найдено видео для предмета с номером `%s`"
 
-msgid "Main Page"
-msgstr "Главная"
-
 msgid "About the Museum"
 msgstr "О музее"
 
@@ -475,7 +472,7 @@ msgstr "поиск по сайту"
 msgid "Interesting exhibits"
 msgstr "Интересные экспонаты"
 
-msgid "Choose the category"
+msgid "Choose category"
 msgstr "Выберите категорию"
 
 msgid "Search results"
@@ -537,3 +534,9 @@ msgstr "Акт приема-передачи"
 
 msgid "Protocol"
 msgstr "Протокол ФЗК"
+
+msgid "Menu"
+msgstr "Меню"
+
+msgid "Home"
+msgstr "Главная"

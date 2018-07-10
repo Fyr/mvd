@@ -73,7 +73,7 @@
 					</div>
 					<div class="col-md-3 mvd">
 						<div class="mobileBtn">
-							<span>Меню</span>
+							<span><?=__('Menu')?></span>
 							<div></div>
 							<div></div>
 							<div></div>
