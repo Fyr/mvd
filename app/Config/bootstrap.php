@@ -34,7 +34,7 @@ Configure::write('Config.langs', array('eng' => 'EN', 'rus' => 'RU', 'bye' => 'B
 /* -= Custom settings =- */
 Configure::write('domain', array(
 	'url' => $_SERVER['SERVER_NAME'],
-	'title' => 'MuseiMVD.dev'
+	'title' => 'MuseiMVD.loc'
 ));
 Configure::write('media', array(
 	'path' => WWW_ROOT.'files'.DS

@@ -58,6 +58,7 @@ class CsvReader {
 				$key = $keys[$col];
 				$col++;
 				if ($col >= count($keys)) {
+					// fdebug(compact('keys', 'col', 'key'));
 					throw new Exception(__('CSV format error: Too much values (Line %s)', $line));
 				}
 				$lastCh = mb_substr($csv, $endPos - 1, 1);
@@ -69,7 +70,9 @@ class CsvReader {
 				$key = $keys[$col];
 				$val = mb_substr($csv, $startPos, $endPos - $startPos);
 				$row[$key] = self::postProcess($val);
+
 				if (count($row) != count($keys)) {
+					// fdebug(compact('keys', 'row'));
 					throw new Exception(__('CSV format error: Less values then headers (Line %s)', $line));
 				}
 				$aCsv[] = $row;

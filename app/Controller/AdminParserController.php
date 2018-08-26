@@ -60,7 +60,7 @@ class AdminParserController extends AdminController {
 		for($i = 0; $i < 41; $i++) {
 			array_shift($aRows);
 		}
-		$headers = 'title;author;creation_date;body;id_num;location;img;link_doc;cat_81;cat_87;cat_82;cat_91;cat_88;cat_93;cat_90;cat_92;cat_89;cat_96;cat_95;cat_94';
+		$headers = 'title;author;creation_date;body;id_num;location;img;cat_81;cat_87;cat_82;cat_91;cat_88;cat_93;cat_90;cat_92;cat_89;cat_96;cat_95;cat_94';
 		file_put_contents($newFname, $headers."\n".implode("", $aRows));
 
 		return $newFname;
