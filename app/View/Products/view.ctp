@@ -2,9 +2,9 @@
     $this->Html->css('jquery.fancybox', array('inline' => false));
     $this->Html->script(array('vendor/jquery.fancybox.pack'), array('inline' => false));
 
-    // $title = __('Collections');
+    $title = __('Collections');
     $filter = array('cat_id' => $article['Product']['cat_id'], 'subcat_id' => $article['Product']['subcat_id']);
-    $this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
+    $this->ArticleVars->init($article, $url, $_title, $teaser, $src, 'noresize');
 
     $aMedia3D = array_filter($aMedia, function($media){ return $media['Media']['file'] === '3D_image'; });
     $aMedia = array_filter($aMedia, function($media){ return $media['Media']['file'] !== '3D_image'; });
@@ -14,7 +14,7 @@
         <?=$this->element('categories', compact('title', 'filter', 'aCategories', 'aSubcategories'))?>
         <div class="col-md-9 col-sm-8">
             <?=$this->element('search')?>
-            <h1><?=$title?></h1>
+            <h1><?=$_title?></h1>
             <div class="row">
                 <div class="col-md-7 exhibit">
 <?
@@ -25,13 +25,13 @@
                         <div id="rotate3D_left" class="prevButton"><i class="icon-arrow-left"></i></div>
                         <div id="rotate3D_right" class="nextButton"><i class="icon-arrow-right"></i></div>
 
-                        <img id="img3D_<?=$i?>" class="mainImg img3D" src="<?=$src?>" alt="<?=$title?>" style="z-index: 1"/>
+                        <img id="img3D_<?=$i?>" class="mainImg img3D" src="<?=$src?>" alt="<?=$_title?>" style="z-index: 1"/>
 <?
         foreach($aMedia3D as $media) {
             $i++;
             $src = $this->Media->imageUrl($media, 'noresize');
 ?>
-                        <img id="img3D_<?=$i?>" class="mainImg img3D" src="<?=$src?>" alt="<?=$title?>" style="z-index: 0"/>
+                        <img id="img3D_<?=$i?>" class="mainImg img3D" src="<?=$src?>" alt="<?=$_title?>" style="z-index: 0"/>
 <?
         }
 ?>
@@ -39,7 +39,7 @@
 <?
     } else {
 ?>
-                    <a class="fancybox" href="<?=$src?>" rel="gallery"><img class="mainImg" src="<?=$src?>" alt="<?=$title?>"/></a>
+                    <a class="fancybox" href="<?=$src?>" rel="gallery"><img class="mainImg" src="<?=$src?>" alt="<?=$_title?>"/></a>
 <?
     }
 ?>

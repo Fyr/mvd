@@ -3,7 +3,7 @@
 ?>
 <div class="col-md-3 col-sm-4">
 	<div class="subMenu">
-		<div class="title"><?=__('Collections')?></div>
+		<div class="title"><?=$title?></div>
 		<ul>
 <?
 	foreach($aCategories as $category) {
