@@ -50,7 +50,7 @@
 	echo $this->PHForm->input('protocol', array('label' => array('class' => 'col-md-3 control-label', 'text' => 'Протокол ФЗК')));
 	echo $this->PHForm->input('sorting', array('class' => 'form-control input-small'));
 */
-	echo $this->PHForm->input('teaser', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Item name'))));
+	echo $this->PHForm->input('teaser', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Subject name'))));
 	echo $this->PHForm->input('author', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Author/Team of authors'))));
 	echo $this->PHForm->input('creation_date', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Creation period'))));
 	echo $this->PHForm->input('creation_place', array('label' => array('class' => 'col-md-3 control-label', 'text' => __('Creation place'))));

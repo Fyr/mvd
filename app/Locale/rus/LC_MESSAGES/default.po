@@ -517,6 +517,9 @@ msgstr "Найти"
 msgid "by item name..."
 msgstr "по названию предмета..."
 
+msgid "by item location..."
+msgstr "по месту хранению предмета..."
+
 msgid "by number..."
 msgstr "по номеру..."
 
