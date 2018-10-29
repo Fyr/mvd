@@ -543,3 +543,6 @@ msgstr "Меню"
 
 msgid "Home"
 msgstr "Главная"
+
+msgid "Item name"
+msgstr "Предметное имя"
