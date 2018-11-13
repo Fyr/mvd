@@ -110,7 +110,9 @@ class AppController extends Controller {
 		$this->currMenu = $this->_getCurrMenu();
 		// $this->aBottomLinks = $this->aNavBar;
 		// $this->currLink = $this->_currMenu;
-
+		if (Configure::read('Config.language') !== 'rus') {
+			unset($this->aNavBar['Products']);
+		}
 		$this->Auth->allow(array('home', 'view', 'index', 'login', 'categories', 'about', 'history'));
 		$this->currUser = array();
 		$this->cart = array();
