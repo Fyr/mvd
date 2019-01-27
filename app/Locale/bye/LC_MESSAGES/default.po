@@ -1,461 +1,548 @@
-msgid "Username"
-msgstr "Пользователь"
+﻿msgid "Username"
+msgstr "Карыстальнік"
 
 msgid "Invalid username or password, try again"
-msgstr "Неправильное имя пользователя или пароль"
+msgstr "Няправільнае імя карыстальніка або пароль"
 
 msgid "Authorization"
-msgstr "Авторизация"
+msgstr "Аўтарызацыя"
 
 msgid "Remember me"
-msgstr "Запомнить"
+msgstr "Запомніць"
 
 msgid "Yes"
-msgstr "Да"
+msgstr "Так"
 
 msgid "No"
-msgstr "Нет"
+msgstr "Не"
 
 msgid "Jan"
-msgstr "Янв"
+msgstr "Студз"
 
 msgid "Feb"
-msgstr "Фев"
+msgstr "Лют"
 
 msgid "Mar"
-msgstr "Мар"
+msgstr "Сак"
 
 msgid "Apr"
-msgstr "Апр"
+msgstr "Крас"
 
 msgid "May"
-msgstr "Май"
+msgstr "Трав"
 
 msgid "Jun"
-msgstr "Июн"
+msgstr "Чэрв"
 
 msgid "Jul"
-msgstr "Июл"
+msgstr "Ліп"
 
 msgid "Aug"
-msgstr "Авг"
+msgstr "Жнів"
 
 msgid "Sep"
-msgstr "Сен"
+msgstr "Вер"
 
 msgid "Oct"
-msgstr "Окт"
+msgstr "Кастр"
 
 msgid "Nov"
-msgstr "Ноя"
+msgstr "Ліст"
 
 msgid "Dec"
-msgstr "Дек"
+msgstr "Снеж"
 
 msgid "Today"
-msgstr "Сегодня"
+msgstr "Сёння"
 
 msgid "Yesterday"
-msgstr "Вчера"
+msgstr "Учора"
 
 msgid "Text"
-msgstr "Текст"
+msgstr "Тэкст"
 
 msgid "You must log in to access this page"
-msgstr "Вы должны авторизоваться"
+msgstr "Вы павінны аўтарызавацца"
 
 msgid "Your session has been expired. Please, relogin to perform this action"
-msgstr "Авторизация истекла. Пож-ста, авторизуйтесь снова"
+msgstr "Аўтарызацыя скончылася. Калi ласка, аўтарызуйцеся зноў"
 
 msgid "Save"
-msgstr "Сохранить"
+msgstr "Захаваць"
 
 msgid "Back"
 msgstr "Назад"
 
 msgid "Apply"
-msgstr "Применить"
+msgstr "Ужыць"
 
 msgid "Upload files..."
-msgstr "Загрузка файлов..."
+msgstr "Загрузка файлаў ..."
 
 msgid "Edit"
-msgstr "Редактировать"
+msgstr "Рэдагаваць"
 
 msgid "Delete"
-msgstr "Удалить"
+msgstr "Выдаліць"
 
 msgid "Uploaded"
-msgstr "Загружено"
+msgstr "Загружана"
 
-msgid "File name"
-msgstr "Имя файла"
+msgid "Filename"
+msgstr "Назва"
 
 msgid "File size"
-msgstr "Обьем файла"
+msgstr "Аб'ём файла"
 
 msgid "Links"
-msgstr "Ссылки"
+msgstr "Спасылкі"
 
-msgid "Add record"
-msgstr "Добавить запись"
+msgid "Addrecord"
+msgstr "Дадаць запіс"
 
 msgid "Edit record"
-msgstr "Редактировать запись"
+msgstr "Рэдагаваць запіс"
 
-msgid "Delete record"
-msgstr "Удалить запись"
+msgid "Deleterecord"
+msgstr "Ачысціць запіс"
 
 msgid "Dashboard"
-msgstr "Главная"
+msgstr "Галоўная"
 
-msgid "User name"
-msgstr "Имя пользователя"
+msgid "Username"
+msgstr "Імя карыстальніка"
 
 msgid "Password"
 msgstr "Пароль"
 
 msgid "Remember me"
-msgstr "Запомнить"
+msgstr "Запомніць"
 
 msgid "Login"
-msgstr "Вход"
+msgstr "Уваход"
 
 msgid "Logout"
-msgstr "Выход"
+msgstr "Выхад"
 
 msgid "Utils"
-msgstr "Утилиты"
+msgstr "Утыліты"
 
 msgid "Generate static labels"
-msgstr "Сгенерировать стат.метки"
+msgstr "Згенераваць стат.меткi"
 
 msgid "Clean image cache"
-msgstr "Очистить кэш изображений"
+msgstr "Ачысціць кэш малюнкаў"
 
-msgid "Processing query..."
-msgstr "Обработка запроса..."
+msgid "Processingquery..."
+msgstr "Апрацоўка запыту ..."
 
 msgid "Sort Order"
-msgstr "Сортировка"
+msgstr "Сартаванне"
 
 msgid "Upload"
-msgstr "Загрузить"
+msgstr "Загрузіць"
 
 msgid "Select file"
-msgstr "Выберите файл"
+msgstr "Выбраць файл"
 
 msgid "Slug"
-msgstr "Адрес"
+msgstr "Адрас"
 
 msgid "Sorting"
-msgstr "Сортировка"
+msgstr "Сартаванне"
 
 msgid "Created"
-msgstr "Создано"
+msgstr "Створана"
 
 msgid "System"
-msgstr "Система"
+msgstr "Сістэма"
 
 msgid "Updated"
-msgstr "Обновлено"
+msgstr "Адноўлена"
 
 msgid "Download"
-msgstr "Скачать"
+msgstr "Спампаваць"
 
 msgid "Featured"
-msgstr "Особое"
+msgstr "Асаблівае"
 
 msgid "Record has been successfully saved"
-msgstr "Запись успешно сохранена"
+msgstr "Запіс паспяхова захаваны"
 
 msgid "Record has been successfully deleted"
-msgstr "Запись успешно удалена"
+msgstr "Запіс паспяхова выдалены"
 
 msgid "No records found"
-msgstr "Записей не найдено"
+msgstr "Запісаў не знойдзена"
 
 msgid "Actions"
-msgstr "Действия"
+msgstr "Дзеянні"
 
 msgid "Show filter settings"
-msgstr "Показать настройки фильтра"
+msgstr "Паказаць налады фільтра"
 
 msgid "Delete checked records"
-msgstr "Удалить помеченные записи"
+msgstr "Выдаліць пазначаныя запісы"
 
 msgid "General"
-msgstr "Общее"
+msgstr "Агульнае"
 
 msgid "Status"
 msgstr "Статус"
 
 msgid "Cancel"
-msgstr "Отмена"
+msgstr "Адмена"
 
 msgid "Admin area"
-msgstr "Панель администратора"
+msgstr "Панэль адміністратара"
 
 msgid "Static content"
-msgstr "Контент"
+msgstr "Кантэнт"
 
 msgid "Pages"
-msgstr "Страницы"
+msgstr "Старонкі"
 
-msgid "News"
-msgstr "События"
+msgid "Events"
+msgstr "Падзеі"
 
 msgid "Categories"
-msgstr "Категории"
+msgstr "Катэгорыі"
 
 msgid "Settings"
-msgstr "Настройки"
+msgstr "Налады"
 
 msgid "Contacts"
-msgstr "Контакты"
+msgstr "Кантакты"
 
 msgid "Articles"
-msgstr "Статьи"
+msgstr "Артыкулы"
 
 msgid "Static pages"
-msgstr "Статические страницы"
+msgstr "Статычныя старонкі"
 
 msgid "Create article"
-msgstr "Создать статью"
+msgstr "Стварыць артыкул"
 
 msgid "Create static page"
-msgstr "Создать стат.страницу"
+msgstr "Стварыць стат. старонку"
 
 msgid "Create news article"
-msgstr "Создать новость"
+msgstr "Стварыць навіну"
 
-msgid "Edit article"
-msgstr "Редактировать статью"
+msgid "Editarticle"
+msgstr "Рэдагаваць артыкул"
 
-msgid "Edit static page"
-msgstr "Редактировать стат.страницу"
+msgid "Editstaticpage"
+msgstr "Рэдагаваць стат. старонку "
 
 msgid "Edit news article"
-msgstr "Редактировать новость"
+msgstr "Рэдагаваць навіну"
 
-msgid "View article"
-msgstr "Просмотр статьи"
+msgid "Viewarticle"
+msgstr "Прагляд артыкула"
 
 msgid "View news article"
-msgstr "Просмотр новости"
+msgstr "Прагляд навіны"
 
 msgid "Title"
-msgstr "Название"
+msgstr "Назва"
 
 msgid "Published"
-msgstr "Опубликовано"
+msgstr "Апублікавана"
 
 msgid "Media"
-msgstr "Медиа"
+msgstr "Медыя"
 
 msgid "Start admin page"
-msgstr "Стартовая страница админа"
+msgstr "Стартавая старонка адміна"
 
 msgid "Category"
-msgstr "Категория"
+msgstr "Катэгорыя"
 
 msgid "Subcategory"
-msgstr "Подкатегория"
+msgstr "Падкатэгорыя"
 
 msgid "Create category"
-msgstr "Создать категорию"
+msgstr "Стварыць катэгорыю"
 
-msgid "Edit category"
-msgstr "Редактировать категорию"
+msgid "Editcategory"
+msgstr "Рэдагаваць катэгорыю"
 
 msgid "Showing {:start} to {:end} of {:count} records"
-msgstr "Показано {:start} - {:end} из {:count} записей"
+msgstr "Паказана {: start} - {: end} з {: count} запісаў"
 
 msgid "Label"
-msgstr "Метка"
+msgstr "Пазнака"
 
 msgid "Settings have been successfully saved"
-msgstr "Настройки были успешно сохранены"
+msgstr "Налады былі паспяхова захаваны"
 
 msgid "Are you sure to delete this record?"
-msgstr "Вы уверены, что хотите удалить эту запись?"
+msgstr "Вы ўпэўненыя, што жадаеце выдаліць гэты запіс?"
 
 msgid "Are you sure to delete this record?\nAll child records will be deleted too"
-msgstr "Вы уверены, что хотите удалить эту запись?\nВсе дочерние записи будут также удалены"
+msgstr "Вы ўпэўненыя, што жадаеце выдаліць гэты запіс? \ nУсе даччыныя запісы будуць таксама выдаленыя"
 
 msgid "Date"
 msgstr "Дата"
 
 msgid "Author"
-msgstr "Автор"
+msgstr "Аўтар"
 
 msgid "Teaser"
 msgstr "Анонс"
 
 msgid "Preview"
-msgstr "Предпросмотр"
+msgstr "Прадпрагляд"
 
 msgid "Phone"
-msgstr "Тел."
+msgstr "Тэл."
 
 msgid "Photo"
-msgstr "Фото"
+msgstr "Фота"
 
 msgid "Field is mandatory"
-msgstr "Поле обязательно для заполнения"
+msgstr "Поле абавязкова для запаўнення"
 
 msgid "Header"
-msgstr "Заголовок"
+msgstr "Загаловак"
 
 msgid "Description"
-msgstr "Описание"
+msgstr "Апісанне"
 
 msgid "E-mail of admin"
-msgstr "E-mail администратора"
+msgstr "E-mail адміністратара"
 
 msgid "Users"
-msgstr "Пользователи"
+msgstr "Карыстальнікі"
 
 msgid "Error!"
-msgstr "Ошибка!"
+msgstr "Памылка!"
 
 msgid "Confirm password"
-msgstr "Подтверждение пароля"
+msgstr "Пацверджанне пароля"
 
-msgid "User profiles"
-msgstr "Профили пользователей"
+msgid "Userprofiles"
+msgstr "Профілі карыстальнікаў"
 
-msgid "Admin profile"
-msgstr "Профиль администратора"
+msgid "Adminprofile"
+msgstr "Профіль адміністратара"
 
-msgid "Create user"
-msgstr "Создать пользователя"
+msgid "Createuser"
+msgstr "Стварыць карыстальніка"
 
-msgid "Edit user"
-msgstr "Редактировать пользователя"
+msgid "Edituser"
+msgstr "Рэдагаваць карыстальніка"
 
-msgid "Page not found"
-msgstr "Страница не найдена"
+msgid "Pagenotfound"
+msgstr "Старонка не знойдзена"
 
-msgid "User area"
-msgstr "Личный кабинет"
+msgid "Userarea"
+msgstr "Асабісты кабінет"
 
 msgid "Site development"
-msgstr "Разработка сайта"
+msgstr "Распрацоўка сайта"
 
 msgid "Submit"
-msgstr "Отправить"
+msgstr "Адправіць"
 
 msgid "Welcome, %s!"
-msgstr "Добро пожаловать, %s!"
+msgstr "Сардэчна запрашаем,% s!"
 
 msgid "The name must be between 8 and 50 characters"
-msgstr "Имя должно быть не менее 8 и не более 50 символов"
+msgstr "Імя павінна быць не менш за 8 і не больш за 50 сімвалаў"
 
 msgid "Active"
-msgstr "Активен"
+msgstr "Актыўны"
 
 msgid "Total"
-msgstr "Всего"
+msgstr "Усяго"
 
 msgid "Filesize"
-msgstr "Размер файла"
+msgstr "Памер файла"
 
 msgid "Format"
-msgstr "Формат"
+msgstr "Фармат"
 
 msgid "Company name"
-msgstr "Наименование учреждения"
+msgstr "Назва установы"
 
 msgid "Address"
-msgstr "Адрес"
+msgstr "Адрас"
 
 msgid "Work time"
-msgstr "Время работы"
+msgstr "Час працы"
 
 msgid "Slider"
-msgstr "Слайдер"
+msgstr "Слайдэр"
 
 msgid "Collections"
-msgstr "Коллекции"
+msgstr "Калекцыі"
 
-msgid "Products"
-msgstr "Музейные предметы"
+msgid "Collection"
+msgstr "Калекцыя"
+
+msgid "Museum items"
+msgstr "Музейныя прадметы"
 
 msgid "Subcategories"
-msgstr "Подкатегории"
+msgstr "Падкатэгорыи"
 
-msgid "Create subcategory"
-msgstr "Создать подкатегорию"
+msgid "Createsubcategory"
+msgstr "Стварыць падкатэгорыю"
 
-msgid "Create product"
-msgstr "Создать предмет"
+msgid "Createmuseumitem"
+msgstr "Стварыць прадмет"
 
-msgid "Edit subcategory"
-msgstr "Редактировать подкатегорию"
+msgid "Editsubcategory"
+msgstr "Рэдагаваць падкатэгорыю"
 
-msgid "Edit product"
-msgstr "Редактировать предмет"
+msgid "Editmuseumitem"
+msgstr "Рэдагаваць прадмет"
 
 msgid "View product"
-msgstr "Просмотр предмета"
+msgstr "Прагляд прадмета"
 
 msgid "Location"
-msgstr "Место хранения"
+msgstr "Месца захоўвання"
 
 msgid "ID Num"
-msgstr "Инв.номер"
+msgstr "Iнв.нумар"
 
 msgid "For home page"
-msgstr "На главную"
+msgstr "На галоўную"
 
 msgid "Incorrect CSV-format for `%s`"
-msgstr "Некорректный CSV-формат для `%s`"
+msgstr "Некарэктны CSV-фармат для`% s` "
 
 msgid "Background tasks"
-msgstr "Фоновые задачи"
+msgstr "Фонавыя задачы"
 
 msgid "Product CSV Parser"
-msgstr "Загрузка предметов из CSV"
+msgstr "Загрузка прадметаў з CSV"
 
 msgid "Product Parser"
-msgstr "Загрузка предметов"
+msgstr "Загрузка прадметаў"
 
 msgid "You must choose CSV file for parsing"
-msgstr "Вы должны выбрать CSV файл для загрузки"
+msgstr "Вы павінны выбраць CSV файл для загрузкі"
 
 msgid "No photo for item `%s`: `%s`"
-msgstr "Не найдено фото для `%s`: `%s`"
+msgstr "Не знойдзена фота для`% s`: `% s`"
 
 msgid "No 3D-photo for item `%s`: `%s`"
-msgstr "Не найдено 3D фото для `%s`: `%s`"
+msgstr "Не знойдзена 3D фота для`% s`: `% s`"
 
 msgid "Could not load media as image for item `%s`: `%s`"
-msgstr "Не могу загрузить файл как изображение для `%s`: `%s`"
+msgstr "Немагчыма загрузіць файл як малюнак для`% s`: `% s`"
 
 msgid "Incorrect image size for item `%s`: `%s` (%d x %d)"
-msgstr "Некорректные пропорции изображения для `%s`: `%s` (%d x %d)"
+msgstr "Некарэктныя прапорцыі малюнка для`% s`: `% s` (% d x% d)"
 
 msgid "Category not found (Line %d)"
-msgstr "Не могу найти категорию (стр. %d)"
+msgstr "Не магу знайсці катэгорыю (стар.% d)"
 
 msgid "Subcategory not found (Line %d)"
-msgstr "Не могу найти подкатегорию (стр. %d)"
+msgstr "Не магу знайсці падкатэгорыю (стар.% d)"
 
 msgid "Cannot save item `%s` (Line %d)"
-msgstr "Не могу сохранить предмет с номером `%s` (стр. %d)"
+msgstr "Не магу захаваць прадмет з нумарам`% s` (стар.% d) "
 
 msgid "Video not found for item `%s`"
-msgstr "Не найдено видео для предмета с номером `%s`"
+msgstr "Не знойдзена відэа для прадмета з нумарам`% s` "
+
+msgid "About the Museum"
+msgstr "Пра музей"
+
+msgid "History of police"
+msgstr "Гісторыя міліцыі"
+
+msgid "Visitors"
+msgstr "Наведвальнікам"
+
+msgid "MUSEUM<span>of the Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>"
+msgstr "МУЗЕЙ МУС <span> Рэспублікі Беларусь </ span>"
+
+msgid "Ministry of Internal Affairs of the Republic of Belarus"
+msgstr "Міністэрства ўнутраных спраў Рэспублікі Беларусь"
+
+msgid "search on site"
+msgstr "пошук па сайце"
+
+msgid "Interesting exhibits"
+msgstr "Цікавыя экспанаты"
+
+msgid "Choose category"
+msgstr "Выбраць катэгорыю"
+
+msgid "Search results"
+msgstr "Вынікі пошуку"
+
+msgid "Item type"
+msgstr "Від прадмета"
+
+msgid "Subject name"
+msgstr "Прадметнае імя"
+
+msgid "Author/Team of authors"
+msgstr "Аўтар / Калектыў аўтараў"
+
+msgid "Creation period"
+msgstr "Перыяд стварэння"
+
+msgid "Creation place"
+msgstr "Месца стварэння"
+
+msgid "Creation technology"
+msgstr "Матэрыял, тэхніка"
+
+msgid "Size"
+msgstr "Памер"
+
+msgid "Identification number"
+msgstr "Нумар па КП (НД)"
+
+msgid "Too long name for `%s`: `%s`"
+msgstr "Занадта доўгае імя для`% s`: `% s`"
+
+msgid "Processing was aborted by user"
+msgstr "Загрузка перарвана карыстальнікам"
+
+msgid "Search item"
+msgstr "Знайсці прадмет"
+
+msgid "Find"
+msgstr "Знайсці"
+
+msgid "by item name..."
+msgstr "па назве прадмета ..."
+
+msgid "byitemlocation..."
+msgstr "па месцы захоўвання прадмета ..."
+
+msgid "by number..."
+msgstr "па нумары ..."
+
+msgid "Show by"
+msgstr "Паказваць па"
+
+msgid "records"
+msgstr "запісаў"
+
+msgid "Authors"
+msgstr "Аўтар / Калектыў аўтараў"
+
+msgid "AcceptanceAct"
+msgstr "Акт прыёму-перадачы"
+
+msgid "Protocol"
+msgstr "Пратакол ФЗК"
+
+msgid "Menu"
+msgstr "Меню"
 
 msgid "Home"
-msgstr "Галоуная"
+msgstr "Галоўная"
 
-msgid "About us"
-msgstr "Аб музее"
-
-msgid "Our history"
-msgstr "Гiсторыя мiлiцыi"
-
-msgid "Customers"
-msgstr "Посетителям"
+msgid "Itemname"
+msgstr "Прадметнае імя"
