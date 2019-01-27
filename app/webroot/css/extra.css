@@ -18,3 +18,7 @@
 .img3D {
   position: absolute;
 }
+
+.logo, .logo span {
+  text-transform: none !important;
+}

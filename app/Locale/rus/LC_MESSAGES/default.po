@@ -454,13 +454,13 @@ msgstr "Не найдено видео для предмета с номером
 msgid "About the Museum"
 msgstr "О музее"
 
-msgid "History of militia"
+msgid "History of police"
 msgstr "История милиции"
 
 msgid "Visitors"
 msgstr "Посетителям"
 
-msgid "MUSEUM<span>of Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>"
+msgid "MUSEUM<span>of the Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>"
 msgstr "МУЗЕЙ МВД <span>Республики Беларусь</span>"
 
 msgid "Ministry of Internal Affairs of the Republic of Belarus"
@@ -518,7 +518,7 @@ msgid "by item name..."
 msgstr "по названию предмета..."
 
 msgid "by item location..."
-msgstr "по месту хранению предмета..."
+msgstr "по месту хранения предмета..."
 
 msgid "by number..."
 msgstr "по номеру..."

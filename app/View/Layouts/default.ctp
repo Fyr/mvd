@@ -43,7 +43,7 @@
 		<div class="container top">
 			<div class="row">
 				<div class="col-lg-3 col-sm-3 logo">
-					<a href="/"><?=__('MUSEUM<span>of Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>')?></a>
+					<a href="/"><?=__('MUSEUM<span>of the Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>')?></a>
 				</div>
 				<div class="col-md-3 col-sm-5 address">
 					<?=Configure::read('Settings.address')?>
@@ -91,7 +91,7 @@
 			<div class="png2x png2x-footer"></div>
 			<div class="row top">
 				<div class="col-md-3 col-sm-3 logo">
-					<a href="/"><?=__('MUSEUM<span>of Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>')?></a>
+					<a href="/"><?=__('MUSEUM<span>of the Ministry of Internal Affairs</span><span>of the Republic of Belarus</span>')?></a>
 				</div>
 				<div class="col-md-2 col-sm-2 col-xs-6 firstColomn">
 					<?=$this->element('main_menu', array('class' => 'menu'))?>

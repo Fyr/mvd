@@ -1,5 +1,5 @@
 <?
-    $title = __('History of militia');
+    $title = __('History of police');
     $filter = array('cat_id' => $aPages[$slug]['Page']['id']);
     $aCategories = array_values($aPages);
     $aSubcategories = array();
