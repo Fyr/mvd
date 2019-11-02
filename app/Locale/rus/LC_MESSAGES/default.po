@@ -457,6 +457,9 @@ msgstr "О музее"
 msgid "History of police"
 msgstr "История милиции"
 
+msgid "History of militia"
+msgstr "История милиции"
+
 msgid "Visitors"
 msgstr "Посетителям"
 
