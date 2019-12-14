@@ -143,7 +143,7 @@ class ProductCsvParserTask extends AppShell {
                 $fnames = $this->_getFilesByNum($aFiles, $num);
                 if (!$fnames) {
                     $fname = 'kp-'.$num.'.jpg';
-                    throw new Exception(__("No photo for item `%s`: `%s`", $row['id_num'], $fname));
+                    fdebug(__("No photo for item `%s`: `%s`", $row['id_num'], $fname)."\r\n", Configure::read('ProductCSVParser.log'));
                 }
             } elseif ($row['img'] == 3) { // 3D images in folder
                 $folder = 'kp'.$num;
@@ -167,7 +167,8 @@ class ProductCsvParserTask extends AppShell {
                 $w = $img->getSizeX();
                 $h = $img->getSizeY();
                 if (max($w / $h, $h / $w) > 3) {
-                    throw new Exception(__("Incorrect image size for item `%s`: `%s` (%d x %d)", $row['id_num'], $_fname, $w, $h));
+                    // throw new Exception(__("Incorrect image size for item `%s`: `%s` (%d x %d)", $row['id_num'], $_fname, $w, $h));
+                    fdebug(__("Incorrect image size for item `%s`: `%s` (%d x %d)", $row['id_num'], $_fname, $w, $h)."\r\n", Configure::read('ProductCSVParser.log'));
                 }
             }
         } catch (Exception $e) {
