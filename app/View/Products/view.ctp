@@ -56,7 +56,7 @@
 
                     </div>
                     <div class="title"><?=__('Description')?></div>
-                    <div class="description"><?=$this->ArticleVars->body($article)?></div>
+                    <div class="description" style="margin-top: 30px;"><?=$this->ArticleVars->body($article)?></div>
                 </div>
                 <div class="col-md-5">
                     <table class="features">
